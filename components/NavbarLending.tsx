@@ -30,57 +30,59 @@ const navitem = [
 ];
 type useState = {
   clicked: boolean;
-  setClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  setClicked:  React.Dispatch<React.SetStateAction<boolean>>;
 };
 const NavbarLending = ({ clicked, setClicked }: useState) => {
+  const [token, setToken] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleClick = () => {
     if(!isOpen){
       setClicked(!clicked);
     }
-   
   };
-  const [token, setToken] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
   const hendelDropdown = () => {
     if(clicked){
       setIsOpen(!isOpen);
     }
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     return setToken(Cookies.get("token") || ""); //nilai null atau undefined
   }, []);
-
+  
   const handleLogout = () => {
+    setClicked(false)
+    setIsOpen(false)
     Cookies.remove("token");
     setToken(Cookies.get("token") || "");
-    router.replace("/");
+      router.replace("/");
   };
   const router = useRouter();
-
+  
   return (
     <nav className="w-full md:py-2">
       <div className="padding-container flexBetween mb-20 md:mb-0 ">
-        <img className=" absolute left-28  md:static " src="/logo2.png" alt="logo" width={140} height={100} />
+        <img className={`left-28  md:static ${ token?("absolute"):("static ")}`} src="/img/logo2.png" alt="logo" width={140} height={100} />
         <div className="static md:hidden">
         {router.pathname !== "/signin" && (
             <>
               {token ? (
                 <Navdown hendelDropdown={hendelDropdown} isOpen={isOpen} handleLogout={handleLogout}/>
-              ) : (
-                <NavLink
-                  className={` btn_blue font-semibold rounded-full text-base border-0 
-              ${
-                router.pathname !== "/signin" && router.pathname !== "/signup"
-                  ? "text-blue-10"
-                  : "hidden"
-              } 
-            `}
-                  href={"/signin"}
-                >
-                  Sign In
-                </NavLink>
+              ) : (""
+            //     <NavLink
+            //       className={`btn_blue font-semibold rounded-full text-base border-0 
+            //   ${
+            //     router.pathname !== "/signin" && router.pathname !== "/signup"
+            //       ? "text-blue-10"
+            //       : "hidden"
+            //   } 
+            // `}
+            //       href={"/signin"}
+            //     >
+            //       Sign In
+            //     </NavLink>
               )}
             </>
           )}
@@ -103,7 +105,7 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
           ))}
           <div className="lg:static">
           {router.pathname !== "/signin" && (
-            <div className=" hidden md:block">
+            <div className={`md:block ${token?("hidden"):("")}`}>
               {token ? (
                 <Navdown hendelDropdown={hendelDropdown} isOpen={isOpen} handleLogout={handleLogout}/>
               ) : (
@@ -128,7 +130,7 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
           className="absolute top-0 md:top-1 right-0 m-5 p-1 rounded-xl border-2 border-gray-10 lg:hidden ms:hidden active:border-white-10 mr-7"
           onClick={handleClick}
         >
-          {clicked ? (
+          {clicked? (
             <FiMenu className="text-3xl text-gray-10 active:text-white-10" />
           ) : (
             <FiX className="text-3xl  text-gray-10 active:text-white-10" />
