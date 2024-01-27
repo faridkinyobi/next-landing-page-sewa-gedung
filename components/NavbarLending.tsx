@@ -35,13 +35,12 @@ type useState = {
 const NavbarLending = ({ clicked, setClicked }: useState) => {
   const [token, setToken] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
   const handleClick = () => {
     if(!isOpen){
       setClicked(!clicked);
     }
   };
-
+  
   const hendelDropdown = () => {
     if(clicked){
       setIsOpen(!isOpen);
@@ -89,7 +88,7 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
         </div>
         <div
           className={`lg:gap-2  lg:flex ms:flex px-3 absolute lg:static w-full  left-0 top-14 md:w-auto translate-all ease-in-out duration-700
-             ${clicked ? "left-[-100rem]" : ""} ${
+             ${clicked ? " " : "left-[-100rem]"} ${
             router.pathname !== "/Singnin" ? "" : "mx-auto"
           }`}
         >
@@ -131,9 +130,9 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
           onClick={handleClick}
         >
           {clicked? (
-            <FiMenu className="text-3xl text-gray-10 active:text-white-10" />
-          ) : (
             <FiX className="text-3xl  text-gray-10 active:text-white-10" />
+            ) : (
+            <FiMenu className="text-3xl text-gray-10 active:text-white-10" />
           )}
         </div>
       </div>
