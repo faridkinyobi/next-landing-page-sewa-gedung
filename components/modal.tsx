@@ -9,6 +9,7 @@ type ModalProps = {
 const CustomModal = ({ isOpen,children }:ModalProps ) => {
   return (
     <Modal
+    className="md:py-[6rem] py-10 my-[15rem] md:my-[10rem] md:mx-[15rem] bg-slate-500"
       isOpen={isOpen}
       >
       {children}
