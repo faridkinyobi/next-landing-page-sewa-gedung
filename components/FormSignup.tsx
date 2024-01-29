@@ -70,7 +70,7 @@ const FormSingnup = () => {
         value={form.password}
       />
       <Button
-        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10"
+        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90"
         type="button"
         title="Sing in"
         onClick={handleSubmit}
