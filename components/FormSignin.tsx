@@ -6,6 +6,7 @@ import router from "next/router";
 import Cookies from 'js-cookie'
 import { postData } from "@/utils/fetchData";
 import { toast } from 'react-toastify';
+import NavLink from "./NavLink";
 const FormSignin = () => {
   const [form, setForm] = useState({
     email: "",
@@ -52,20 +53,20 @@ const FormSignin = () => {
         onChange={handleChange}
         value={form.password}
       />
-      <a href="" className="block my-3 mx-4 hover:text-blue-10">
+      {/* <NavLink href="" className="block my-3 mx-4 hover:text-blue-10">
         Forgot passowod?
-      </a>
+      </Link> */}
       <Button
-        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10"
+        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90"
         type="button"
         title="Sing in"
         onClick={handleSubmit}
       />
       <div className="my-3 mx-4 text-xl">
         New here
-        <a className=" text-blue-10" href="/signup">
+        <NavLink className=" text-blue-10 mx-2" href="/signup">
           sing up
-        </a>
+        </NavLink>
       </div>
     </form>
   );

@@ -1,40 +1,40 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Input from "./TextInput";
 import Button from "./Button";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import router from "next/router";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import { postData } from "@/utils/fetchData";
 
 const FormSingnup = () => {
   const [form, setForm] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    role: '',
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    role: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSubmit = async () => {
-      const res = await postData('/app/v1/auth/signin', form);
-      
-      toast.success('berhasil signin', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      Cookies.set('token', res.data.token);
-      router.push('/');
+    const res = await postData("/app/v1/auth/signin", form);
+
+    toast.success("berhasil signin", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    Cookies.set("token", res.data.token);
+    router.push("/");
   };
-  
+
   return (
     <form>
       <Input
@@ -69,9 +69,8 @@ const FormSingnup = () => {
         onChange={handleChange}
         value={form.password}
       />
-
       <Button
-        className="btn_green border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10"
+        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10"
         type="button"
         title="Sing in"
         onClick={handleSubmit}
