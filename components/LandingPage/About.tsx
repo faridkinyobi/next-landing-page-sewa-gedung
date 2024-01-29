@@ -1,16 +1,15 @@
-"use client"
 import React from "react";
 import Button from "../Button";
 import { useRouter } from 'next/navigation'
-
+import Image from "next/image";
 
 const About = () => {
   const router = useRouter()
   return (
     <section id="about" className="About  justify-center  items-center mx-[3rem] xl:mx-[6rem]  my-[6rem] xl:my-[10rem]">
       <div className="flex flex-wrap">
-        <img
-          src="abaut.svg"
+        <Image
+          src="/img/abaut.svg"
           alt="Logo"
           width={340}
           height={400}
@@ -26,7 +25,7 @@ const About = () => {
             persewaan yang dapatmembantu warga untuk mensukses kan semuah acara.
           </p>
           <Button
-              className="btn_green lg:mt-20 mt-7 w-full py-4   shadow-md  border-2 border-gray-10   active:bottom-4 duration-100 transition-all ease-in  active:border-4 focus:border-gray-300 "
+              className="btn_green lg:mt-20 mt-7 w-full py-3   shadow-md  border-2 border-gray-10   active:bottom-4 duration-100 transition-all ease-in  active:border-4 focus:border-gray-300 hover:border-blue-20 delay-75 hover:bg-green-10/90"
               type="button"
               title="Baca"
               onClick={() => router.push('/about')}

@@ -13,19 +13,22 @@ interface PaketType {
   data: {
     titel: string;
     _id: number;
-    fasilitas: { detai: string }[];
+    fasilitas: { detail: string }[];
     harga: {
       kegiata: string;
       hari: string;
       warga: string;
       hargadetail: number;
     }[];
-  };
+  }[];
   event: {
     id: number;
     kegiatan: string;
     tgl_mulai: Date;
     tgl_akhir: Date;
+    lama_sewa: number;
+    status_kegiatan: string;
+    waktu: number;
   }[];
 
 }
