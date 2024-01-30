@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Input from "./TextInput";
 import Button from "./Button";
-
 import router from "next/router";
 import Cookies from 'js-cookie'
 import { postData } from "@/utils/fetchData";
