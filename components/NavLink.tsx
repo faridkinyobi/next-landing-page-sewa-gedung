@@ -1,8 +1,7 @@
-"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react';
 
 type NavLinkProps = {
   href: string;
@@ -16,7 +15,7 @@ const NavLink = ({ href, children,className}: NavLinkProps) => {
  
 
   return (
-    <Link href={href} className={` ${pathname === href ? 'active' : '' } ${className}`} >
+    <Link href={href} className={` ${pathname === href? 'active' : ''} ${className}`} >
       {children}
     </Link>
   );
