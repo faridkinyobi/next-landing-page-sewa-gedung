@@ -4,6 +4,7 @@ import Alur from '../components/LandingPage/Alur'
 import Paket from '../components/LandingPage/Paket'
 import About from '../components/LandingPage/About'
 import EventCalendar from '../components/LandingPage/Calender'
+import Galery from '../components/LandingPage/Galery'
 import { getData } from '../utils/fetchData';
 import React, { useState } from "react";
 import axios from "axios";
@@ -42,8 +43,7 @@ export default function Home({ data, event }: PaketType) {
       <Paket data={data}  />
       <About />
       <EventCalendar event={event} />
-      {/* <Testimoni/> */}
-      {/* <Galery/> */}
+      <Galery/>
     </main>
   );
 }
