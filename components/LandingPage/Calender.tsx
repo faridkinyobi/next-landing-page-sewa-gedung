@@ -38,23 +38,30 @@ const EventCalendar = ({ event }: PaketType) => {
     }
     return null;
   };
+
   const getEventsForDate = (date: Date) => {
-    // Atur komponen waktu dari tanggal saat ini ke tengah malam
+    // Atur komponen waktu dari tanggal saat ini ke 0
     const normalizedDate = new Date(date);
     normalizedDate.setHours(0, 0, 0, 0);
-
+    
+    //filter event untuk membatasi 
     return event.filter((e) => {
-      //  Atur kondisi komponen waktu tanggal mulai dan akhir acara menjadi tengah malam
       const eventStartDate = new Date(e.tgl_mulai);
       eventStartDate.setHours(0, 0, 0, 0);
 
-      const eventEndDate = new Date(e.tgl_akhir);
-      eventEndDate.setHours(0, 0, 0, 0);
+      const eventEndDate = e.tgl_akhir ? new Date(e.tgl_akhir) : null;
 
-      return (
-        normalizedDate.getTime() >= eventStartDate.getTime() &&
-        normalizedDate.getTime() <= eventEndDate.getTime()
-      );
+      if (eventEndDate !== null) {
+        eventEndDate.setHours(0, 0, 0, 0);
+      }
+      if (eventEndDate === null) {
+        return normalizedDate.getTime() === eventStartDate.getTime();
+      } else {
+        return (
+          normalizedDate.getTime() >= eventStartDate.getTime() &&
+          normalizedDate.getTime() <= eventEndDate.getTime()
+        );
+      }
     });
   };
 
