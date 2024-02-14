@@ -5,11 +5,12 @@ import Modal from 'react-modal';
 type ModalProps = {
   isOpen: boolean;
   children: React.ReactNode;
+  className:string
 };
-const CustomModal = ({ isOpen,children }:ModalProps ) => {
+const CustomModal = ({ isOpen,children,className }:ModalProps ) => {
   return (
     <Modal
-    className="md:py-[6rem] py-10 my-[15rem] md:my-[10rem] md:mx-[15rem] bg-slate-500"
+    className={className}
       isOpen={isOpen}
       >
       {children}
