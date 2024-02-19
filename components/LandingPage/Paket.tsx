@@ -9,16 +9,15 @@ import Link from "next/link";
 interface PaketType {
   data: {
     titel: string;
-    _id:number;
-    fasilitas: { detai: string}[];
+    _id: number;
+    fasilitas: { detail: string }[];
     harga: {
       kegiata: string;
       hari: string;
       warga: string;
       hargadetail: number;
     }[];
-  };
- 
+  }[];
 }
 const Paket = ({ data}: PaketType) => {
   const [selectedharga, setSelectedharga] = useState<number | null>(null);
@@ -38,7 +37,7 @@ const Paket = ({ data}: PaketType) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -48,7 +47,7 @@ const Paket = ({ data}: PaketType) => {
         breakpoint: 900,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           initialSlide: 1,
           infinite: true,
           dots: true,
@@ -72,7 +71,7 @@ const Paket = ({ data}: PaketType) => {
         <h1 className=" font-bold text-3xl lg:ml-4 text-white-20 lg:text-left">
           Daftar
         </h1>
-        <p className="py-2 text-2xl lg:ml-4 text-gray-10 lg:text-left">
+        <p className="py-2 md:text-2xl text-xl  ml-4 text-gray-10 lg:text-left">
           Pilih paket Sewa Gedung
         </p>
         <div className="lg:w-[57rem] w-[17rem] md:w-[30rem] md:mx-auto">
@@ -97,22 +96,22 @@ const Paket = ({ data}: PaketType) => {
                     ))}
                   <div className="m-5">
                     <Link
-                      className="btn_green py-3 px-6 text-blue-30 hover:bg-green-10/90 rounded-full shadow-md border-2 border-gray-10   active:bottom-4 duration-100 transition-all ease-in  active:border-4 focus:border-gray-300"
+                      className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3"
                       href={`/sewa/${item._id}`}
                     >
                       Pilih Paket
                     </Link>
-                  </div>
-
-                  <div className="ml-4 my-2">
                     <h2
-                      className="cursor-pointer hover:bg-slate-400 text-xl font-bold  bg-slate-300 mr-4 rounded-xl py-3 lg:py-1 lg:mx-12 lg:mr-16 text-blue-40"
+                      className="font-semibold  bg-red-500 xl:py-2 py-2  lg:mx-10 mx-2 my-5 text-white-20 cursor-pointer rounded-full  shadow-red-500  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-red-600 hover:bg-red-500/70 "
                       onClick={() => hendelharga(index)}
                     >
                       Harga
                     </h2>
+                  </div>
+
+                  <div className="my-2">
                     <div
-                      className={`my-2 mx-4 grid grid-cols-2 gap-3 ${
+                      className={`my-2 mx-4 grid grid-cols-2 gap-3 ml-10 ${
                         selectedharga !== index ? "hidden origin-top transition-transform delay-1000" : "origin-bottom transition-transfor delay-1000"
                       }`}
                     >
