@@ -7,9 +7,8 @@ import EventCalendar from '../components/LandingPage/Calender'
 import Galery from '../components/LandingPage/Galery'
 import { getData } from '../utils/fetchData';
 import React, { useState } from "react";
-import axios from "axios";
-
-// Defining the types for the props
+import Footer from "@/components/Footer";
+// Defining the typesc for the props
 interface PaketType {
   data: {
     titel: string;
@@ -37,13 +36,14 @@ interface PaketType {
 export default function Home({ data, event }: PaketType) {
 
   return (
-    <main>
+    <main className=" max-w-max">
       <Header />
       <Alur />
       <Paket data={data}  />
       <About />
       <EventCalendar event={event} />
       <Galery/>
+      <Footer/>
     </main>
   );
 }
