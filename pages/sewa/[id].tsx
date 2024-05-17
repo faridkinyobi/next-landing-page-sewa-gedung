@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { GetServerSidePropsContext } from "next";
 import NavbarLending from "../../components/NavbarLending";
 import FormOrder from "../../components/FormOrder";
 import DetailPaket from "@/components/DetailPaket";
 import { getData } from "@/utils/fetchData";
+
 interface PaketType {
   detailPage: {
+    _id: string | null;
     titel: string;
-    fasilitas: { detail: string }[];
-    harga: {
+    fasilitas: Array<{ detail: string }>;
+    harga: Array<{
+      _id: string;
       kegiata: string;
       hari: string;
       warga: string;
-      hargadetail: number;
-    }[];
-  }[];
+      hargadetail: string;
+    }>;
+  };
+  selectedHarga: string;
 }
 
 const Petunjuk = [
@@ -39,39 +43,54 @@ const Petunjuk = [
 ];
 
 const Chekout = ({ detailPage }: PaketType) => {
-  const [clicked, setClicked] = useState(true);
-  const [selectedHarga, setSelectedHarga] = useState(null);
-  // console.log(selectedHarga)
-  const handleHargaSelection = (id) => {
-    setSelectedHarga(id);
+
+  const [selectedHarga, setSelectedHarga] = useState<string>("");
+  const [isCardChecked, setIsCardChecked] = useState<boolean | null>(false);
+  
+  const handleHargaSelection = (_id: string) => {
+    setSelectedHarga(_id);
   };
   return (
     <section className="bg-blue-30 lg:h-[50rem] h-[50rem] sm:h-[78rem]">
-      <NavbarLending clicked={clicked} setClicked={setClicked} />
+      <NavbarLending />
       <DetailPaket
         detailPage={detailPage}
         handleHargaSelection={handleHargaSelection}
+        isCardChecked={isCardChecked}
+        setIsCardChecked={setIsCardChecked}
       />
-      <div className="container_form mx-[7.8rem] padding-container bg-blue-20">
-        <div className="">
-          <h1>Petunjuk Pemesanan</h1>
-          <ol className=" list-decimal">
+      <div className="container_form mx-[2rem] padding-container bg-blue-20 ">
+        <div className=" bg-slate-300 px-6 shadow-xl">
+          <h1 className="titel text-xl font-bold">Petunjuk Pemesanan</h1>
+          <ol className="list-decimal text-sm md:text-xl">
             {Petunjuk.map((item, index) => (
               <li key={index}>{item.dec}</li>
             ))}
           </ol>
         </div>
       </div>
-        <div className="bg-white-10 mx-[7.8rem] padding-container ">
-          <h3>Formulir Pemesanan</h3>
-          <FormOrder selectedHarga={selectedHarga} detailPage={detailPage} />
-        </div>
+      <div className="bg-white-10 mx-[2rem] padding-container ">
+        <h3>Formulir Pemesanan</h3>
+        <FormOrder
+          selectedHarga={selectedHarga}
+          detailPage={detailPage}
+          isCardChecked={isCardChecked}
+          objekData={{
+            data: {  
+              hari: "",
+              kegiata: "",
+              warga: "",
+              hargadetail: "",
+            },
+          }}
+        />
+      </div>
     </section>
   );
 };
 
 export default Chekout;
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { token } = context.req.cookies;
 
   if (!token) {
@@ -82,9 +101,12 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const response = await getData(`/app/v1/cms/pakets/${context.params.id}`);
-  const Paket = response.data;
-  console.log(Paket);
+
+  const paramsId = context.params?.id as string;
+
+  const response = await getData(`/app/v1/PeketPelanggan/${paramsId}`,{},token);
+  const Paket = response?.data;
+
   return {
     props: {
       detailPage: Paket,

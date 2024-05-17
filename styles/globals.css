@@ -4,6 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -21,14 +24,12 @@ body {
   }
 
   .btn_green { 
-    @apply   bg-green-10  lg:w-40 md:w-40 text-gray-40 cursor-pointer
+    @apply rounded-full cursor-pointer  duration-300 transition-all ease-in-out outline outline-green-10/5 bg-green-10 hover:outline-green-10 hover:bg-green-10/75
   }
-  /* .btn_dark_green { 
-    @apply  bg-green-90 px-8 py-4 text-white transition-all hover:bg-black
+  .btn_slate { 
+    @apply   bg-slate-400 text-gray-40 hover:text-white-10 cursor-pointer  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-slate-500 hover:bg-slate-400/70
   }
-  .btn_dark_green_outline  { 
-    @apply border-gray-20 bg-green-90 px-8 py-5 text-white
-  } */
+
   .transition_duration{
     @apply  duration-700;
 
@@ -56,6 +57,9 @@ body {
 
   .flexEnd {
     @apply flex items-center justify-end;
+  }
+  .transitionAll75 {
+    @apply transition-all  ease-linear delay-100;
   }
 }
 

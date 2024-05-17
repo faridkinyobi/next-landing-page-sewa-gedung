@@ -16,6 +16,7 @@
     "paths": {
       "@/*": ["./*"]
     }
+    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/signin.tsx"],
   "exclude": ["node_modules"]

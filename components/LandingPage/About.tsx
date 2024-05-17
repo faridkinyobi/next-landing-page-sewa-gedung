@@ -1,31 +1,32 @@
 import React from "react";
 import Button from "../Button";
-import { useRouter } from 'next/navigation'
-import Image from "next/image";
+import { useRouter } from "next/router";
 
 const About = () => {
   const router = useRouter()
+
   return (
-    <section id="about" className="About  justify-center  items-center mx-[3rem] xl:mx-[6rem]  my-[6rem] xl:my-[10rem]">
+    <section id="about" className="About  justify-center  items-center mx-[3rem] md:mx-[6rem]  my-[6rem] my:my-[10rem]">
       <div className="flex flex-wrap">
-        <Image
+        <img
           src="/img/abaut.svg"
           alt="Logo"
           width={340}
-          height={400}
-          className="shadow-lg rounded-2xl"
+          height={340}
+          className="shadow-alg rounded-2xl"
+          loading="lazy"
         />
-        <div className="lg:mx-20 sm:mx-[1.5rem] mt-7 w-[34rem] md:w-[20rem] lg:w-[30rem]">
+        <div className="lg:mx-20 sm:mx-[1.5rem] mt-7 w-[40rem] md:w-[20rem] lg:w-[30rem]">
           <h1 className="font-bold text-3xl my-2 text-blue-40">About</h1>
-          <h2 className=" font-normal text-2xl my-3">
-            Gedung Pertemaan Dasa <br /> cangkol Kecamatan Mojolanan{" "}
+          <h2 className=" font-medium text-xl md:text-2xl my-3">
+            Gedung Pertemaan Dasa <br /> Cangkol Kecamatan Mojolaban{" "}
           </h2>
-          <p className="font-normal text-1xl  ">
-            Baca kisah bagaimana gedung desa cangkol berhasil dibangun dan di
+          <p className="font-normal md:text-xl text-lg  ">
+            Baca kisah bagaimana gedung desa Cangkol berhasil dibangun dan di
             persewaan yang dapatmembantu warga untuk mensukses kan semuah acara.
           </p>
           <Button
-              className="btn_green lg:mt-20 mt-7 w-full py-3   shadow-md  border-2 border-gray-10   active:bottom-4 duration-100 transition-all ease-in  active:border-4 focus:border-gray-300 hover:border-blue-20 delay-75 hover:bg-green-10/90"
+              className="btn_green mt-7 px-14 xl:py-3 py-3 text-xl "
               type="button"
               title="Baca"
               onClick={() => router.push('/about')}

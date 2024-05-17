@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Input from "./TextInput";
 import Button from "./Button";
-import axios from "axios";
 import { toast } from "react-toastify";
 import router from "next/router";
 import Cookies from "js-cookie";
@@ -20,9 +19,9 @@ const FormSingnup = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSubmit = async () => {
-    const res = await postData("/app/v1/auth/signin", form);
-
-    toast.success("berhasil signin", {
+    const res = await postData("/app/v1/auth/signup", form);
+    // console.log(res);
+    toast.success("berhasil signup", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -31,14 +30,14 @@ const FormSingnup = () => {
       draggable: true,
       progress: undefined,
     });
-    Cookies.set("token", res.data.token);
-    router.push("/");
+    // Cookies.set("token", res.data.token);
+    router.push("/signin");
   };
 
   return (
     <form>
       <Input
-        name="First Name"
+        name="firstName"
         type="text"
         placeholder="First Name"
         label="First Name"
@@ -46,7 +45,7 @@ const FormSingnup = () => {
         value={form.firstName}
       />
       <Input
-        name="Last Name"
+        name="lastName"
         type="text"
         placeholder="Last Name"
         label="Last Name"
@@ -72,7 +71,7 @@ const FormSingnup = () => {
       <Button
         className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90"
         type="button"
-        title="Sing in"
+        title="Sing up"
         onClick={handleSubmit}
       />
     </form>

@@ -12,10 +12,8 @@ type NavLinkProps = {
 const NavLink = ({ href, children,className}: NavLinkProps) => {
   const pathname = usePathname()
 
- 
-
   return (
-    <Link href={href} className={` ${pathname === href? 'active' : ''} ${className}`} >
+    <Link href={href} className={` transition-all ease-in-out duration-700 ${pathname === href? 'active' : ''} ${className}`} >
       {children}
     </Link>
   );

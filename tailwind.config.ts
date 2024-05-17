@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
-
+    './pages/dash/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -33,9 +33,10 @@ const config: Config = {
         },
       },
       boxShadow:{
-        xl: '0 20px 25px -5px #131226, 0 10px 10px -5px #292e44',
+        pxl: '0 20px 25px -5px #131226, 0 10px 10px -5px #292e44',
         ml: '2px 3px 0 1px #ffff',
-        lg: '20px 20px 0 3px #131226',
+        alg: '20px 20px 0 3px #131226',
+        at: '1px 5px 5px 0px #131226',
        
       },
     },

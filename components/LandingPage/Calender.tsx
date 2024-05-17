@@ -27,9 +27,9 @@ const EventCalendar = ({ event }: PaketType) => {
         return event.map((item, index) => (
           <div
             key={index}
-            className="bg-red-500 mx-1  w-[3rem] md:w-[6rem] h-10 rounded-md p-1 hover:bg-red-900/100 delay-100  border border-red-900"
+            className="bg-red-500 mx-1   rounded-md p-1 hover:bg-red-900/100 delay-100  border border-red-900 overflow-hidden whitespace-nowrap text-ellipsis"
           >
-            <p className="text text-[0.7rem] md:text-base text-blue-30 hover:text-slate-300/85 ">
+            <p className="text text-[0.7rem] md:text-base text-white-10 hover:text-slate-300/85 md:text-ellipsis ">
               {item.kegiatan}
             </p>
           </div>
@@ -73,11 +73,9 @@ const EventCalendar = ({ event }: PaketType) => {
     }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+
   return (
-    <section className="justify-center items-center mx-10 lg:mx-[6rem] my-5 lg:my-20  ">
+    <section id="Timetable" className="justify-center items-center mx-10 lg:mx-[6rem] my-5 lg:my-20  ">
       <h1 className=" font-bold text-3xl ml-4 text-blue-40 ">
         Jadwal
       </h1>
@@ -117,7 +115,7 @@ const EventCalendar = ({ event }: PaketType) => {
         calendarType="gregory"
         minDetail="year"
         showNavigation={false}
-        className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/55 text-center lg:px-20 lg:py-10 px-2"
+        className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
       />
       <div className="py-5 px-5">
         <h5 className="text-sm md:text-xl text-amber-400 flex items-center">
@@ -126,51 +124,51 @@ const EventCalendar = ({ event }: PaketType) => {
         </h5>
       </div>
       {/* Checkbox and Modal */}
-      <CustomModal isOpen={showModal}>
+      <CustomModal isOpen={showModal} className="md:py-[6rem] py-10 my-[15rem] md:my-[10rem] md:mx-[13rem] bg-slate-500">
         {showModal && selectedDate && (
-          <div className="modal-overlay flex justify-center bg-slate-500 mx-4">
+          <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 mx-4">
             <div className="modal-content">
-              <table className="table w-[10rem]">
+              <table className="table md:text-lg text-xs">
                 <thead className="">
-                  <tr className="m-1 text-center text-xs">
-                    <th className="border border-blue-20 px-[0.1rem] md:px-5">
+                  <tr className="m-1 text-center  text-white-10/90">
+                    <th className="border border-white-20/70 px-[0.1rem] md:px-5 py-3 ">
                       {" "}
                       kegiatan
                     </th>
-                    <th className="border border-blue-20 px-[0.1rem] md:px-5">
+                    <th className="border border-white-20/70 px-[0.1rem] md:px-5">
                       lama sewa
                     </th>
-                    <th className="border border-blue-20 px-[0.1rem] md:px-6">
+                    <th className="border border-white-20/70 px-[0.1rem] md:px-6">
                       tanggal mulai
                     </th>
-                    <th className="border border-blue-20 px-[0.2rem] md:px-6">
+                    <th className="border border-white-20/70 px-[0.2rem] md:px-6">
                       tanggal akhir
                     </th>
-                    <th className="border border-blue-20 px-[0.1rem] md:px-5">
+                    <th className="border border-white-20/70 px-[0.1rem] md:px-5">
                       waktu sewa
                     </th>
-                    <th className="border border-blue-20 px-[0.1rem] md:px-5">
+                    <th className="border border-white-20/70 px-[0.1rem] md:px-5">
                       kegiatan
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {getEventsForDate(selectedDate).map((item, index) => (
-                    <tr className="static text-center" key={index}>
-                      <td className="border border-blue-20 ">
+                    <tr className="static text-center text-white-10/85" key={index}>
+                      <td className="border border-white-20/70 px-2 ">
                         {item.kegiatan}
                       </td>
-                      <td className="border border-blue-20 ">
-                        {item.lama_sewa}
+                      <td className="border border-white-20/70 px-2 ">
+                        {item.lama_sewa} hari
                       </td>
-                      <td className="border border-blue-20 ">
+                      <td className="border border-white-20/70 px-2">
                         {format(new Date(item.tgl_mulai), "MM/dd/yyyy")}
                       </td>
-                      <td className="border border-blue-20">
+                      <td className="border border-white-20/70 px-2">
                         {format(new Date(item.tgl_akhir), "MM/dd/yyyy")}
                       </td>
-                      <td className="border border-blue-20 ">{item.waktu}</td>
-                      <td className="border border-blue-20 ">
+                      <td className="border border-white-20/70 px-2">{item.waktu}</td>
+                      <td className="border border-white-20/70 px-2">
                         {item.status_kegiatan}
                       </td>
                     </tr>
@@ -179,7 +177,7 @@ const EventCalendar = ({ event }: PaketType) => {
               </table>
               <button
                 className="close absolute right-6 top-[15rem] md:top-[10rem] md:right-[16rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
-                onClick={handleCloseModal}
+                onClick={()=>setShowModal(false)}
               >
                 <BsX />
               </button>

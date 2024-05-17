@@ -1,31 +1,37 @@
 import React from "react";
 import NavLink from "./NavLink";
+import Image from "next/image";
+import { BsFillCaretLeftFill,BsFillCaretDownFill } from "react-icons/bs"
 
 type NavdownProp = {
   hendelDropdown: () => void;
   isOpen: boolean;
   handleLogout:()=> void;
+
 };
-export default function Navdown({ hendelDropdown, isOpen,handleLogout }: NavdownProp) {
+export default function Navdown({ hendelDropdown, isOpen,handleLogout}: NavdownProp) {
   return (
     <div className="navbar-nav  mx-5">
       <div className="nav-item dropdown flex flex-row items-center gap-3">
-        <a className="text-xl text-orange-400 hidden md:block">
-          Hello,<span className=" text-white-10"> Shayna M</span>
+        <a className="text-xl text-orange-400 hidden md:block w-40 overflow-hidden whitespace-nowrap text-ellipsis">
+          Hello,<span className=" text-white-10 text-ellipsis "> Shayn M</span>
         </a>
 
-        <a className="nav-link " onClick={hendelDropdown}>
-          <img
-            className=" absolute top-5 left-8 md:static"
-            src="/avatar.png"
+        <a className="nav-link flex items-center"   onMouseEnter={hendelDropdown}>
+          <Image
+            className=" absolute top-5 left-8 md:static border-2 hover:border-blue-40 rounded-full cursor-pointer active:border-white-10"
+            src="/img/avatar.png"
             alt="semina"
-            width="45"
-          />
+            width={45}
+            height={45}
+          />{
+            isOpen? <BsFillCaretDownFill  className="text-white-10 font-bold text-3xl ml-8 md:ml-2 mt-2 " />:<BsFillCaretLeftFill  className="text-white-10 font-bold text-3xl ml-8 md:ml-2 mt-2 " />
+          }
         </a>
         {isOpen && (
-          <ul className="dropdown-menu  transition-transform delay-700 origin-top-right absolute lg:left-[65rem] md:left-10 left-0 md:mt-[15rem] mt-[22rem] text-xl w-36   bg-white-10 rounded-md px-3 py-2">
+          <ul className="dropdown-menu  transition-transform delay-700  absolute lg:left-[65rem] md:left-10 left-8 md:mt-[15rem] mt-[22rem] text-xl w-36   bg-white-10 rounded-md px-3 py-2">
             <li className="my-1 py-1 pl-2 hover:bg-gray-10 hover:rounded-lg ">
-              <NavLink href={"/dashboard"} className="my-1">
+              <NavLink href={"/dash/dashboard"} className="my-1">
                 Dashboard
               </NavLink>
             </li>

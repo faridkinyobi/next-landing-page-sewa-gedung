@@ -5,37 +5,16 @@ import { useRouter } from "next/router";
 import NavLink from "./NavLink";
 import Cookies from "js-cookie";
 import Navdown from "./Navdown";
+import NavData from './itemsData';
 
-const navitem = [
-  {
-    titel: "Home",
-    url: "/",
-  },
-  {
-    titel: "Step",
-    url: "/#alur",
-  },
-  {
-    titel: "About",
-    url: "/#about",
-  },
-  {
-    titel: "Package",
-    url: "/#Package",
-  },
-  {
-    titel: "Timetable",
-    url: "/",
-  },
-];
 type useState = {
   clicked: boolean;
   setClicked: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const NavbarLending = ({ clicked, setClicked }: useState) => {
+const NavbarLending = () => {
   const [token, setToken] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
+  const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     if (!isOpen) {
       setClicked(!clicked);
@@ -43,7 +22,7 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
   };
 
   const hendelDropdown = () => {
-    if (clicked) {
+    if (!clicked) {
       setIsOpen(!isOpen);
     }
   };
@@ -63,15 +42,16 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
 
   return (
     <nav className="w-full md:py-2">
-      <div className="padding-container flexBetween mb-20 md:mb-0 ">
-        <img
-          className={`left-28  md:static ${token ? "absolute" : "static "}`}
+      <div className="padding-container flexBetween ">
+        <img  
+          className={` left-24 md:left-96 lg:static md:top-6 ${token ? "absolute" : "static "}`}
           src="/img/logo2.png"
           alt="logo"
           width={140}
           height={100}
+          loading="lazy"
         />
-        <div className="static md:hidden">
+        <div className="static lg:hidden">
           {router.pathname !== "/signin" && (
             <>
               {token ? (
@@ -92,19 +72,19 @@ const NavbarLending = ({ clicked, setClicked }: useState) => {
             router.pathname !== "/Singnin" ? "" : "mx-auto"
           }`}
         >
-          {navitem.map((item, index) => (
+          {NavData.NavbarItem.map((item, index) => (
             <li className=" list-none lg:my-auto md:mr-5 my-5" key={index}>
               <NavLink
-                className=" text-xl font-medium mx-5 text-gray-10 hover:text-white-20/90"
+                className=" text-xl font-medium mx-2 text-gray-10 hover:text-white-20/90"
                 href={item.url}
               >
                 {item.titel}
               </NavLink>
             </li>
           ))}
-          <div className="lg:static">
+          <div className="lg:static mx-5 md:mx-0">
             {router.pathname !== "/signin" && (
-              <div className={`md:block ${token ? "hidden" : ""}`}>
+              <div className={`lg:block ${token ? "hidden" : ""}`}>
                 {token ? (
                   <Navdown
                     hendelDropdown={hendelDropdown}

@@ -1,13 +1,36 @@
-import Image from "next/image";
-import Header from '../components/LandingPage/Header'
-import Alur from '../components/LandingPage/Alur'
-import Paket from '../components/LandingPage/Paket'
-import About from '../components/LandingPage/About'
-import EventCalendar from '../components/LandingPage/Calender'
-import Galery from '../components/LandingPage/Galery'
-import { getData } from '../utils/fetchData';
-import React, { useState } from "react";
-import Footer from "@/components/Footer";
+// import Image from "next/image";
+import dynamic from "next/dynamic";
+"use strict"
+import { getData } from "../utils/fetchData";
+import React from "react";
+const EventCalendar = dynamic(
+  () => import("../components/LandingPage/Calender"),
+  {
+    ssr: false,
+  }
+);
+const Alur = dynamic(() => import("../components/LandingPage/Alur"), {
+  ssr: false,
+});
+const About = dynamic(() => import("../components/LandingPage/About"), {
+  ssr: false,
+});
+const Fasil = dynamic(() => import("../components/LandingPage/Fasil"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
+  ssr: false, // Jika Anda tidak memerlukan SSR untuk komponen ini
+});
+const Header = dynamic(() => import("../components/LandingPage/Header"), {
+  ssr: false,
+});
+const Galery = dynamic(() => import("../components/LandingPage/Galery"), {
+  ssr: true,
+});
+const Paket = dynamic(() => import("../components/LandingPage/Paket"), {
+  ssr: true,
+});
+
 // Defining the typesc for the props
 interface PaketType {
   data: {
@@ -30,36 +53,67 @@ interface PaketType {
     status_kegiatan: string;
     waktu: number;
   }[];
-
 }
 
 export default function Home({ data, event }: PaketType) {
-
   return (
-    <main className=" max-w-max">
+    <main
+      style={{
+        backgroundImage: "url('/img/Group61.svg')",
+        backgroundSize: "cover",
+      }}
+    >
       <Header />
       <Alur />
-      <Paket data={data}  />
+      <Fasil />
+      <Paket data={data} />
       <About />
       <EventCalendar event={event} />
-      <Galery/>
-      <Footer/>
+      <Galery />
+      <Footer />
     </main>
   );
 }
 
+// export async function getServerSideProps() {
+//   // Fetching data using getData utility function
+//   const paketRespon = await getData("/app/v1/PeketPelanggan");
+//   const pakets = paketRespon?.data;
+
+//   const eventRespon = await getData("/app/v1/jadwalPelanggan");
+//   const event = eventRespon?.data;
+
+//   return {
+//     props: {
+//       data: pakets,
+//       event: event,
+//     },
+//   };
+// }
+
 export async function getServerSideProps() {
-  // Fetching data using getData utility function
-  const paketRespon = await getData("/app/v1/cms/pakets");
-  const pakets = paketRespon.data;
+  try {
+    // Fetching data using getData utility function
+    const [paketRespon, eventRespon] = await Promise.all([
+      getData("/app/v1/PeketPelanggan"),
+      getData("/app/v1/jadwalPelanggan")
+    ]);
+    const data = paketRespon?.data;
+    const event = eventRespon?.data;
 
-  const eventRespon = await getData("/app/v1/cms/jadwal");
-  const event = eventRespon.data;
-
-  return {
-    props: {
-      data: pakets,
-      event: event,
-    },
-  };
+    return {
+      props: {
+        data,
+        event,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: {
+        data: null,
+        event: null,
+      },
+    };
+  }
 }

@@ -29,8 +29,8 @@ const FormSignin = () => {
           draggable: true,
           progress: undefined,
         });
-
-        Cookies.set('token', res.data.token);
+        // console.log(res.data)
+        Cookies.set('token', res.data);
         router.push('/');
   };
 
