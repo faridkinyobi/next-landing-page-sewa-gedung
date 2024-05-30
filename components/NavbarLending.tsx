@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import NavLink from "./NavLink";
 import Cookies from "js-cookie";
 import Navdown from "./Navdown";
-import NavData from './itemsData';
+import NavData from "./itemsData";
 
 type useState = {
   clicked: boolean;
@@ -35,6 +35,8 @@ const NavbarLending = () => {
     setClicked(false);
     setIsOpen(false);
     Cookies.remove("token");
+    Cookies.remove("firstName");
+    Cookies.remove("lastName");
     setToken(Cookies.get("token") || "");
     router.replace("/");
   };
@@ -43,8 +45,10 @@ const NavbarLending = () => {
   return (
     <nav className="w-full md:py-2">
       <div className="padding-container flexBetween ">
-        <img  
-          className={` left-24 md:left-96 lg:static md:top-6 ${token ? "absolute" : "static "}`}
+        <img
+          className={` left-28 md:left-96 lg:static md:top-6 ${
+            token ? "absolute" : "static "
+          }`}
           src="/img/logo2.png"
           alt="logo"
           width={140}
@@ -67,13 +71,13 @@ const NavbarLending = () => {
           )}
         </div>
         <div
-          className={`lg:gap-2  lg:flex ms:flex px-3 absolute lg:static w-full  left-0 top-14 md:w-auto translate-all ease-in-out duration-700
-             ${clicked ? " " : "left-[-100rem]"} ${
+          className={` bg-slate-600 pb-8 md:pb-0 md:bg-transparent lg:gap-2  lg:flex ms:flex px-3 absolute lg:static w-full  left-0 top-14 md:w-auto translate-all ease-in-out duration-700
+             ${clicked ? " top-20 " : "left-[-100rem]"} ${
             router.pathname !== "/Singnin" ? "" : "mx-auto"
           }`}
         >
           {NavData.NavbarItem.map((item, index) => (
-            <li className=" list-none lg:my-auto md:mr-5 my-5" key={index}>
+            <li className="  list-none lg:my-auto md:mr-5 my-5" key={index}>
               <NavLink
                 className=" text-xl font-medium mx-2 text-gray-10 hover:text-white-20/90"
                 href={item.url}
