@@ -13,7 +13,7 @@ const NavLink = ({ href, children,className}: NavLinkProps) => {
   const pathname = usePathname()
 
   return (
-    <Link href={href} className={` transition-all ease-in-out duration-700 ${pathname === href? 'active' : ''} ${className}`} >
+    <Link href={href} className={` transition-all ease-in-out duration-700 ${pathname === href? ' border-b pb-2 ' : ''} ${className}`} >
       {children}
     </Link>
   );
