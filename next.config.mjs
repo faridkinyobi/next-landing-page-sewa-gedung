@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   // Konfigurasi lainnya di sini
+  basePath: "/2048-in-react",
+  output: "export",
   reactStrictMode: true,
-  // distDir:"build",
   images: {
     remotePatterns: [
       {
