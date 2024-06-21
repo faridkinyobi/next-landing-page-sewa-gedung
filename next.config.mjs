@@ -2,7 +2,7 @@
 module.exports = {
   // Konfigurasi lainnya di sini
   reactStrictMode: true,
-  distDir:"build",
+  // distDir:"build",
   images: {
     remotePatterns: [
       {
