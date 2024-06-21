@@ -5,11 +5,12 @@ type TextInputProps = {
   type: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
-  value: string | null,
+  value?: string | null,
   label: string;
   checked?: boolean
   className?:string
   min?: number | string | undefined
+  maxLength?: number | undefined
 };
 
 const TextInput = ({
@@ -21,14 +22,15 @@ const TextInput = ({
   label,
   checked,
   className,
-  min
+  min,
+  maxLength
 }: TextInputProps) => {
   return (
     
     <div className="flex flex-col  col-span-1 my-1">
       <label className="text-blue-30">{label}</label>
       <input
-      className={`rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 lg:w-96 my-2 md:mx-1 ${className ? className : undefined} `}
+      className={`rounded-lg focus:border-blue-20  focus:outline-slate-500  border border-neutral-300  px-4 py-3 lg:w-96 my-2 md:mx-1 ${className ? className : undefined} `}
         type={type}
         placeholder={placeholder}
         name={name}
@@ -37,6 +39,7 @@ const TextInput = ({
         checked={checked ? checked : undefined}
         required 
         min={min? min:undefined}
+        maxLength = {maxLength? maxLength:undefined} 
       />
     </div>
   );

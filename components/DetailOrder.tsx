@@ -3,7 +3,7 @@ import { BsBuildingFillCheck, BsBagPlus } from "react-icons/bs";
 
 type FormState = {
   Name: string;
-  no_tlp: string;
+  no_tlp: null;
   email: string;
   alamat: string;
   tgl_mulai: string;
@@ -23,9 +23,9 @@ type DetailOrder = {
   objekDataModal: {
     dataModal: {
       hari: string;
-      kegiata: string;
+      kegiatan: string;
       warga: string;
-      hargadetail: string;
+      hargadetail: string | number;
     };
   };
 };
@@ -37,16 +37,20 @@ function DetailOrder({
   handleSubmit,
   objekDataModal,
 }: DetailOrder) {
-
-  var Akhir = form.tgl_akhir ? new Date(form.tgl_akhir) : "0000-00-00";
-  var Mulai = new Date(form.tgl_mulai);
-
-  const tanggal = Akhir
-    ? new Date(Akhir).getTime() - new Date(Mulai).getTime()
+  let Akhir = form.tgl_akhir ? new Date(form.tgl_akhir) : null;
+  let Mulai = new Date(form.tgl_mulai);
+  const result = Akhir
+    ? Math.ceil(new Date(Akhir).getTime() - new Date(Mulai).getTime()) /
+        (1000 * 60 * 60 * 24) +
+      1
     : 0;
-  const hasil = Math.ceil(tanggal / (1000 * 60 * 60 * 24)+1 );
-  // console.log(hasil)
-  const lama_sewa = hasil || 1;
+
+  const lama_sewa = result || 1;
+  const duration = Akhir ? result : /pernikahan/i.test(form.kegiatan) ? 1 : 12;
+  // Pastikan hargadetail adalah string sebelum mencoba untuk menggantinya
+  const hargaDetailString = String(objekDataModal.dataModal?.hargadetail);
+  const hargaDetailNumber = Number(hargaDetailString.replace(/[^\d.-]/g, ""));
+  const totalHarga = hargaDetailNumber * lama_sewa;
 
   return (
     <div className="container max-h-screen">
@@ -60,10 +64,16 @@ function DetailOrder({
           <div className="my-auto">
             <h1>{detailPage.titel}</h1>
             <h3>
-              {objekDataModal.dataModal.hari},{objekDataModal.dataModal.kegiata}
-              ,{objekDataModal.dataModal.warga}
+              {objekDataModal.dataModal?.hari},
+              {objekDataModal.dataModal?.kegiatan},
+              {objekDataModal.dataModal?.warga}
             </h3>
-            <h3>Rp.{objekDataModal.dataModal.hargadetail}</h3>
+            <h3>
+              {hargaDetailNumber.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </h3>
           </div>
         </div>
         <h1 className="desc text-xl ml-2 font-medium">Order Details :</h1>
@@ -85,13 +95,25 @@ function DetailOrder({
             <td className="pl-10">{form.alamat}</td>
           </tr>
           <tr>
-            <th>Tanggal Mulai</th>
-            <td className="pl-10">{form.tgl_mulai}</td>
+            <th>Tanggal Mulai Kegiatan</th>
+            <td className="pl-10">
+              {new Date(form.tgl_mulai).toLocaleString("id-ID", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </td>
           </tr>
-          {selectedOption === "1" && (
+          {selectedOption === "1" && form.tgl_akhir &&(
             <tr>
               <th>Tanggal Akhir</th>
-              <td className="pl-10">{form.tgl_akhir}</td>
+              <td className="pl-10">
+                {new Date(form.tgl_akhir).toLocaleString("id-ID", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </td>
             </tr>
           )}
           <tr>
@@ -115,9 +137,24 @@ function DetailOrder({
             <h1>Total </h1>
           </div>
           <div className=" mr-16">
-            <h1>{objekDataModal.dataModal.hargadetail}</h1>
-            <h1>{lama_sewa} hari</h1>
-            <h1>{Number(objekDataModal.dataModal.hargadetail) * 1}</h1>
+            <h1>
+              {hargaDetailNumber.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </h1>
+            <h1>
+              {duration}
+              {form.tgl_akhir || /pernikahan/i.test(form.kegiatan)
+                ? "hari"
+                : "jam"}
+            </h1>
+            <h1>
+              {totalHarga.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </h1>
           </div>
         </div>
       </div>

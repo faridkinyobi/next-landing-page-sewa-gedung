@@ -3,6 +3,7 @@ import NavLink from "./NavLink";
 import Image from "next/image";
 import { BsFillCaretLeftFill, BsFillCaretDownFill } from "react-icons/bs";
 import Cookies from "js-cookie";
+import Link from "next/link";
 type NavdownProp = {
   hendelDropdown: () => void;
   isOpen: boolean;
@@ -24,7 +25,6 @@ export default function Navdown({
         <a className="text-xl text-orange-400 hidden md:block w-40 overflow-hidden whitespace-nowrap text-ellipsis">
           Hello,
           <span className=" text-white-10 text-ellipsis ">
-            {" "}
             {firstName} {lastName}
           </span>
         </a>
@@ -55,14 +55,9 @@ export default function Navdown({
               </NavLink>
             </li>
             <li className="my-1 py-1 pl-2 hover:bg-gray-10 hover:rounded-lg">
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" href="/settings">
                 Settings
-              </a>
-            </li>
-            <li className="my-1 py-1 pl-2 hover:bg-gray-10 hover:rounded-lg ">
-              <a className="dropdown-item" href="#">
-                Rewards
-              </a>
+              </Link>
             </li>
             <li
               className="my-1 py-2 text-center text-gray-10 bg-blue-20 rounded-2xl hover:bg-blue-30"

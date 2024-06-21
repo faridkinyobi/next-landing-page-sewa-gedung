@@ -7,7 +7,7 @@ export default function PageNotFound() {
     setTimeout(() => {
       router.back();
     }, 2000);
-  }, []);
+  }, [router]);
 
   return <div>PageNotFound</div>;
 }

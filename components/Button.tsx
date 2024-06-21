@@ -1,20 +1,20 @@
-
-import React from 'react'
-type ButtonProp= {
-    type :'button'|'submit';
-    title : string;
-    className: string;
-    onClick?: () => void;
-}
-const Button = ({type,title,className,onClick}:ButtonProp) => {
+import React from "react";
+type ButtonProp = {
+  type: "button" | "submit";
+  title: string;
+  className: string;
+  onClick?: () => void;
+};
+const Button = ({ type, title, className, onClick }: ButtonProp) => {
   return (
-    <button className={`rounded-full font-semibold text-base ${className}`}
-    type={type}
-    onClick={onClick}
+    <button
+      className={`rounded-full font-semibold text-base ${className}`}
+      type={type}
+      onClick={onClick}
     >
-        {title}
+      {title}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

@@ -38,10 +38,12 @@ const Header = () => {
   const router = useRouter();
   return (
     <header
-      className="w-screen h-[50rem] md:h-[59.125rem] bg-cover bg-center items-center text-center  "
+      className=" h-[50rem] md:h-[58.125rem] bg-cover bg-center bg-no-repeat items-center text-center  "
       style={{
         backgroundImage: "url('/img/backgroud3.svg')",
         backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     >
       <NavbarLending />

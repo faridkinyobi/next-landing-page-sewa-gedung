@@ -6,6 +6,7 @@ interface HistoryPaket {
   hari: string;
   kegiatan: string;
   warga: string;
+  waktu: string;
   lama_sewa: number;
   tgl_mulai: Date;
   tgl_akhir: Date;
@@ -29,74 +30,80 @@ interface DashType {
 
 export const PrintComponent = ({ data }: DashType) => {
   return (
-    <main className=" max-h-screen w-full bg-blue-30 print:h-auto print:bg-white-10 print:text-black-10">
+    <div className=" bg-blue-30 print:h-auto print:bg-white-10 print:text-black-10 print:mx-5 print:mt-20">
       <h1 className="text-blue-30 p-4 bg-orange-400 mb-5 flex items-center text-xl font-bold">
         <BsBagPlus className="mr-2 text-xl w-11 h-11 p-2 rounded-xl bg-blue-30 text-white-10 " />
         Sewa Gedung Desa Cangkol
       </h1>
-      <div className="ml-6">
-        <h1 className="desc text-xl  font-bold text-gray-100 ">
+      <div className=" mx-5">
+        <h1 className="desc text-xl  font-bold text-gray-100 print:text-black-10">
           Order Details :
         </h1>
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className=" text-white-10 text-left print:text-black-10 ml-10"
-          >
-            <table>
-              <tbody>
-                <tr>
-                  <th className="pr-20">Nama Paket</th>
-                  <td>{item.historyPaket.title}</td>
-                </tr>
-                <tr>
-                  <th>Lama sewa</th>
-                  <td>{item.historyPaket.hari}</td>
-                </tr>
-                <tr>
-                  <th> jadinis Kegiatan</th>
-                  <td>{item.historyPaket.kegiatan}</td>
-                </tr>
-                <tr>
-                  <th>Warga</th>
-                  <td>{item.historyPaket.warga}</td>
-                </tr>
-                <tr>
-                  <th>Lama sewa</th>
-                  <td>
-                    {item.historyPaket.lama_sewa}
-                    <p>hari</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>tanggal Mulai</th>
-                  <td>
-                    {format(
-                      new Date(item.historyPaket.tgl_mulai),
-                      "MM/dd/yyyy"
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <th>tanggal Akhir</th>
-                  <td>
-                    {item.historyPaket.tgl_akhir
-                      ? format(
-                          new Date(item.historyPaket.tgl_akhir),
-                          "MM/dd/yyyy"
-                        )
-                      : "-"}
-                  </td>
-                </tr>
-                <tr>
-                  <th>Tanggal Akhir</th>
-                  <td>{item.historyPaket.hargadetail}</td>
-                </tr>
-              </tbody>
-            </table>
+        <div className="text-blue-30 text-left print:text-black-10 grid grid-flow-col my-3">
+          <div className="text-ellipsis font-bold static text-inherit bg-slate-400 px-2 py-2 w-40 h-auto ">
+            <h1>Nama Paket</h1>
+            <h1>Harga</h1>
+            <h1>Warga</h1>
+            <h1>hari</h1>
+            <h1 className="my-1">Jenis Kegiatan</h1>
+            <h1>waktu</h1>
+            <h1>Lama Sewa</h1>
+            <h1>Tanggal Mulai</h1>
+            <h1>Tanggal Akhir</h1>
           </div>
-        ))}
-        <h1 className="rician text-xl ml-2 font-medium text-gray-100">Rincian Penbayaran</h1>
+          <div className="grid-flow-col grid overflow-auto p-2 text-white-10 print:text-black-10">
+            {data.map((item, index) => (
+              <div key={index} className="p-2 border-b">
+                <p>{item.historyPaket.title}</p>
+                <p>
+                  {item.historyPaket.hargadetail.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })}
+                </p>
+                <p>{item.historyPaket.warga}</p>
+                <p>{item.historyPaket.hari}</p>
+                <p>{item.historyPaket.kegiatan}</p>
+                <p>{item.historyPaket.waktu}</p>
+                <p className="flex flex-row">
+                  {item.historyPaket.lama_sewa}{" "}
+                  <span className="mx-2">
+                    {item.historyPaket.tgl_akhir ||
+                    /pernikahan/i.test(item.historyPaket.kegiatan)
+                      ? "hari"
+                      : "jam"}
+                  </span>
+                </p>
+                <p>
+                  {new Date(item.historyPaket.tgl_mulai).toLocaleString(
+                    "id-ID",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }
+                  )}
+                </p>
+                <p>
+                  {item.historyPaket.tgl_akhir
+                    ? new Date(item.historyPaket.tgl_akhir).toLocaleString(
+                        "id-ID",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )
+                    : "-"}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <h1 className="rician text-xl ml-2 font-medium text-gray-100 print:text-black-10">
+          Rincian Penbayaran
+        </h1>
         {/*tabel-order*/}
       </div>
       <div className="tabel-order overflow-x-auto mt-2 ">
@@ -110,7 +117,6 @@ export const PrintComponent = ({ data }: DashType) => {
               <th>Total Pembayaran</th>
               <th>Uang Muka</th>
               <th>Pelunasan</th>
-              <th>aktor</th>
             </tr>
           </thead>
           <tbody>
@@ -119,35 +125,49 @@ export const PrintComponent = ({ data }: DashType) => {
                 <td className="py-3">
                   {format(new Date(item.date), "MM/dd/yyyy")}
                 </td>
-                <td>{item.NumberOrder}</td>
+                <td className="px-3">{item.NumberOrder}</td>
                 <td>
                   <p
-                    className={` mx-2 py-1 rounded-xl text-gray-900 ${
+                    className={` mx-1 py-1 rounded-xl text-gray-900 border ${
                       item.status === "pendding"
-                        ? " bg-green-10"
-                        : "bg-yellow-700"
+                        ? " bg-lime-300 border-lime-600"
+                        : "bg-yellow-300 border-yellow-600"
                     } `}
                   >
                     {item.status}
                   </p>
                 </td>
                 <td>{item.MetPembayaran}</td>
-                <td>{item.total}</td>
-                <td>{item.total_dp}</td>
-                <td>{item.sisa_pembayaran}</td>
-                {/* <td>
-                    <p
-                      className=" cursor-pointer bg-yellow-300 mx-2 rounded-xl text-gray-900"
-                      onClick={handleDetail}
-                    >
-                      detail
-                    </p>
-                  </td> */}
+                <td>
+                  {item.total.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })}
+                </td>
+                <td>
+                  {item.total_dp.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })}
+                </td>
+                <td>
+                  {item.sisa_pembayaran.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <h1 className="hidden print:block ">hallo</h1>
       </div>
-    </main>
+    </div>
   );
 };

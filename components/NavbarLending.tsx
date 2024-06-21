@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import Button from "./Button";
 import { useRouter } from "next/router";
 import NavLink from "./NavLink";
 import Cookies from "js-cookie";
 import Navdown from "./Navdown";
 import NavData from "./itemsData";
+import Image from "next/image";
 
 type useState = {
   clicked: boolean;
@@ -44,8 +44,8 @@ const NavbarLending = () => {
 
   return (
     <nav className="w-full md:py-2">
-      <div className="padding-container flexBetween ">
-        <img
+      <div className="padding-container flexBetween max-w-auto h-auto">
+        <Image
           className={` left-28 md:left-96 lg:static md:top-6 ${
             token ? "absolute" : "static "
           }`}

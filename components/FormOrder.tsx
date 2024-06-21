@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Input from "./TextInput";
-import Button from "./Button";
 import { toast } from "react-toastify";
-import Modal from "../components/modal";
 import { postData } from "@/utils/fetchData";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { MdOutlineCurrencyExchange, MdHandshake } from "react-icons/md";
+import Input from "./TextInput";
+import TextAralInput from "./TextareaInput";
+import Button from "./Button";
+import Modal from "../components/modal";
+import Cookies from "js-cookie";
 import DetailOrder from "./DetailOrder";
 import PaymentMethodCard from "./PaymentMethodCard";
 type DetailPage = {
@@ -15,10 +17,10 @@ type DetailPage = {
     fasilitas: Array<{ detail: string }>;
     harga: Array<{
       _id: string;
-      kegiata: string;
+      kegiatan: string;
       hari: string;
       warga: string;
-      hargadetail: string;
+      hargadetail: string | number;
     }>;
   };
   selectedHarga: string;
@@ -38,7 +40,7 @@ type FormState = {
   hargaCetagoriId: string;
   MetPembayaran: string;
   Name: string;
-  no_tlp: string;
+  no_tlp: null;
   email: string;
   alamat: string;
   tgl_mulai: string;
@@ -50,9 +52,9 @@ type FormState = {
 type ObjekData = {
   dataModal: {
     hari: string;
-    kegiata: string;
+    kegiatan: string;
     warga: string;
-    hargadetail: string;
+    hargadetail: string | number;
   };
 };
 
@@ -68,7 +70,7 @@ export default function FormOrder({
   const [dataModal, setDataModal] = useState({
     hargadetail: "",
     hari: "",
-    kegiata: "",
+    kegiatan: "",
     warga: "",
   });
 
@@ -78,7 +80,7 @@ export default function FormOrder({
     hargaCetagoriId: selectedHarga,
     MetPembayaran: "",
     Name: "",
-    no_tlp: "",
+    no_tlp: null,
     email: "",
     alamat: "",
     tgl_mulai: "",
@@ -86,7 +88,6 @@ export default function FormOrder({
     waktu: "",
     kegiatan: "",
   });
-
   useEffect(() => {
     setForm((prevForm) => ({
       ...prevForm,
@@ -103,18 +104,28 @@ export default function FormOrder({
       paketId: form.paketId,
       hargaCetagoriId: selectedHarga,
     };
-    console.log(formgetHarga);
     if (
       !form.Name ||
       !form.no_tlp ||
       !form.email ||
       !form.alamat ||
       !form.tgl_mulai ||
-      !form.waktu ||
       !form.kegiatan ||
       !isCardChecked
     ) {
       toast.error("Silakan isi semua persyaratan", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+    if (!form.waktu) {
+      toast.error("Silakan Pilih wakatu ", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -133,7 +144,7 @@ export default function FormOrder({
         Cookies.get("token")
       );
 
-      setDataModal(response.data);
+      setDataModal(response?.data);
     }
   };
 
@@ -141,8 +152,23 @@ export default function FormOrder({
     setSelectedOption((prevOption) => (prevOption === "1" ? "" : "1"));
   };
 
-  const handleOChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleOChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    let timeRange = "";
+    if (value === "Pagi") {
+      timeRange = "(06:00 - 18:00) Pagi";
+    } else if (value === "Malam") {
+      timeRange = "(18:00 - 06:00) Malam";
+    }
+    setForm({
+      ...form,
+      [name]: value,
+      waktu: timeRange,
+    });
   };
 
   const handleSubmit = async () => {
@@ -168,7 +194,7 @@ export default function FormOrder({
       format,
       Cookies.get("token")
     );
-    if (res.data) {
+    if (res?.data) {
       toast.success("berhasil order", {
         position: "top-right",
         autoClose: 5000,
@@ -182,6 +208,13 @@ export default function FormOrder({
     }
   };
 
+  // const MinCreatDateMUlai = () => {
+  //   const today = new Date();
+  //   const year = today.getFullYear();
+  //   const month = String(today.getMonth() + 1).padStart(2, "0");
+  //   const day = String(today.getDate()).padStart(2, "0");
+  //   return `${year}-${month}-${day}`;
+  // };
   const MinCreatDateMUlai = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -207,47 +240,54 @@ export default function FormOrder({
       <Input
         name="Name"
         type="text"
-        placeholder="Enter your name"
+        placeholder="Name"
         label="Name"
         onChange={handleOChange}
         value={form.Name}
       />
       <Input
         name="no_tlp"
-        type="number"
-        placeholder="Enter your phone number"
+        type="tel"
+        placeholder="08XXXXXXXXXX"
         label="No Telfon"
         onChange={handleOChange}
         value={form.no_tlp}
+        maxLength={12}
       />
       <Input
         name="email"
         type="email"
-        placeholder="Enter your email"
+        placeholder=" Alamat Email"
         label="Email"
         onChange={handleOChange}
         value={form.email}
       />
-      <Input
+      <TextAralInput
         name="alamat"
-        type="text"
-        placeholder="Enter your address"
+        placeholder="Alamat"
         label="Alamat"
         onChange={handleOChange}
         value={form.alamat}
       />
-      <Input
-        name="waktu"
-        type="text"
-        placeholder="Pagi/Sore/Malam"
-        label="Waktu"
-        onChange={handleOChange}
-        value={form.waktu}
-      />
+      <div className="my-1">
+        <label className="text-blue-30">Pilih Waktu</label>
+        <select
+          name="waktu"
+          className="block appearance-auto rounded-lg focus:border-blue-20  focus:outline-slate-500  border border-neutral-300  px-4 py-3 lg:w-96 my-2 md:mx-1"
+          onChange={handleOChange}
+          value={form.waktu}
+        >
+          <option value="">
+            {form.waktu === "" ? " --Pilih Waktu--" : form.waktu}
+          </option>
+          <option value="Pagi">Pagi</option>
+          <option value="Malam">Malam</option>
+        </select>
+      </div>
       <Input
         name="kegiatan"
         type="text"
-        placeholder="Enter event details"
+        placeholder="Contoh Event wisuda"
         label="Kegiatan"
         onChange={handleOChange}
         value={form.kegiatan}
@@ -269,7 +309,7 @@ export default function FormOrder({
           name="tgl_mulai"
           type="date"
           placeholder="Select start date"
-          label="Tanggal Mulai"
+          label="Tanggal Mulai Pemakean"
           onChange={handleOChange}
           min={MinCreatDateMUlai()}
           value={form.tgl_mulai}
@@ -280,7 +320,7 @@ export default function FormOrder({
             name="tgl_akhir"
             type="date"
             placeholder="Select end date"
-            label="Tanggal akhir"
+            label="Tanggal akhir Pemakean"
             onChange={handleOChange}
             min={MinCreatDateAkhir()}
             value={
@@ -291,18 +331,33 @@ export default function FormOrder({
         </div>
       </div>
       <div className="paymen flex flex-row gap-2">
-        <PaymentMethodCard
-          method="Credit Card"
-          image="credit_card_image.jpg"
-          selected={form.MetPembayaran === "Credit Card"}
-          onClick={() => handleSelectMethod("Credit Card")}
-        />
-        <PaymentMethodCard
-          method="PayPal"
-          image="paypal_image.jpg"
-          selected={form.MetPembayaran === "transfer"}
+        <div
+          className={`flex justify-between flex-wrap items-center  border-2 rounded-lg p-2 w-56 h-16 ${
+            form.MetPembayaran === "Cash On Delivery"
+              ? "border-green-500"
+              : "border-gray-10"
+          }`}
+          onClick={() => handleSelectMethod("Cash On Delivery")}
+        >
+          <MdHandshake className="font-bold text-4xl ml-3" />
+          {/* <img src={image} alt={method} className="w-10 h-10 mb-2" /> */}
+          <div>
+            <p className="text-lg font-semibold mr-3">COD</p>
+            <p className=" font-light text-sm">cash on delivery</p>
+          </div>
+        </div>
+        <div
+          className={`flex justify-between items-center  border-2 rounded-lg p-2 w-56 h-16 ${
+            form.MetPembayaran === "transfer"
+              ? "border-green-500"
+              : "border-gray-10"
+          }`}
           onClick={() => handleSelectMethod("transfer")}
-        />
+        >
+          <MdOutlineCurrencyExchange className="font-bold text-4xl ml-3" />
+          {/* <img src={image} alt={method} className="w-10 h-10 mb-2" /> */}
+          <p className="text-lg font-semibold mr-3">Transfer</p>
+        </div>
       </div>
       <Button
         className="btn_green rounded-full border-0 w-full my-5 py-2 lg:w-96 block duration-300 outline-2 active:outline focus:outline-gray-10"

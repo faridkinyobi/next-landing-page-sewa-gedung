@@ -5,7 +5,7 @@ const Alur = () => {
   return (
     <section
       id="alur"
-      className="alur text-center items-center justify-center "
+      className="alur text-center items-center justify-center"
     >
       <div className="flex-1">
         <h1 className="p-4 font-bold text-3xl mb-8 text-blue-40">Alur Sewa</h1>

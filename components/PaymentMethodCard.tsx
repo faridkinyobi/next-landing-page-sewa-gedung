@@ -13,7 +13,7 @@ export default function PaymentMethodCard({ method, image, selected, onClick }:P
       }`}
       onClick={onClick}
     >
-        <div className="w-10 h-10 mb-2 bg-black-10 mx-2"></div>
+        <p className="w-10 h-10 mb-2 bg-black-10 mx-2"></p>
       {/* <img src={image} alt={method} className="w-10 h-10 mb-2" /> */}
       <p className="text-lg font-semibold">{method}</p>
     </div>

@@ -1,57 +1,3 @@
-// import React from "react";
-// import {
-//   BsPCircle,
-//   BsFillPersonLinesFill,
-//   BsFillLuggageFill,
-// } from "react-icons/bs";
-// import CardFasil from "../cardFasil";
-// interface Fasilsprop {
-//   icon: JSX.Element;
-//   titel: string;
-//   desc: string;
-// }
-
-// const Faslitem: Fasilsprop[] = [
-//   {
-//     titel: "Parkiran",
-//     desc: "Parkiran luas bisa menampung banyak kendaraan mini bus,mobil, motor",
-//     icon: (
-//       <BsPCircle className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem] " />
-//     ),
-//   },
-//   {
-//     titel: "Kapasita",
-//     desc: "Gedung dengan berkapasitas 2000 orang, cocok untuk berbagai event",
-//     icon: (
-//       <BsFillPersonLinesFill className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem]" />
-//     ),
-//   },
-//   {
-//     titel: "Ruang Rias",
-//     desc: "Ruang khusus di mana pengantin dapat bersiap-siap sebelum acara utama",
-//     icon: (
-//       <BsFillLuggageFill className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem]" />
-//     ),
-//   },
-// ];
-// function Fasil() {
-//   return (
-//     <section className=" flex flex-wrap justify-center md:gap-12 gap-10   ">
-//       {/* {Faslitem.map((item, index) => (
-//         <CardFasil
-//           key={index}
-//           index={index.toString()}
-//           icon={item.icon}
-//           titel={item.titel}
-//           desc={item.desc}
-//         />
-//       ))} */}
-
-//     </section>
-//   );
-// }
-
-// export default Fasil;
 import React, { useState } from "react";
 
 const Fasil = () => {
@@ -61,13 +7,13 @@ const Fasil = () => {
   return (
     <section className=" mx-2 md:px-24 md:my-10 my-5">
       <div className="shadow-blue-40 shadow-inner py-3 md:mb-10 mb-5  rounded-full">
-        <h1 className="text-center md:mx-96 mx-10 py-2 bg-blue-20 text-white-10 rounded-full shadow-at">
+        <h1 className="text-center lg:mx-96 mx-10 py-2 bg-blue-20 text-white-10 rounded-full shadow-at">
           Detail Fasilitas Umum
         </h1>
       </div>
       {/* Kolom Kiri: Navigasi */}
       <div className="sticky rounded-s-3xl  ">
-        <ul className=" mx-5 md:mx-60 items-center justify-center cursor-pointer flex gap-2  py-3  md:px-10 rounded-t-2xl shadow-inner shadow-blue-40 text-blue-40">
+        <ul className=" mx-5 lg:mx-60 items-center justify-center cursor-pointer flex gap-2  py-3  lg:px-10 rounded-t-2xl shadow-inner shadow-blue-40 text-blue-40">
           <li
             className={`py-1 px-1 md:px-3 rounded-2xl font-medium transitionAll75 hover:bg-slate-200 ${
               selectedSection === "section1"
@@ -109,7 +55,13 @@ const Fasil = () => {
               <div>
                 <h2 className="font-bold my-1">Luas gedung</h2>
                 <div className="text-neutral-200 font-light">
-                  <p>26 x 10 meter</p>
+                  <p>100 x 150 m</p>
+                  <p>
+                    tanah{" "}
+                    <span>
+                      6.515.98 m <sup>2</sup>
+                    </span>
+                  </p>
                   <p>Termasuk listrik</p>
                 </div>
               </div>

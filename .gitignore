@@ -6,6 +6,8 @@
 .pnp.js
 .yarn/install-state.gz
 .env
+
+frondend2.zip
 # testing
 /coverage
 

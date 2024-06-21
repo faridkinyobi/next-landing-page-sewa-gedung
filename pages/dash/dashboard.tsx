@@ -10,11 +10,13 @@ import { useReactToPrint } from "react-to-print";
 import { PrintComponent } from "../../components/PrintComponent";
 import CardBank from "../../components/CardBank";
 import { postDataHarga, postData } from "../../utils/fetchData";
+import Image from "next/image";
 interface HistoryPaket {
   title: string;
   hari: string;
   kegiatan: string;
   warga: string;
+  waktu: string;
   lama_sewa: number;
   tgl_mulai: Date;
   tgl_akhir: Date;
@@ -33,11 +35,12 @@ interface Order {
   _id: string;
 }
 
-interface DashType {
-  data: Order[];
-  img: ImageData[];
-}
 interface ImageData {
+  image: {
+    name: string;
+  };
+  Number: string;
+  type: string;
   BuktiUangMuka: {
     name: string;
     _id: string;
@@ -54,10 +57,15 @@ interface ChangeEvent {
     value: string;
   };
 }
-export default function dashboard({ data, img }: DashType) {
+interface DashType {
+  data: Order[];
+  img: ImageData[];
+  RePay: ImageData[];
+}
+export default function Dashboard({ data, img, RePay }: DashType) {
   const router = useRouter();
   const componentRef = useRef(null);
-
+  const urlFoto = process.env.NEXT_PUBLIC_API;
   const [form, setForm] = useState({
     avatar: "",
     avatarLunas: "",
@@ -124,8 +132,8 @@ export default function dashboard({ data, img }: DashType) {
           if (e.target.name === "avatarLunas") {
             setForm({
               ...form,
-              BuktiPelunasan: res.data._id,
-              [e.target.name]: res.data.name,
+              BuktiPelunasan: res.data?._id,
+              [e.target.name]: res.data?.name,
             });
           } else {
             setForm({
@@ -164,7 +172,7 @@ export default function dashboard({ data, img }: DashType) {
       BuktiUangMuka: form.BuktiUangMuka,
       Order: form.Order,
     };
-    const res = await postData(`/app/v1/cms/pembayaran`, format, token);
+    const res = await postData(`/app/v1/pembayaran`, format, token);
     if (res.data) {
       toast.success("Upload Bukti Pembayaran Uangmuka Sukses", {
         position: "top-right",
@@ -175,9 +183,9 @@ export default function dashboard({ data, img }: DashType) {
         draggable: true,
         progress: undefined,
       });
-      // setTimeout(() => {
-      //   router.reload();
-      // }, 10000);
+      setTimeout(() => {
+        router.reload();
+      }, 1000);
     }
   };
 
@@ -186,7 +194,7 @@ export default function dashboard({ data, img }: DashType) {
     const format = {
       BuktiPelunasan: form.BuktiPelunasan,
     };
-    const res = await putData(`/app/v1/cms/pembayaran`, format, token);
+    const res = await putData(`/app/v1/pembayaran`, format, token);
     if (res.data) {
       toast.success("Upload Bukti Pembayaran Lunas Sukses", {
         position: "top-right",
@@ -199,31 +207,23 @@ export default function dashboard({ data, img }: DashType) {
       });
       setTimeout(() => {
         router.reload();
-      }, 10000);
+      }, 1000);
     }
   };
 
   return (
-    <div className="bg-blue-30  h-full">
+    <div className="bg-blue-30  h-full w-auto">
       <NavbarLending />
-      <div className="md:mx-24 mx-10 pb-20 ">
+      <div className="md:mx-24 mx-5 pb-20 ">
         <h1 className="text-left font-bold text-3xl text-white-10 my-5">
           Dashboard
         </h1>
-        <div className="flex gap-1">
-          <Button
-            className="btn_slate  px-14  xl:py-2 py-2 mb-2 text-xl rounded-sm "
-            type="button"
-            title="Print"
-            onClick={handlePrint}
-          />
-          <Button
-            className="btn_slate  px-14  xl:py-2 py-2 mb-2 text-xl  rounded-sm"
-            type="button"
-            title="Dowload"
-            onClick={handlePrint}
-          />
-        </div>
+        <Button
+          className="btn_slate  px-10  xl:py-2 py-1 mb-2 text-xl rounded-full "
+          type="button"
+          title="Print"
+          onClick={handlePrint}
+        />
         <div ref={componentRef}>
           <PrintComponent data={data} />
         </div>
@@ -236,37 +236,57 @@ export default function dashboard({ data, img }: DashType) {
                   <div key={index} className="flex gap-5 mt-6">
                     <div className="border-2 p-2 text-white-10">
                       <h1>Bukti Pembayaran Uang Muka</h1>
-                      <img
-                        width={121}
-                        height={126}
-                        alt="121x126"
-                        src={`http://localhost:5000/${items.BuktiUangMuka?.name}`}
-                        loading="lazy"
-                      />
+                      {items.BuktiUangMuka?.name ? (
+                        <Image
+                          className=" max-w-40 max-h-40"
+                          width={100}
+                          height={106}
+                          alt="121x126"
+                          src={`${urlFoto}/${items.BuktiUangMuka.name}`}
+                          loading="lazy"
+                          layout="responsive"
+                        />
+                      ) : (
+                        <p>Gambar tidak tersedia</p>
+                      )}
                     </div>
                     <div className="border-2 p-2 text-white-10">
                       <h1>Bukti Pembayaran Lunas</h1>
-                      <img
-                        width={121}
-                        height={126}
-                        alt="121x126"
-                        src={`http://localhost:5000/${items.BuktiPelunasan?.name}`}
-                        loading="lazy"
-                      />
+                      {items.BuktiPelunasan?.name ? (
+                        <Image
+                          className=" max-w-40 max-h-40"
+                          width={100}
+                          height={100}
+                          alt="121x126"
+                          src={`${urlFoto}/${items.BuktiPelunasan.name}`}
+                          loading="lazy"
+                          layout="responsive"
+                        />
+                      ) : (
+                        <p>Gambar tidak tersedia</p>
+                      )}
                     </div>
                   </div>
                 ))}
               </>
             )}
             {item.MetPembayaran === "transfer" && (
-              <div className="flex items-center flex-wrap justify-around mt-10">
-                <CardBank
-                  image="http://localhost:5000/upload/66501470-2425812_bank_bni_indonesia_indonesian_negara_icon.png"
-                  title="BRI"
-                  NoRekening="00000"
-                />
-                {/*Pembayaran*/}
-                <div className="Pembayaran  flex-col">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-flow-row-dense mt-10">
+                  {RePay.map((items, index) => (
+                    <div className="" key={index}>
+                      <CardBank
+                        image={`${urlFoto}/${items.image?.name}`}
+                        title={items.type}
+                        NoRekening={items.Number}
+                      />
+                    </div>
+                  ))}
+
+                  {/*Pembayaran*/}
+                </div>
+                <div className="Pembayaran  flex">
+                  {/* Input Uangmuka */}
                   {!form.getBuktiUangmuka && (
                     <div className="flex flex-col">
                       <label className=" mx-1 text-xl text-gray-10  ">
@@ -274,11 +294,13 @@ export default function dashboard({ data, img }: DashType) {
                       </label>
                       {form.avatar !== "" && (
                         <div>
-                          <img
+                          <Image
                             width={91}
                             height={100}
                             alt="91x100"
-                            src={`http://localhost:5000/${form.avatar}`}
+                            src={`${urlFoto}/${form.avatar}`}
+                            loading="lazy"
+                            layout="responsive"
                           />
                         </div>
                       )}
@@ -289,9 +311,17 @@ export default function dashboard({ data, img }: DashType) {
                         onChange={handleChange}
                         className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
                       />
-                      <button onClick={handPembayaran}>submite</button>
+                      <button
+                        className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
+                        onClick={handPembayaran}
+                      >
+                        submite
+                      </button>
                     </div>
                   )}
+                  {/* End Input Nota Uangmuka */}
+
+                  {/* Input Nota pelunasan */}
                   {form.getBuktiUangmuka !== "" && !form.getBuktiLunas && (
                     <div className="flex flex-col">
                       <label className="mx-1 text-xl text-gray-10">
@@ -299,11 +329,13 @@ export default function dashboard({ data, img }: DashType) {
                       </label>
                       {form.avatarLunas !== "" && (
                         <div>
-                          <img
+                          <Image
                             width={91}
                             height={100}
                             alt="91x100"
-                            src={`http://localhost:5000/${form.avatarLunas}`}
+                            src={`${urlFoto}/${form.avatarLunas}`}
+                            loading="lazy"
+                            layout="responsive"
                           />
                         </div>
                       )}
@@ -314,9 +346,15 @@ export default function dashboard({ data, img }: DashType) {
                         onChange={handleChange}
                         className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
                       />
-                      <button onClick={handelUpate}>update</button>
+                      <Button
+                        className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
+                        type="button"
+                        title="upload"
+                        onClick={handelUpate}
+                      />
                     </div>
                   )}
+                  {/* end  Nota pelunakan */}
                 </div>
               </div>
             )}
@@ -343,11 +381,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const data = result.data;
   const res = await getData("/app/v1/dashboardPembayaran", {}, token);
   const img = res.data;
+  const pay = await getData("/app/v1/NoReken", {}, token);
+  const RePay = pay.data;
 
   return {
     props: {
       data: data,
       img: img,
+      RePay: RePay,
     },
   };
 }

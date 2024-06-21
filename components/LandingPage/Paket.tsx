@@ -12,7 +12,7 @@ interface PaketType {
     _id: number;
     fasilitas: { detail: string }[];
     harga: {
-      kegiata: string;
+      kegiatan: string;
       hari: string;
       warga: string;
       hargadetail: number;
@@ -30,14 +30,14 @@ const Paket = ({ data }: PaketType) => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: data.length >= 3 ? 3 : 1,
+    slidesToShow: data?.length >= 3 ? 3 : 2,
     slidesToScroll: 2,
     initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: data.length >= 2 ? 2 : 1,
+          slidesToShow: data?.length >= 2 ? 2 : 1,
           slidesToScroll: 2,
           infinite: true,
           dots: true,
@@ -46,7 +46,7 @@ const Paket = ({ data }: PaketType) => {
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: data.length > 1 ? 2 : 1,
+          slidesToShow: data?.length > 1 ? 2 : 1,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -65,11 +65,11 @@ const Paket = ({ data }: PaketType) => {
   return (
     <section
       id="Package"
-      className={`items-center justify-center  bg-blue-30 lg:mx-24 ${
+      className={`  bg-blue-30 lg:mx-24  md:mx-10 ${
         selectedharga !== null
           ? "lg:mb-[35rem] transition-all delay-400"
           : "lg:mb-[18rem] transition-transform delay-400"
-      } md:my-20 lg:h-[29rem] w-auto md:rounded-3xl shadow-pxl`}
+      }  lg:h-[25rem] w-auto md:rounded-3xl shadow-pxl`}
     >
       <div className="container flex-1 text-center pt-5">
         <h1 className=" font-bold text-3xl lg:ml-4 text-white-20 lg:text-left">
@@ -78,10 +78,13 @@ const Paket = ({ data }: PaketType) => {
         <p className="py-2 md:text-2xl text-xl  ml-4 text-gray-10 lg:text-left">
           Pilih paket Sewa Gedung
         </p>
-        <div className="mt-16 mx-8 md:mx-60 lg:mx-[27rem]">
+        <div className=" lg:mx-48  mx-10">
           <Slider {...settings}>
-            {data.map((item, index) => (
-              <div className="my-4  px-3 rounded-b-xl text-blue-40" key={index}>
+            {data?.map((item, index) => (
+              <div
+                className="my-4  px-3 rounded-b-xl text-blue-40 max-w-96 max-h-max"
+                key={index}
+              >
                 <div className="text-center items-center bg-white-10 py-2 rounded-t-xl">
                   <h1 className="text-2xl lg:text-3xl font-semibold my-2">
                     {item.titel}
@@ -98,6 +101,10 @@ const Paket = ({ data }: PaketType) => {
                         </p>
                       </div>
                     ))}
+                  <p className=" my-3  mx-10 font-extralight text-left text-base text-gray-10">
+                    Kelengkapan lain diserahkan kepada
+                    <span className=" font-bold text-white-20">Penyewa</span>
+                  </p>
                   <div className="m-5">
                     <Link
                       className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
@@ -106,7 +113,7 @@ const Paket = ({ data }: PaketType) => {
                       Pilih Paket
                     </Link>
                     <h2
-                      className="font-semibold  bg-red-500 xl:py-2 py-2  lg:mx-10 mx-2 my-5 text-white-20 cursor-pointer rounded-full  shadow-red-500  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-red-600 hover:bg-red-500/70 "
+                      className="font-semibold  bg-red-500 md:py-2 py-2 md:mx-16 mx-2 my-5 text-white-20 cursor-pointer rounded-full  shadow-red-500  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-red-600 hover:bg-red-500/70 "
                       onClick={() => hendelharga(index)}
                     >
                       Harga
@@ -115,7 +122,7 @@ const Paket = ({ data }: PaketType) => {
 
                   <div className="my-2">
                     <div
-                      className={`my-2 mx-4 grid grid-cols-2 gap-3 ml-4 ${
+                      className={`my-2 mx-2 grid grid-cols-1  gap-2  ${
                         selectedharga !== index
                           ? "hidden"
                           : " origin-bottom transition-transfor delay-1000"
@@ -128,16 +135,19 @@ const Paket = ({ data }: PaketType) => {
                             key={index}
                           >
                             <h3 className="text-[1rem] font-normal text-left text-white-10">
-                              {item.kegiata}
+                              {item.kegiatan}
                             </h3>
-                            <p className="text-[1rem] font-normal text-left text-blue-500">
-                              {item.hari}
+                            <p className="text-[1rem] font-normal text-left text-white-10">
+                              Hari :{item.hari}
                             </p>
                             <p className="text-[1rem] font-normal text-left text-white-10">
                               {item.warga}
                             </p>
-                            <p className="text-[1rem] font-normal text-left text-gray-10">
-                              {item.hargadetail}
+                            <p className="text-[1rem] font-normal text-left text-white-10">
+                              {item.hargadetail.toLocaleString("id-ID", {
+                                style: "currency",
+                                currency: "IDR",
+                              })}
                             </p>
                           </div>
                         ))}

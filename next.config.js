@@ -1,13 +1,22 @@
 /** @type {import('next').NextConfig} */
-
-const nextConfig = {
-  
+module.exports = {
+  // Konfigurasi lainnya di sini
   reactStrictMode: true,
-  swcMinify: true,
-  distDir: 'build',
-  env: {
-    NEXT_PUBLIC_API: process.env.NEXT_PUBLIC_API,
+  distDir:"build",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "5000", // Specify the port if needed
+        pathname: "/upload/**",
+      },
+      {
+        protocol: "https",
+        hostname: "sewagedungcangkol.com.pojokbambu.com",
+        port: "",
+        pathname: "/upload/**",
+      },
+    ],
   },
-}
-
-module.exports = nextConfig
+};

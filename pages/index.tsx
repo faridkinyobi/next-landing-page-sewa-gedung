@@ -1,6 +1,6 @@
 // import Image from "next/image";
 import dynamic from "next/dynamic";
-"use strict"
+("use strict");
 import { getData } from "../utils/fetchData";
 import React from "react";
 const EventCalendar = dynamic(
@@ -38,7 +38,7 @@ interface PaketType {
     _id: number;
     fasilitas: { detail: string }[];
     harga: {
-      kegiata: string;
+      kegiatan: string;
       hari: string;
       warga: string;
       hargadetail: number;
@@ -75,28 +75,12 @@ export default function Home({ data, event }: PaketType) {
   );
 }
 
-// export async function getServerSideProps() {
-//   // Fetching data using getData utility function
-//   const paketRespon = await getData("/app/v1/PeketPelanggan");
-//   const pakets = paketRespon?.data;
-
-//   const eventRespon = await getData("/app/v1/jadwalPelanggan");
-//   const event = eventRespon?.data;
-
-//   return {
-//     props: {
-//       data: pakets,
-//       event: event,
-//     },
-//   };
-// }
-
 export async function getServerSideProps() {
   try {
     // Fetching data using getData utility function
     const [paketRespon, eventRespon] = await Promise.all([
       getData("/app/v1/PeketPelanggan"),
-      getData("/app/v1/jadwalPelanggan")
+      getData("/app/v1/jadwalPelanggan"),
     ]);
     const data = paketRespon?.data;
     const event = eventRespon?.data;
@@ -108,7 +92,6 @@ export async function getServerSideProps() {
       },
     };
   } catch (error) {
-    console.error("Error fetching data:", error);
     return {
       props: {
         data: null,

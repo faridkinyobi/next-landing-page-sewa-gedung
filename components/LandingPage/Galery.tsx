@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 export const Galery = () => {
   return (
     <section id="galery" className="galery mx-10 lg:mx-[6rem] my-5 md:mt-20 ">
@@ -9,8 +9,8 @@ export const Galery = () => {
       </p>
       <div className="static grid col-auto gap-4">
         <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2">
-          <div className="grid grid-cols-2 gap-2">
-            <img
+          <div className="grid grid-cols-2 gap-2 max-w-max h-auto">
+            <Image
               src="/img/gambar1.svg"
               alt="Logo"
               width={210}
@@ -18,7 +18,7 @@ export const Galery = () => {
               className="md:w-[10rem] lg:w-[13rem]"
               loading="lazy"
             />
-            <img
+            <Image
               src="/img/gambar3.svg"
               alt="Logo"
               width={210}
@@ -27,7 +27,7 @@ export const Galery = () => {
               loading="lazy"
             />
           </div>
-          <img
+          <Image
             src="/img/gambar2.svg"
             alt="Logo"
             width={604}
@@ -36,8 +36,8 @@ export const Galery = () => {
             loading="lazy"
           />
         </div>
-        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2">
-          <img
+        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2 max-w-max h-auto">
+          <Image
             src="/img/gambar8.svg"
             alt="Logo"
             width={604}
@@ -46,7 +46,7 @@ export const Galery = () => {
             loading="lazy"
           />
           <div className="grid grid-cols-2 gap-2">
-            <img
+            <Image
               src="/img/gambar5.svg"
               alt="Logo"
               width={210}
@@ -54,7 +54,7 @@ export const Galery = () => {
               className="md:w-[10rem] lg:w-[13rem]"
               loading="lazy"
             />
-            <img
+            <Image
               src="/img/gambar6.svg"
               alt="Logo"
               width={210}

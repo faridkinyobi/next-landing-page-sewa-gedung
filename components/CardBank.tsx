@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { BsFillCaretLeftFill, BsFillCaretDownFill } from "react-icons/bs";
+import Image from "next/image";
 
 type PaymentMethodCardProps = {
   image: string;
@@ -30,12 +31,20 @@ export default function CardBank({
   };
   return (
     <div
-      className={`card box-border border-2 border-gray-10 rounded-xl mt-2 max-w-80 w-[18rem] md:w-96 delay-200 transition-all ease-in-out ${
-        !iconRek ? " h-[5rem]" : "h-[8.7rem]"
+      className={` card box-border border-2 border-gray-10 rounded-xl mt-2 max-w-80 w-[18rem] md:w-96 delay-200  transition-all ease-in-out ${
+        !iconRek ? " h-[5rem]" : " h-auto "
       }`}
     >
-      <div className="flex items-center justify-around">
-        <img className=" w-24 max-h-20 " src={image} alt="" />
+      <div className=" flex items-center justify-around">
+        <Image
+          className=" w-24 md:max-h-16 pt-1 md:tp-0 max-h-20 max-w-16 md:max-w-20 "
+          src={image}
+          alt="98x100"
+          width={91}
+          height={100}
+          layout="responsive"
+          loading="lazy"
+        />
         <h1 className="text-rek text-center font-bold text-xl text-white-10">
           {title}
         </h1>
@@ -52,8 +61,8 @@ export default function CardBank({
         )}
       </div>
       <div
-        className={`flex justify-around   text-center delay-200 transition-all ease-in-out ${
-          !iconRek ? "opacity-0" : ""
+        className={`flex justify-around   text-center delay-75 transition-all ease-in-out mb-2 ${
+          !iconRek ? "opacity-0 hidden" : ""
         }`}
       >
         <h1 className="text-xl text-left text-white-10">{NoRekening}</h1>

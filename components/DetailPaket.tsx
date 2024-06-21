@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { BsBuildingFillCheck, BsCheckLg } from "react-icons/bs";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 type DetailPaketProps = {
   detailPage: {
     titel: string;
     fasilitas: Array<{ detail: string }>;
     harga: Array<{
       _id: string;
-      kegiata: string;
+      kegiatan: string;
       hari: string;
       warga: string;
-      hargadetail: string;
+      hargadetail: number|string;
     }>;
   };
   handleHargaSelection: (_id: string) => void;
   isCardChecked: boolean | null;
   setIsCardChecked: (isCardChecked: boolean) => void;
+  style: string;
 };
 
 const DetailPaket = ({
@@ -34,10 +35,10 @@ const DetailPaket = ({
     handleHargaSelection(_id);
     setIsCardChecked(!isCardChecked);
   };
-  
+
   return (
     <div
-      className={`lg:w-[67rem] md:w-[40rem] w-[20rem] justify-items-center mx-auto`}
+      className={`mx-2 md:mx-20 justify-items-center`}
     >
       {/* {detailPage.titel} */}
       <div className="my-4  px-2 rounded-b-xl text-blue-40">
@@ -56,31 +57,46 @@ const DetailPaket = ({
               </p>
             </div>
           ))}
-          <div className="mx-2 my-2">
+          <p className=" my-3  mx-10 font-extralight text-left text-base text-gray-10">
+            Kelengkapan lain diserahkan kepada
+            <span className=" font-bold text-white-20">Penyewa</span>
+          </p>
+          <div className="mx-1 md:mx-2 my-2">
             <div
               className={`my-2 mx-1 grid grid-cols-2 md:grid-cols-3  gap-3 `}
             >
               {detailPage.fasilitas &&
                 detailPage.harga.map((item, index) => (
                   <div className="" key={index}>
-                    <h3 className="text-[1rem] font-normal text-left text-white-10">
-                      {item.kegiata}
+                    <h3 className=" rounded-t-2xl text-[1rem] mx-2 mr-6 px-4 py-1 font-normal text-left text-white-10 shadow-inner shadow-blue-40 ">
+                      {item.kegiatan}
                     </h3>
                     <div
                       className={`${
-                        activeCard === item._id ? "border-green-500" : ""
-                      } border-4 box-border  md:px-4 rounded-lg md:flexBetween text-center cursor-pointer `}
+                        activeCard === item._id
+                          ? "  border-blue-30 shadow-md "
+                          : "border-blue-40"
+                      } transitionAll75 shadow-inner border-blue-40 shadow-blue-40  md:px-4 md:py-2 rounded-lg md:flexBetween text-center cursor-pointer `}
                       onClick={() => toggleCard(item._id)}
                     >
-                      <div className="">
-                        <p className="text-[1rem] font-normal md:text-left text-blue-500">
+                      <div
+                        className={`transitionAll75 rounded-2xl px-3 py-2   shadow-blue-40 ${
+                          activeCard === item._id
+                            ? " bg-blue-30 shadow-inner"
+                            : " bg-blue-20 shadow-md"
+                        }`}
+                      >
+                        <p className="text-[1rem] font-normal text-left text-blue-500">
                           {item.hari}
                         </p>
-                        <p className="text-[1rem] font-normal md:text-left text-white-10">
+                        <p className="text-[1rem] font-normal text-left text-white-10">
                           {item.warga}
                         </p>
-                        <p className="text-[1rem] font-normal md:text-left text-gray-10">
-                          {item.hargadetail}
+                        <p className="text-[1rem] font-normal text-left text-gray-10">
+                          {item.hargadetail.toLocaleString("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                          })}
                         </p>
                       </div>
                       <div>

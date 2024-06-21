@@ -21,12 +21,12 @@ const EventCalendar = ({ event }: PaketType) => {
   const [activeStartDate, setActiveStartDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
   const [showModal, setShowModal] = useState(false);
-
+  // console.log(selectedEvent);
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view === "month") {
       const event = getEventsForDate(date);
-      if (event.length > 0) {
-        return event.map((item, index) => (
+      if (event?.length > 0) {
+        return event?.map((item, index) => (
           <div
             key={index}
             onClick={() => handleEventClick(item)}
@@ -47,7 +47,7 @@ const EventCalendar = ({ event }: PaketType) => {
     const normalizedDate = new Date(date);
     normalizedDate.setHours(0, 0, 0, 0);
     //filter event untuk membatasi
-    return event.filter((e) => {
+    return event?.filter((e) => {
       const eventStartDate = new Date(e.tgl_mulai);
       eventStartDate.setHours(0, 0, 0, 0);
 
@@ -165,25 +165,31 @@ const EventCalendar = ({ event }: PaketType) => {
                       </td>
                       <td className="border border-white-20/70 px-2">
                         {selectedEvent.lama_sewa}{" "}
-                        {format(
-                          new Date(selectedEvent.tgl_akhir),
-                          "MM/dd/yyyy"
-                        ) ===
-                        format(new Date(selectedEvent.tgl_mulai), "MM/dd/yyyy")
-                          ? "jam"
-                          : "hari"}
+                        {selectedEvent.tgl_akhir ||
+                        /pernikahan/i.test(selectedEvent.kegiatan)
+                          ? "hari"
+                          : "jam"}
                       </td>
                       <td className="border border-white-20/70 px-2">
-                        {format(
-                          new Date(selectedEvent.tgl_mulai),
-                          "MM/dd/yyyy"
+                        {new Date(selectedEvent?.tgl_mulai).toLocaleDateString(
+                          "id-ID",
+                          {
+                            day: "2-digit",
+                            month: "long",
+                            year: "numeric",
+                          }
                         )}
                       </td>
                       <td className="border border-white-20/70 px-2">
-                        {format(
-                          new Date(selectedEvent.tgl_akhir),
-                          "MM/dd/yyyy"
-                        )}
+                        {selectedEvent.tgl_akhir
+                          ? new Date(
+                              selectedEvent.tgl_akhir
+                            ).toLocaleDateString("id-ID", {
+                              day: "2-digit",
+                              month: "long",
+                              year: "numeric",
+                            })
+                          : "-"}
                       </td>
                       <td className="border border-white-20/70 px-2">
                         {selectedEvent.waktu}

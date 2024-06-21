@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import NavbarLending from "../components/NavbarLending";
-import Paket from "../components/LandingPage/Paket";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import {
   BsEnvelope,
-  BsFacebook,
+  // BsFacebook,
   BsGeoAlt,
-  BsInstagram,
+  // BsInstagram,
   BsTelephone,
-  BsYoutube,
+  // BsYoutube,
 } from "react-icons/bs";
 
 interface PaketType {
@@ -52,7 +51,7 @@ const About = ({ data }: PaketType) => {
       </div>
       <div className="paragraf text-justify mx-10  lg:mx-[6rem] md:mt-96 mt-48">
         <h1 className="titel font-semibold text-2xl my-7">
-          Gedung Pertenuan Desa cangkol
+          Gedung Pertenuan Desa Cangkol
         </h1>
         <p className="containt font-normal text-sm  md:text-xl">
           Pembangunan Gedung Pertemuan Desa Cangkol dimulai dari kebutuhan akan
@@ -64,7 +63,7 @@ const About = ({ data }: PaketType) => {
           sekaligus menyediakan area parkir yang memadai.
         </p>
         <p className="containt font-normal text-sm   md:text-xl mt-5">
-          Proses pembangunan gedung dimulai pada tahun 2016, dengan
+          Proses pembangunan gedung dimulai pada tahun 2017, dengan
           pengalokasian lahan bengkok desa seluas 1 hektar dan tambahan 1.000
           meter persegi untuk pasar desa. Namun, penggalian dan pengurukan lahan
           memerlukan biaya yang cukup besar. Dengan anggaran dari pemerintah
@@ -111,7 +110,7 @@ const About = ({ data }: PaketType) => {
           <div className="md:mt-20 mt-2  text-left sm:w-[19rem] sm:text-2xl ">
             <p className="text-base sm:text-lg flex  ">
               <BsTelephone className="bg-blue-10 p-2 w-11 text-4xl  text-white-10 rounded-md mr-4" />
-              08568291228
+              081915312649
             </p>
             <p className=" text-base sm:text-lg flex my-4">
               <BsEnvelope className="bg-blue-10 p-2 w-11 text-4xl  text-white-10 rounded-md mr-4" />
@@ -142,55 +141,55 @@ const About = ({ data }: PaketType) => {
 };
 
 export default About;
-export async function getServerSideProps() {
-  return {
-    props: {
-      data: [
-        {
-          _id: 1,
-          titel: "Paket 2",
-          fasilitas: [
-            {
-              detai: "meja dan kursi untuk 1000 tamu",
-            },
-            {
-              detai: "kursi VIP",
-            },
-            {
-              detai: "Ruang rias Pengantin",
-            },
-            {
-              detai: "Parkir Luas",
-            },
-            {
-              detai: "Ruang Catring",
-            },
-            {
-              detai: "Toilet",
-            },
-          ],
-          harga: [
-            {
-              name: "Resepsi",
-              hari: "Weekend",
-              warga: "warga desa cangkol",
-              hargadetail: "1.000.000",
-            },
-            {
-              kegiata: "Resepsi",
-              hari: "Weekend",
-              warga: "luar desa cangkol",
-              hargadetail: "1.000.000",
-            },
-            {
-              kegiata: "Resepsi",
-              hari: "Weekend",
-              warga: "luar desa cangkol",
-              hargadetail: "1.000.000",
-            },
-          ],
-        },
-      ],
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   return {
+//     props: {
+//       data: [
+//         {
+//           _id: 1,
+//           titel: "Paket 2",
+//           fasilitas: [
+//             {
+//               detai: "meja dan kursi untuk 1000 tamu",
+//             },
+//             {
+//               detai: "kursi VIP",
+//             },
+//             {
+//               detai: "Ruang rias Pengantin",
+//             },
+//             {
+//               detai: "Parkir Luas",
+//             },
+//             {
+//               detai: "Ruang Catring",
+//             },
+//             {
+//               detai: "Toilet",
+//             },
+//           ],
+//           harga: [
+//             {
+//               name: "Resepsi",
+//               hari: "Weekend",
+//               warga: "warga desa cangkol",
+//               hargadetail: "1.000.000",
+//             },
+//             {
+//               kegiata: "Resepsi",
+//               hari: "Weekend",
+//               warga: "luar desa cangkol",
+//               hargadetail: "1.000.000",
+//             },
+//             {
+//               kegiata: "Resepsi",
+//               hari: "Weekend",
+//               warga: "luar desa cangkol",
+//               hargadetail: "1.000.000",
+//             },
+//           ],
+//         },
+//       ],
+//     },
+//   };
+// }
