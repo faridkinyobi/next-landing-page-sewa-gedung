@@ -11,35 +11,7 @@ import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
 import Galery from "../components/LandingPage/Galery";
 import Paket from "../components/LandingPage/Paket";
-// const EventCalendar = dynamic(
-//   () => import("../components/LandingPage/Calender"),
-//   {
-//     ssr: true,
-//   }
-// );
-// const Alur = dynamic(() => import("../components/LandingPage/Alur"), {
-//   ssr: false,
-// });
-// const About = dynamic(() => import("../components/LandingPage/About"), {
-//   ssr: false,
-// });
-// const Fasil = dynamic(() => import("../components/LandingPage/Fasil"), {
-//   ssr: false,
-// });
-// const Footer = dynamic(() => import("@/components/Footer"), {
-//   ssr: false, // Jika Anda tidak memerlukan SSR untuk komponen ini
-// });
-// const Header = dynamic(() => import("../components/LandingPage/Header"), {
-//   ssr: false,
-// });
-// const Galery = dynamic(() => import("../components/LandingPage/Galery"), {
-//   ssr: false,
-// });
-// const Paket = dynamic(() => import("../components/LandingPage/Paket"), {
-//   ssr: true,
-// });
 
-// Defining the typesc for the props
 interface PaketType {
   data: {
     titel: string;
