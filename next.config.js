@@ -19,4 +19,18 @@ module.exports = {
       },
     ],
   },
+  future: {
+    webpack5: true, 
+  },
+  webpack: (config, { isServer }) => {
+    // Hanya tambahkan rules untuk CSS jika bukan server (client-side)
+    if (!isServer) {
+      config.module.rules.push({
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      });
+    }
+
+    return config;
+  },
 };

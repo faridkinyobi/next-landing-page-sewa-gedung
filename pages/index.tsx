@@ -6,7 +6,7 @@ import React from "react";
 const EventCalendar = dynamic(
   () => import("../components/LandingPage/Calender"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 const Alur = dynamic(() => import("../components/LandingPage/Alur"), {
@@ -25,7 +25,7 @@ const Header = dynamic(() => import("../components/LandingPage/Header"), {
   ssr: false,
 });
 const Galery = dynamic(() => import("../components/LandingPage/Galery"), {
-  ssr: true,
+  ssr: false,
 });
 const Paket = dynamic(() => import("../components/LandingPage/Paket"), {
   ssr: true,
@@ -58,10 +58,10 @@ interface PaketType {
 export default function Home({ data, event }: PaketType) {
   return (
     <main
-      style={{
-        backgroundImage: "url('/img/Group61.svg')",
-        backgroundSize: "cover",
-      }}
+      // style={{
+      //   backgroundImage: "url('/img/Group61.svg')",
+      //   backgroundSize: "cover",
+      // }}
     >
       <Header />
       <Alur />
