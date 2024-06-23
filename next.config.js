@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   // Konfigurasi lainnya di sini
+  output: "_next",
   reactStrictMode: true,
-  // distDir:"build",
   images: {
     remotePatterns: [
       {

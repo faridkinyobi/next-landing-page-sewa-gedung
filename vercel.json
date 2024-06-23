@@ -1,4 +1,9 @@
 {
+    "version": 2,
+    "public": true,
+    "env": {
+      "CUSTOM_ENV_VARIABLE": "value"
+    },
     "builds": [
       {
         "src": "next.config.js",
@@ -6,10 +11,7 @@
       }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
+      { "src": "/(.*)", "dest": "/" }
     ]
   }
   
