@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   // Konfigurasi lainnya di sini
-  output: "_next",
+  output: "standalone",
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -13,7 +13,7 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "sewagedungcangkol.com.pojokbambu.com",
+        hostname: "apigedung.pojokbambu.com",
         port: "",
         pathname: "/upload/**",
       },
