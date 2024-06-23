@@ -2,7 +2,7 @@
 module.exports = {
   // Konfigurasi lainnya di sini
   output: "standalone",
-  //reactStrictMode: true,
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
