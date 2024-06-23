@@ -1,5 +1,4 @@
 // import Image from "next/image";
-import "../styles/globals.css"
 // import dynamic from "next/dynamic";
 // ("use strict");
 import { getData } from "../utils/fetchData";
