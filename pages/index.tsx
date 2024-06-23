@@ -1,35 +1,43 @@
 // import Image from "next/image";
-import dynamic from "next/dynamic";
-("use strict");
+// import dynamic from "next/dynamic";
+// ("use strict");
 import { getData } from "../utils/fetchData";
 import React from "react";
-const EventCalendar = dynamic(
-  () => import("../components/LandingPage/Calender"),
-  {
-    ssr: true,
-  }
-);
-const Alur = dynamic(() => import("../components/LandingPage/Alur"), {
-  ssr: false,
-});
-const About = dynamic(() => import("../components/LandingPage/About"), {
-  ssr: false,
-});
-const Fasil = dynamic(() => import("../components/LandingPage/Fasil"), {
-  ssr: false,
-});
-const Footer = dynamic(() => import("@/components/Footer"), {
-  ssr: false, // Jika Anda tidak memerlukan SSR untuk komponen ini
-});
-const Header = dynamic(() => import("../components/LandingPage/Header"), {
-  ssr: false,
-});
-const Galery = dynamic(() => import("../components/LandingPage/Galery"), {
-  ssr: false,
-});
-const Paket = dynamic(() => import("../components/LandingPage/Paket"), {
-  ssr: true,
-});
+import EventCalendar from "../components/LandingPage/Calender";
+import Alur from "../components/LandingPage/Alur";
+import About from "../components/LandingPage/About";
+import Fasil from "../components/LandingPage/Fasil";
+import Footer from "@/components/Footer";
+import Header from "../components/LandingPage/Header";
+import Galery from "../components/LandingPage/Galery";
+import Paket from "../components/LandingPage/Paket";
+// const EventCalendar = dynamic(
+//   () => import("../components/LandingPage/Calender"),
+//   {
+//     ssr: true,
+//   }
+// );
+// const Alur = dynamic(() => import("../components/LandingPage/Alur"), {
+//   ssr: false,
+// });
+// const About = dynamic(() => import("../components/LandingPage/About"), {
+//   ssr: false,
+// });
+// const Fasil = dynamic(() => import("../components/LandingPage/Fasil"), {
+//   ssr: false,
+// });
+// const Footer = dynamic(() => import("@/components/Footer"), {
+//   ssr: false, // Jika Anda tidak memerlukan SSR untuk komponen ini
+// });
+// const Header = dynamic(() => import("../components/LandingPage/Header"), {
+//   ssr: false,
+// });
+// const Galery = dynamic(() => import("../components/LandingPage/Galery"), {
+//   ssr: false,
+// });
+// const Paket = dynamic(() => import("../components/LandingPage/Paket"), {
+//   ssr: true,
+// });
 
 // Defining the typesc for the props
 interface PaketType {
@@ -58,10 +66,10 @@ interface PaketType {
 export default function Home({ data, event }: PaketType) {
   return (
     <main
-      // style={{
-      //   backgroundImage: "url('/img/Group61.svg')",
-      //   backgroundSize: "cover",
-      // }}
+    // style={{
+    //   backgroundImage: "url('/img/Group61.svg')",
+    //   backgroundSize: "cover",
+    // }}
     >
       <Header />
       <Alur />
