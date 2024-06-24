@@ -40,17 +40,17 @@ const About = ({ data }: PaketType) => {
         }`}
       >
         Bagaimana{" "}
-        <span className="bg-gradient-to-br from-blue-500 to-teal-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-br from-violet-500 to-teal-400 bg-clip-text text-transparent">
           Gedung ini
         </span>
         <br />
-        <span className="bg-gradient-to-r from-pink-500 to-pink-200 bg-conic-gradient bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-conic-gradient bg-clip-text text-transparent">
           Dibangun dan{" "}
         </span>{" "}
         Dipersewakan
       </div>
       <div className="paragraf text-justify mx-10  lg:mx-[6rem] md:mt-96 mt-48">
-        <h1 className="titel font-semibold text-2xl my-7">
+        <h1 className="titel font-semibold text-2xl my-7 text-slate-500">
           Gedung Pertenuan Desa Cangkol
         </h1>
         <p className="containt font-normal text-sm  md:text-xl">

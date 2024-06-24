@@ -46,7 +46,7 @@ const DetailPaket = ({
           <h1 className="text-2xl lg:text-3xl font-semibold my-2">
             {detailPage.titel}
           </h1>
-          <BsBuildingFillCheck className=" py-0 px-3 text-7xl lg:text-8xl text-blue-30 bg-blue-10 mx-auto" />
+          <BsBuildingFillCheck className=" py-0 px-3 text-7xl lg:text-8xl text-blue-30 bg-blue-10 mx-auto bg-gradient-to-br from-violet-500 to-blue-400" />
         </div>
         <div className="bg-slate-700 py-5">
           {detailPage.fasilitas.map((items, index) => (

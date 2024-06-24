@@ -15,10 +15,10 @@ const Footer = () => {
       <div className=" flex flex-wrap justify-between mx-10 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
           <Image
-            src="/img/logo2.png"
+            src="/img/logo5coklat.svg"
             alt="Logo"
-            width={140}
-            height={100}
+            width={250}
+            height={950}
             loading="lazy"
           />
           <p className="  lg:text-2xl w-60 ml-3 h-auto my-3">

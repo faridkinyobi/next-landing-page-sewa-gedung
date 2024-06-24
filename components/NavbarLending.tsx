@@ -49,10 +49,10 @@ const NavbarLending = () => {
           className={` left-28 md:left-96 lg:static md:top-6 ${
             token ? "absolute" : "static "
           }`}
-          src="/img/logo2.png"
+          src="/img/logo5coklat.svg"
           alt="logo"
-          width={140}
-          height={100}
+          width={250}
+          height={950}
           loading="lazy"
         />
         <div className="static lg:hidden">

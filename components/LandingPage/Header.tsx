@@ -49,12 +49,12 @@ const Header = () => {
       <NavbarLending />
       <h1 className="titel text-white-10 font-semibold md:text-[3rem] leading-tight text-[2.5rem] md:my-10 my-12 mt-20 ">
         Sukses{" "}
-        <span className="bg-gradient-to-br from-blue-500 to-teal-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-br from-violet-500 to-teal-400 bg-clip-text text-transparent">
           Acara Anda
         </span>
         <br />
         Di{" "}
-        <span className="bg-gradient-to-r from-pink-500 to-pink-200 bg-conic-gradient bg-clip-text text-transparent ">
+        <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-conic-gradient bg-clip-text text-transparent ">
           Gedung
         </span>{" "}
         Kami
