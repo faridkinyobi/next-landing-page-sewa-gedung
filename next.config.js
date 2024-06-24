@@ -19,14 +19,14 @@ module.exports = {
       },
     ],
   },
-  future: {
-    webpack5: true, // Atur ke true jika kamu menggunakan webpack 5
-  },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback.fs = false;
-    }
+  // future: {
+  //   webpack5: true, // Atur ke true jika kamu menggunakan webpack 5
+  // },
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.resolve.fallback.fs = false;
+  //   }
 
-    return config;
-  },
+  //   return config;
+  // },
 };
