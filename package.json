@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lint": "next lint",
     "export": "next export"
   },
@@ -24,6 +24,7 @@
     "react-slick": "^0.29.0",
     "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.3",
+    "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
