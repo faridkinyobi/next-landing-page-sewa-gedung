@@ -3,13 +3,19 @@ module.exports = {
   // Konfigurasi lainnya di sini
   // output: "standalone",
   reactStrictMode: true,
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `https://apigedung.pojokbambu.com/:path*`, // Proxy to Backend API
-      },
-    ];
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+      };
+    }
+
+    // Add custom webpack configurations here
+    const path = require('path');
+    config.resolve.alias['@'] = path.resolve(__dirname);
+
+    return config;
   },
   images: {
     remotePatterns: [

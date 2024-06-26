@@ -54,6 +54,7 @@ const NavbarLending = () => {
           width={250}
           height={150}
           priority={true}
+          
         />
         <div className="static lg:hidden">
           {router.pathname !== "/signin" && (
