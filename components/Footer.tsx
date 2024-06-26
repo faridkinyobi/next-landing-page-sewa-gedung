@@ -19,7 +19,7 @@ const Footer = () => {
             alt="Logo"
             width={250}
             height={950}
-            loading="lazy"
+            priority={true}
           />
           <p className="  lg:text-2xl w-60 ml-3 h-auto my-3">
             Website ini resmi milik gedung desa cangkol

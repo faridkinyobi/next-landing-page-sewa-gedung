@@ -1,8 +1,16 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   // Konfigurasi lainnya di sini
-  output: "standalone",
+  // output: "standalone",
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `https://apigedung.pojokbambu.com/:path*`, // Proxy to Backend API
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

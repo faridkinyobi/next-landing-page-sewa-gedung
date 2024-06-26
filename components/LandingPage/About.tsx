@@ -14,7 +14,7 @@ const About = () => {
           width={330}
           height={330}
           className="shadow-alg rounded-2xl"
-          loading="lazy"
+          priority={true}
         />
         <div className="lg:mx-20 md:mx-[2rem] mt-7 w-[40rem] md:w-[20rem] lg:w-[30rem]">
           <h1 className="font-bold text-3xl my-2 text-blue-40">About</h1>

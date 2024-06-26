@@ -16,7 +16,7 @@ export const Galery = () => {
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              priority={true}
             />
             <Image
               src="/img/gambar3.svg"
@@ -24,7 +24,7 @@ export const Galery = () => {
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              priority={true}
             />
           </div>
           <Image
@@ -33,7 +33,7 @@ export const Galery = () => {
             width={604}
             height={194}
             className="md:w-[27rem] lg:w-[38rem]"
-            loading="lazy"
+            priority={true}
           />
         </div>
         <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2 max-w-max h-auto">
@@ -43,7 +43,7 @@ export const Galery = () => {
             width={604}
             height={194}
             className="md:w-[27rem] lg:w-[38rem]"
-            loading="lazy"
+            priority={true}
           />
           <div className="grid grid-cols-2 gap-2">
             <Image
@@ -52,7 +52,7 @@ export const Galery = () => {
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              priority={true}
             />
             <Image
               src="/img/gambar6.svg"
@@ -60,7 +60,7 @@ export const Galery = () => {
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              priority={true}
             />
           </div>
         </div>

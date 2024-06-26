@@ -42,8 +42,7 @@ export default function CardBank({
           alt="98x100"
           width={91}
           height={100}
-          layout="responsive"
-          loading="lazy"
+          priority={true}
         />
         <h1 className="text-rek text-center font-bold text-xl text-white-10">
           {title}

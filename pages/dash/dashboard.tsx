@@ -243,8 +243,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                           height={106}
                           alt="121x126"
                           src={`${urlFoto}/${items.BuktiUangMuka.name}`}
-                          loading="lazy"
-                          layout="responsive"
+                          priority={true}
                         />
                       ) : (
                         <p>Gambar tidak tersedia</p>
@@ -259,8 +258,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                           height={100}
                           alt="121x126"
                           src={`${urlFoto}/${items.BuktiPelunasan.name}`}
-                          loading="lazy"
-                          layout="responsive"
+                          priority={true}
                         />
                       ) : (
                         <p>Gambar tidak tersedia</p>
@@ -299,8 +297,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                             height={100}
                             alt="91x100"
                             src={`${urlFoto}/${form.avatar}`}
-                            loading="lazy"
-                            layout="responsive"
+                            priority={true}
                           />
                         </div>
                       )}
@@ -334,8 +331,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                             height={100}
                             alt="91x100"
                             src={`${urlFoto}/${form.avatarLunas}`}
-                            loading="lazy"
-                            layout="responsive"
+                            priority={true}
                           />
                         </div>
                       )}

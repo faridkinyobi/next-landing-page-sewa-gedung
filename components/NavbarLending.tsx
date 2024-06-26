@@ -52,8 +52,8 @@ const NavbarLending = () => {
           src="/img/logo5coklat.svg"
           alt="logo"
           width={250}
-          height={950}
-          loading="lazy"
+          height={150}
+          priority={true}
         />
         <div className="static lg:hidden">
           {router.pathname !== "/signin" && (

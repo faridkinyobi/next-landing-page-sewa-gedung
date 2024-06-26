@@ -40,6 +40,7 @@ export default function Navdown({
             alt="semina"
             width={45}
             height={45}
+            priority={true}
           />
           {isOpen ? (
             <BsFillCaretDownFill className="text-white-10 font-bold text-3xl ml-8 md:ml-2 mt-2 " />
