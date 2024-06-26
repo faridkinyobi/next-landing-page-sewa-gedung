@@ -2,21 +2,7 @@
 module.exports = {
   // Konfigurasi lainnya di sini
   // output: "standalone",
-  reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-      };
-    }
-
-    // Add custom webpack configurations here
-    const path = require('path');
-    config.resolve.alias['@'] = path.resolve(__dirname);
-
-    return config;
-  },
+  distDir:"_next",
   images: {
     remotePatterns: [
       {
