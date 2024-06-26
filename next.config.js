@@ -1,8 +1,14 @@
+const dotenv = require('dotenv');
+dotenv.config();
 /** @type {import('next').NextConfig} */
+
 module.exports = {
   // Konfigurasi lainnya di sini
   // output: "standalone",
-  distDir:"_next",
+  env: {
+    API_URL: process.env.API_URL,
+  },
+  distDir: ".next",
   images: {
     remotePatterns: [
       {
