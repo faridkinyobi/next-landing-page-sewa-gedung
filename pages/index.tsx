@@ -64,7 +64,7 @@ export async function getServerSideProps() {
     ]);
     const data = paketRespon?.data;
     const event = eventRespon?.data;
-    console.log(data)
+    console.log(await getData(`${process.env.NEXT_PUBLIC_API}/app/v1/PeketPelanggan`))
     return {
       props: {
         data,
