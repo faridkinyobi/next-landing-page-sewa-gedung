@@ -10,7 +10,8 @@ import { useReactToPrint } from "react-to-print";
 import { PrintComponent } from "../../components/PrintComponent";
 import CardBank from "../../components/CardBank";
 import { postDataHarga, postData } from "../../utils/fetchData";
-import Image from "next/image";
+import BuktiPemayaran from "@/components/BuktiPembayaranComponen";
+import Pemayaran from "@/components/PembayaranComponent";
 interface HistoryPaket {
   title: string;
   hari: string;
@@ -22,7 +23,6 @@ interface HistoryPaket {
   tgl_akhir: Date;
   hargadetail: number;
 }
-
 interface Order {
   historyPaket: HistoryPaket;
   status: string;
@@ -34,7 +34,6 @@ interface Order {
   MetPembayaran: string;
   _id: string;
 }
-
 interface ImageData {
   image: {
     name: string;
@@ -62,6 +61,7 @@ interface DashType {
   img: ImageData[];
   RePay: ImageData[];
 }
+
 export default function Dashboard({ data, img, RePay }: DashType) {
   const router = useRouter();
   const componentRef = useRef(null);
@@ -232,47 +232,14 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           <div key={index}>
             {item.MetPembayaran === "transfer" && (
               <>
-                {img.map((items, index) => (
-                  <div key={index} className="flex gap-5 mt-6">
-                    <div className="border-2 p-2 text-white-10">
-                      <h1>Bukti Pembayaran Uang Muka</h1>
-                      {items.BuktiUangMuka?.name ? (
-                        <Image
-                          className=" max-w-40 max-h-40"
-                          width={100}
-                          height={106}
-                          alt="121x126"
-                          src={`${urlFoto}/${items.BuktiUangMuka.name}`}
-                          priority={true}
-                        />
-                      ) : (
-                        <p>Gambar tidak tersedia</p>
-                      )}
-                    </div>
-                    <div className="border-2 p-2 text-white-10">
-                      <h1>Bukti Pembayaran Lunas</h1>
-                      {items.BuktiPelunasan?.name ? (
-                        <Image
-                          className=" max-w-40 max-h-40"
-                          width={100}
-                          height={100}
-                          alt="121x126"
-                          src={`${urlFoto}/${items.BuktiPelunasan.name}`}
-                          priority={true}
-                        />
-                      ) : (
-                        <p>Gambar tidak tersedia</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                <BuktiPemayaran img={img} />
               </>
             )}
             {item.MetPembayaran === "transfer" && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="grid grid-flow-row-dense mt-10">
                   {RePay.map((items, index) => (
-                    <div className="" key={index}>
+                    <div key={index}>
                       <CardBank
                         image={`${urlFoto}/${items.image?.name}`}
                         title={items.type}
@@ -283,73 +250,83 @@ export default function Dashboard({ data, img, RePay }: DashType) {
 
                   {/*Pembayaran*/}
                 </div>
+                <Pemayaran
+                  form={form}
+                  handelUpate={handelUpate}
+                  handleChange={handleChange}
+                  handPembayaran={handPembayaran}
+                />
                 <div className="Pembayaran  flex">
                   {/* Input Uangmuka */}
-                  {!form.getBuktiUangmuka && (
-                    <div className="flex flex-col">
-                      <label className=" mx-1 text-xl text-gray-10  ">
-                        Uang Muka
-                      </label>
-                      {form.avatar !== "" && (
-                        <div>
-                          <Image
-                            width={91}
-                            height={100}
-                            alt="91x100"
-                            src={`${urlFoto}/${form.avatar}`}
-                            priority={true}
-                          />
-                        </div>
-                      )}
-                      <input
-                        name="avatar"
-                        type="file"
-                        placeholder="img"
-                        onChange={handleChange}
-                        className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
-                      />
-                      <button
-                        className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
-                        onClick={handPembayaran}
-                      >
-                        submite
-                      </button>
-                    </div>
-                  )}
+                  {
+                    // !form.getBuktiUangmuka && (
+                    //   <div className="flex flex-col">
+                    //     <label className=" mx-1 text-xl text-gray-10  ">
+                    //       Uang Muka
+                    //     </label>
+                    //     {form.avatar !== "" && (
+                    //       <div>
+                    //         <Image
+                    //           width={91}
+                    //           height={100}
+                    //           alt="91x100"
+                    //           src={`${urlFoto}/${form.avatar}`}
+                    //           priority={true}
+                    //         />
+                    //       </div>
+                    //     )}
+                    //     <input
+                    //       name="avatar"
+                    //       type="file"
+                    //       placeholder="img"
+                    //       onChange={handleChange}
+                    //       className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
+                    //     />
+                    //     <button
+                    //       className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
+                    //       onClick={handPembayaran}
+                    //     >
+                    //       submite
+                    //     </button>
+                    //   </div>
+                    // )
+                  }
                   {/* End Input Nota Uangmuka */}
 
                   {/* Input Nota pelunasan */}
-                  {form.getBuktiUangmuka !== "" && !form.getBuktiLunas && (
-                    <div className="flex flex-col">
-                      <label className="mx-1 text-xl text-gray-10">
-                        Pelunasan
-                      </label>
-                      {form.avatarLunas !== "" && (
-                        <div>
-                          <Image
-                            width={91}
-                            height={100}
-                            alt="91x100"
-                            src={`${urlFoto}/${form.avatarLunas}`}
-                            priority={true}
-                          />
-                        </div>
-                      )}
-                      <input
-                        name="avatarLunas"
-                        type="file"
-                        placeholder="img"
-                        onChange={handleChange}
-                        className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
-                      />
-                      <Button
-                        className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
-                        type="button"
-                        title="upload"
-                        onClick={handelUpate}
-                      />
-                    </div>
-                  )}
+                  {
+                    // form.getBuktiUangmuka !== "" && !form.getBuktiLunas && (
+                    //   <div className="flex flex-col">
+                    //     <label className="mx-1 text-xl text-gray-10">
+                    //       Pelunasan
+                    //     </label>
+                    //     {form.avatarLunas !== "" && (
+                    //       <div>
+                    //         <Image
+                    //           width={91}
+                    //           height={100}
+                    //           alt="91x100"
+                    //           src={`${urlFoto}/${form.avatarLunas}`}
+                    //           priority={true}
+                    //         />
+                    //       </div>
+                    //     )}
+                    //     <input
+                    //       name="avatarLunas"
+                    //       type="file"
+                    //       placeholder="img"
+                    //       onChange={handleChange}
+                    //       className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
+                    //     />
+                    //     <Button
+                    //       className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
+                    //       type="button"
+                    //       title="upload"
+                    //       onClick={handelUpate}
+                    //     />
+                    //   </div>
+                    // )
+                  }
                   {/* end  Nota pelunakan */}
                 </div>
               </div>

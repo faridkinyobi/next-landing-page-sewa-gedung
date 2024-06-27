@@ -13,7 +13,7 @@ export default function Settings() {
           <h3 className="py-4 text-slate-500">Ubah data diri kamu</h3>
           <Link
             className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
-            href={`/edit-new`}
+            href={`/404`}
           >
             edit New
           </Link>

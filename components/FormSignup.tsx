@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "./TextInput";
 import Button from "./Button";
 import { toast } from "react-toastify";
-import router from "next/router";
 import { useRouter } from "next/router";
 import { postData, putData } from "@/utils/fetchData";
 

@@ -9,7 +9,6 @@ import Button from "./Button";
 import Modal from "../components/modal";
 import Cookies from "js-cookie";
 import DetailOrder from "./DetailOrder";
-import PaymentMethodCard from "./PaymentMethodCard";
 type DetailPage = {
   detailPage: {
     _id: string | null;
@@ -136,6 +135,19 @@ export default function FormOrder({
       });
       return;
     }
+    if (!/pernikahan/i.test(form.kegiatan) &&
+      !/event/i.test(form.kegiatan)) {
+      toast.error("Input kegiatan harus memilika kayword pernikahan/envent ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     setShowModal(!showModal);
     if (!showModal) {
       const response = await postData(
@@ -208,13 +220,6 @@ export default function FormOrder({
     }
   };
 
-  // const MinCreatDateMUlai = () => {
-  //   const today = new Date();
-  //   const year = today.getFullYear();
-  //   const month = String(today.getMonth() + 1).padStart(2, "0");
-  //   const day = String(today.getDate()).padStart(2, "0");
-  //   return `${year}-${month}-${day}`;
-  // };
   const MinCreatDateMUlai = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -233,7 +238,6 @@ export default function FormOrder({
 
   const handleSelectMethod = (method: string) => {
     setForm({ ...form, MetPembayaran: method });
-    //console.log(method);
   };
   return (
     <form className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-1 md:mb-1">

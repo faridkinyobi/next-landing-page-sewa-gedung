@@ -1,6 +1,5 @@
 import React from "react";
-import { format } from "date-fns";
-import { BsBuildingFillCheck, BsBagPlus } from "react-icons/bs";
+import { BsBagPlus } from "react-icons/bs";
 interface HistoryPaket {
   title: string;
   hari: string;
@@ -123,7 +122,14 @@ export const PrintComponent = ({ data }: DashType) => {
             {data.map((item, index) => (
               <tr key={index}>
                 <td className="py-3">
-                  {format(new Date(item.date), "MM/dd/yyyy")}
+                  {new Date(item.date).toLocaleString(
+                    "id-ID",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }
+                  )}
                 </td>
                 <td className="px-3">{item.NumberOrder}</td>
                 <td>

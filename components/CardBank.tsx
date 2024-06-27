@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { BsFillCaretLeftFill, BsFillCaretDownFill } from "react-icons/bs";
-import Image from "next/image";
-
+import Img from "./ImgComponen"
 type PaymentMethodCardProps = {
   image: string;
   title: string;
@@ -36,7 +35,7 @@ export default function CardBank({
       }`}
     >
       <div className=" flex items-center justify-around">
-        <Image
+        <Img
           className=" w-24 md:max-h-16 pt-1 md:tp-0 max-h-20 max-w-16 md:max-w-20 "
           src={image}
           alt="98x100"
