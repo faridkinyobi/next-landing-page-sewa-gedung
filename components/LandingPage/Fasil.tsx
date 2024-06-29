@@ -7,7 +7,7 @@ const Fasil = () => {
   return (
     <section className=" mx-2 md:px-24 md:my-10 my-5">
       <div className="shadow-blue-40 shadow-inner py-3 md:mb-10 mb-5  rounded-full">
-        <h1 className="text-center lg:mx-96 mx-10 py-2 bg-blue-20 text-white-10 rounded-full shadow-at">
+        <h1 className="text-center mx-10 py-2 bg-blue-20 text-white-10 rounded-full shadow-at">
           Detail Fasilitas Umum
         </h1>
       </div>
