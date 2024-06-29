@@ -11,8 +11,8 @@ import NavData from "./itemsData";
 
 const Footer = () => {
   return (
-    <footer className="py-10 bg-blue-20 w-full h-full md:h-full max-w-full ">
-      <div className=" flex flex-wrap justify-between mx-5 md:mx-10 lg:mx-28 text-white-10 items-center">
+    <footer className="py-10 bg-blue-20">
+      <div className=" flex flex-wrap justify-between mx-5 md:mx-5 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
           <ImgComponent
             className="w-44 h-auto"
