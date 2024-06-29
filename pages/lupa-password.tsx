@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Input from "../components/TextInput";
 import Button from "../components/Button";
 import { toast } from "react-toastify";
-import router from "next/router";
 import { putData } from "@/utils/fetchData";
 
 export default function LupaPassword() {

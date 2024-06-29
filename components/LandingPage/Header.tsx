@@ -1,10 +1,6 @@
-"use client";
-import Image from "next/image";
-import React, { useState } from "react";
-
+import React from "react";
 import NavbarLending from "../NavbarLending";
 import Button from "../Button";
-import ImgBg from "../../public/img/Group59bg.svg";
 import {
   BsPCircle,
   BsFillPersonLinesFill,
@@ -40,7 +36,7 @@ const Header = () => {
     <header
       className=" h-[50rem] md:h-[58.125rem] bg-cover bg-center bg-no-repeat items-center text-center  "
       style={{
-        backgroundImage: "url('/img/backgroud3.svg')",
+        backgroundImage: "url('/Image/backgroud3.svg')",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -71,11 +67,6 @@ const Header = () => {
         title="Orders"
         onClick={() => router.push("#Package")}
       />
-      {/* <div className="mt-[27rem] mx-28 h-28 bg-blue-30">
-        <div className=" h-23 bg-white-10/20 py-10 mr-[50rem]">
-
-        </div>
-      </div> */}
     </header>
   );
 };

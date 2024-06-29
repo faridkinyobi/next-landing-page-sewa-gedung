@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavbarLending from "../components/NavbarLending";
 import Footer from "../components/Footer";
-import Image from "next/image";
+import ImgComponent from "../components/ImgComponen";
 import {
   BsEnvelope,
   // BsFacebook,
@@ -11,25 +11,12 @@ import {
   // BsYoutube,
 } from "react-icons/bs";
 
-interface PaketType {
-  data: {
-    titel: string;
-    _id: number;
-    fasilitas: { detai: string }[];
-    harga: {
-      kegiata: string;
-      hari: string;
-      warga: string;
-      hargadetail: number;
-    }[];
-  }[];
-}
-const About = ({ data }: PaketType) => {
+const About = () => {
   const [clicked, setClicked] = useState(true);
   return (
     <div
       className=" h-[794px]  bg-cover bg-center"
-      style={{ backgroundImage: "url('/img/bg-about.svg')" }}
+      style={{ backgroundImage: "url('/Image/bg-about.svg')" }}
     >
       <NavbarLending />
       <div
@@ -39,14 +26,14 @@ const About = ({ data }: PaketType) => {
             : "py-[8rem] mt-40 transition_duration lg:mt-auto"
         }`}
       >
-        Bagaimana{" "}
+        Bagaimana
         <span className="bg-gradient-to-br from-violet-500 to-teal-400 bg-clip-text text-transparent">
           Gedung ini
         </span>
         <br />
         <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-conic-gradient bg-clip-text text-transparent">
-          Dibangun dan{" "}
-        </span>{" "}
+          Dibangun dan
+        </span>
         Dipersewakan
       </div>
       <div className="paragraf text-justify mx-10  lg:mx-[6rem] md:mt-96 mt-48">
@@ -97,15 +84,15 @@ const About = ({ data }: PaketType) => {
 
       {/* <Paket data={data}/> */}
 
-      <div className="kontak my-10 xl:my-20 mx-10 lg:mx-24 flexStart ">
+      <div className="About my-10 xl:my-20 mx-10 lg:mx-24 flexStart ">
         <div className="kontak flex flex-wrap md:static gap-16">
-          <Image
-            src="/img/abaut.svg"
-            alt="Logo"
+          <ImgComponent
+            src="/Image/abaut.svg"
+            alt="image gedung cangkol"
             width={200}
             height={200}
-            className="shadow-lg rounded-2xl md:w-[300px] md:h-[400px]:"
-            loading="lazy"
+            className=" rounded-2xl md:w-[300px] md:h-[400px] h-auto w-60"
+            priority={true}
           />
           <div className="md:mt-20 mt-2  text-left sm:w-[19rem] sm:text-2xl ">
             <p className="text-base sm:text-lg flex  ">
@@ -123,7 +110,7 @@ const About = ({ data }: PaketType) => {
           </div>
         </div>
       </div>
-      <div className="mx-10 md:mx-60  mb-10">
+      <div className=" mx-10 md:mx-60  mb-10">
         <h1 className="titel font-bold text-3xl  text-blue-40  my-7">Maps</h1>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15818.656562341292!2d110.8778483!3d-7.611477199999981!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a3df443986921%3A0xd962e1261bc15f22!2sGedung%20Cangkol!5e0!3m2!1sid!2sid!4v1704034189061!5m2!1sid!2sid"

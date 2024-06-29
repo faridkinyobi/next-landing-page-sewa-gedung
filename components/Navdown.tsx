@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import NavLink from "./NavLink";
-import Image from "next/image";
+import ImgComponent from "./ImgComponen";
 import { BsFillCaretLeftFill, BsFillCaretDownFill } from "react-icons/bs";
 import Cookies from "js-cookie";
 import Link from "next/link";
@@ -18,7 +18,6 @@ export default function Navdown({
   const lastName = Cookies.get("lastName");
   const firstName = Cookies.get("firstName");
 
-
   return (
     <div className="navbar-nav  mx-5">
       <div className="nav-item dropdown flex flex-row items-center gap-3">
@@ -29,14 +28,10 @@ export default function Navdown({
           </span>
         </a>
 
-        <a
-          className="nav-link flex items-center"
-          onClick={hendelDropdown}
-          
-        >
-          <Image
+        <a className="nav-link flex items-center" onClick={hendelDropdown}>
+          <ImgComponent
             className=" absolute top-5 left-8 md:static border-2 hover:border-blue-40 rounded-full cursor-pointer active:border-white-10"
-            src="/img/avatar.png"
+            src="/Image/avatar.png"
             alt="semina"
             width={45}
             height={45}

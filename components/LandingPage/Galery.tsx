@@ -1,6 +1,5 @@
-import React from "react";
-import Img from "../ImgComponen";
-
+import ImgComponen from "../ImgComponen";
+import itemsData from "../itemsData";
 export const Galery = () => {
   return (
     <section id="galery" className="galery mx-10 lg:mx-[6rem] my-5 md:mt-20 ">
@@ -9,59 +8,59 @@ export const Galery = () => {
         Documentasi Gedung
       </p>
       <div className="static grid col-auto gap-4">
-        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2">
-          <div className="grid grid-cols-2 gap-2 max-w-max h-auto">
-            <Img
-              src="/img/gambar1.svg"
-              alt="Logo"
+        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-6">
+          <div className="grid grid-cols-2 gap-6 max-w-max h-auto">
+            <ImgComponen
+              src={itemsData.DaftarImag.gambar1}
+              alt="gambar"
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              priority={true}
+              loading="lazy"
             />
-            <Img
-              src="/img/gambar3.svg"
-              alt="Logo"
+            <ImgComponen
+              src={itemsData.DaftarImag.gambar3}
+              alt="gambar"
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              priority={true}
+              loading="lazy"
             />
           </div>
-          <Img
-            src="/img/gambar2.svg"
-            alt="Logo"
+          <ImgComponen
+            src={itemsData.DaftarImag.gambar2}
+            alt="gambar"
             width={604}
             height={194}
             className="md:w-[27rem] lg:w-[38rem]"
-            priority={true}
+            loading="lazy"
           />
         </div>
-        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-2 max-w-max h-auto">
-          <Img
-            src="/img/gambar8.svg"
-            alt="Logo"
+        <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-6 max-w-max h-auto">
+          <ImgComponen
+            src={itemsData.DaftarImag.gambar8}
+            alt="gambar"
             width={604}
             height={194}
             className="md:w-[27rem] lg:w-[38rem]"
-            priority={true}
+            loading="lazy"
           />
-          <div className="grid grid-cols-2 gap-2">
-            <Img
-              src="/img/gambar5.svg"
-              alt="Logo"
+          <div className="grid grid-cols-2 gap-6">
+            <ImgComponen
+              src={itemsData.DaftarImag.gambar5}
+              alt="gambar"
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              priority={true}
+              loading="lazy"
             />
-            <Img
-              src="/img/gambar6.svg"
-              alt="Logo"
+            <ImgComponen
+              src={itemsData.DaftarImag.gambar6}
+              alt="gambar"
               width={210}
               height={189}
               className="md:w-[10rem] lg:w-[13rem]"
-              priority={true}
+              loading="lazy"
             />
           </div>
         </div>

@@ -5,8 +5,8 @@ import NavLink from "./NavLink";
 import Cookies from "js-cookie";
 import Navdown from "./Navdown";
 import NavData from "./itemsData";
-import Image from "next/image";
-
+import Image from './ImgComponen';
+import logoNav from "../public/Image/logo5coklat.svg";
 type useState = {
   clicked: boolean;
   setClicked: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,15 +46,14 @@ const NavbarLending = () => {
     <nav className="w-full md:py-2">
       <div className="padding-container flexBetween max-w-auto h-auto">
         <Image
-          className={` left-28 md:left-96 lg:static md:top-6 ${
+          className={` left-28 md:left-96 lg:static md:top-6 w-60 h-auto ${
             token ? "absolute" : "static "
           }`}
-          src="/img/logo5coklat.svg"
-          alt="logo"
+          src={logoNav}
+          alt="Picture"
           width={250}
           height={150}
           priority={true}
-          
         />
         <div className="static lg:hidden">
           {router.pathname !== "/signin" && (

@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "./ImgComponen"; // Assuming you have an Img component defined
+import ImgComponent from "./ImgComponen"; 
 
 interface BuktiPemayaranProps {
   img: {
@@ -22,7 +22,7 @@ const BuktiPemayaran: React.FC<BuktiPemayaranProps> = ({ img }) => {
           <div className="border-2 p-2 text-white-10">
             <h1>Bukti Pembayaran Uang Muka</h1>
             {items.BuktiUangMuka?.name ? (
-              <Img
+              <ImgComponent
                 className="max-w-40 max-h-40"
                 width={100}
                 height={106}
@@ -37,7 +37,7 @@ const BuktiPemayaran: React.FC<BuktiPemayaranProps> = ({ img }) => {
           <div className="border-2 p-2 text-white-10">
             <h1>Bukti Pembayaran Lunas</h1>
             {items.BuktiPelunasan?.name ? (
-              <Img
+              <ImgComponent
                 className="max-w-40 max-h-40"
                 width={100}
                 height={100}

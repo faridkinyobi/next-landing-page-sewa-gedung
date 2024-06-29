@@ -34,7 +34,6 @@ const Pemayaran: React.FC<PemayaranProps> = ({
                 height={100}
                 alt="91x100"
                 src={`${urlFoto}/${form.avatar}`}
-                priority={true}
               />
             </div>
           )}
@@ -66,7 +65,6 @@ const Pemayaran: React.FC<PemayaranProps> = ({
                 height={100}
                 alt="91x100"
                 src={`${urlFoto}/${form.avatarLunas}`}
-                priority={true}
               />
             </div>
           )}

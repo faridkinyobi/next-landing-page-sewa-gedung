@@ -35,9 +35,12 @@ const config: Config = {
       boxShadow:{
         pxl: '0 20px 25px -5px #131226, 0 10px 10px -5px #292e44',
         ml: '2px 3px 0 1px #ffff',
-        alg: '20px 20px 0 3px #131226',
+        alg: '20px 20px 40px 1px #131226' ,
         at: '1px 5px 5px 0px #131226',
        
+      },
+      filter: {
+        'blur-10': 'blur(10px)',
       },
     },
   },

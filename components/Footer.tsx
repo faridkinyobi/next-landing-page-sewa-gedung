@@ -5,7 +5,7 @@ import {
   BsYoutube,
   BsTelephone,
 } from "react-icons/bs";
-import Image from "next/image";
+import ImgComponent from "./ImgComponen";
 import NavLink from "./NavLink";
 import NavData from "./itemsData";
 
@@ -14,12 +14,13 @@ const Footer = () => {
     <footer className="py-10 bg-blue-20 w-full h-full md:h-full max-w-full ">
       <div className=" flex flex-wrap justify-between mx-10 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
-          <Image
-            src="/img/logo5coklat.svg"
+          <ImgComponent
+            className="w-60 h-auto"
+            src="/Image/logo5coklat.svg"
             alt="Logo"
             width={250}
             height={950}
-            priority={true}
+            loading="lazy"
           />
           <p className="  lg:text-2xl w-60 ml-3 h-auto my-3">
             Website ini resmi milik gedung desa cangkol

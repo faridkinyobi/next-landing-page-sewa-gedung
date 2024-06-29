@@ -10,6 +10,7 @@ module.exports = {
   },
   distDir: ".next",
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: "http",

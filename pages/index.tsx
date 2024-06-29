@@ -1,8 +1,5 @@
-// import Image from "next/image";
-// import dynamic from "next/dynamic";
-// ("use strict");
-import { getData } from "../utils/fetchData";
 import React from "react";
+import { getData } from "../utils/fetchData";
 import EventCalendar from "../components/LandingPage/Calender";
 import Alur from "../components/LandingPage/Alur";
 import About from "../components/LandingPage/About";
@@ -37,12 +34,7 @@ interface PaketType {
 
 export default function Home({ data, event }: PaketType) {
   return (
-    <main
-    // style={{
-    //   backgroundImage: "url('/img/Group61.svg')",
-    //   backgroundSize: "cover",
-    // }}
-    >
+    <main>
       <Header />
       <Alur />
       <Fasil />

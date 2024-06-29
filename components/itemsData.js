@@ -86,7 +86,14 @@ const Petunjuk = [
     dec: "Batas waktu pembayaran uang muka 3 hari  dan batas pembayaran uang pelunasan pada h-7 sebelum gedung digunakan",
   },
 ];
-
-const itemsData = { Aluritem, Aluritem2, NavbarItem, Petunjuk };
+const DaftarImag = {
+  gambar1: "/Image/gambar1.svg",
+  gambar2: "/Image/gambar2.svg",
+  gambar3: "/Image/gambar3.svg",
+  gambar5: "/Image/gambar5.svg",
+  gambar6: "/Image/gambar6.svg",
+  gambar8: "/Image/gambar8.svg",
+};
+const itemsData = { Aluritem, Aluritem2, NavbarItem, Petunjuk, DaftarImag };
 
 export default itemsData;
