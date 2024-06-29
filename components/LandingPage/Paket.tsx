@@ -78,11 +78,11 @@ const Paket = ({ data }: PaketType) => {
         <p className="py-2 md:text-2xl text-xl  ml-4 text-gray-10 lg:text-left">
           Pilih paket Sewa Gedung
         </p>
-        <div className=" lg:mx-48  mx-10">
+        <div className="mx-2 md:mx-20 lg:mx-44">
           <Slider {...settings}>
             {data?.map((item, index) => (
               <div
-                className="my-4  px-3 rounded-b-xl text-blue-40 max-w-96 max-h-max"
+                className="my-4 px-3 rounded-b-xl text-blue-40 max-w-max max-h-max cursor-pointer hover:bg-slate-100 hover:rounded-t-xl delay-200 transition-all ease-in-out"
                 key={index}
               >
                 <div className="text-center items-center bg-white-10 py-2 rounded-t-xl">
@@ -107,13 +107,13 @@ const Paket = ({ data }: PaketType) => {
                   </p>
                   <div className="m-5">
                     <Link
-                      className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
+                      className="btn_green text-blue-30 px-10  font-semibold xl:py-3 py-3 rounded-full"
                       href={`/sewa/${item._id}`}
                     >
                       Pilih Paket
                     </Link>
                     <h2
-                      className="font-semibold  bg-red-500 md:py-2 py-2 md:mx-16 mx-2 my-5 text-white-20 cursor-pointer rounded-full  shadow-red-500  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-red-600 hover:bg-red-500/70 "
+                      className="font-semibold  bg-red-500 py-2 mx-2 md:mx-9  my-5 text-white-20 cursor-pointer rounded-full  shadow-red-500  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-red-600 hover:bg-red-500/70 "
                       onClick={() => hendelharga(index)}
                     >
                       Harga

@@ -13,9 +13,7 @@ export default function ResetPassword() {
     newPassword: "",
     confirmPassword: "",
   });
-//   console.log(form);
-//   console.log("Token:", token);
-//   console.log("Email:", email);
+
   useEffect(() => {
     if (email) {
       setForm((prevForm) => ({ ...prevForm, email: email as string }));
