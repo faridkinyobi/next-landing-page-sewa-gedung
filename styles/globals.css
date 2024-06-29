@@ -48,7 +48,7 @@ body {
 @layer utilities {
 
   .btn_blue { 
-    @apply xl:py-3 py-4 px-[7.5rem]  lg:px-14  text-white-10 bg-blue-20 hover:bg-slate-400/25 cursor-pointer transition ease-out text-center active:outline focus:outline-gray-10
+    @apply lg:py-3 py-4 px-[7.5rem] md:px-10   text-white-10 bg-blue-20 hover:bg-slate-400/25 cursor-pointer transition ease-out text-center active:outline focus:outline-gray-10
   }
 
   .btn_green { 

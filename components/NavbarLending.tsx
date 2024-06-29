@@ -5,7 +5,7 @@ import NavLink from "./NavLink";
 import Cookies from "js-cookie";
 import Navdown from "./Navdown";
 import NavData from "./itemsData";
-import Image from './ImgComponen';
+import Image from "next/image";
 import logoNav from "../public/Image/logo5coklat.svg";
 type useState = {
   clicked: boolean;
@@ -44,9 +44,9 @@ const NavbarLending = () => {
 
   return (
     <nav className="w-full md:py-2">
-      <div className="padding-container flexBetween max-w-auto h-auto">
+      <div className="padding-container flexBetween">
         <Image
-          className={` left-28 md:left-96 lg:static md:top-6 w-60 h-auto ${
+          className={` left-28 md:left-96 lg:static md:top-6 w-44 h-auto ${
             token ? "absolute" : "static "
           }`}
           src={logoNav}
@@ -77,7 +77,10 @@ const NavbarLending = () => {
           }`}
         >
           {NavData.NavbarItem.map((item, index) => (
-            <li className="  list-none lg:my-auto md:mr-5 my-5" key={index}>
+            <li
+              className="  list-none lg:my-auto md:mr-4 lg:mx-0 my-5"
+              key={index}
+            >
               <NavLink
                 className=" text-xl font-medium mx-2 text-gray-10 hover:text-white-20/90"
                 href={item.url}
@@ -86,32 +89,32 @@ const NavbarLending = () => {
               </NavLink>
             </li>
           ))}
-          <div className="lg:static mx-5 md:mx-0">
-            {router.pathname !== "/signin" && (
-              <div className={`lg:block ${token ? "hidden" : ""}`}>
-                {token ? (
-                  <Navdown
-                    hendelDropdown={hendelDropdown}
-                    isOpen={isOpen}
-                    handleLogout={handleLogout}
-                  />
-                ) : (
-                  <NavLink
-                    className={` btn_blue font-semibold rounded-full text-base border-0 
+        </div>
+        <div className="lg:static mx-5 md:mx-0">
+          {router.pathname !== "/signin" && (
+            <div className={`lg:block ${token ? "hidden" : ""}`}>
+              {token ? (
+                <Navdown
+                  hendelDropdown={hendelDropdown}
+                  isOpen={isOpen}
+                  handleLogout={handleLogout}
+                />
+              ) : (
+                <NavLink
+                  className={` btn_blue font-semibold rounded-full text-base border-0 
               ${
                 router.pathname !== "/signin" && router.pathname !== "/signup"
                   ? "text-blue-10"
                   : "hidden"
               } 
             `}
-                    href={"/signin"}
-                  >
-                    Sign In
-                  </NavLink>
-                )}
-              </div>
-            )}
-          </div>
+                  href={"/signin"}
+                >
+                  Sign In
+                </NavLink>
+              )}
+            </div>
+          )}
         </div>
         <div
           className="absolute top-0 md:top-1 right-0 m-5 p-1 rounded-xl border-2 border-gray-10 lg:hidden ms:hidden active:border-white-10 mr-7"
