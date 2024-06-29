@@ -43,7 +43,7 @@ const NavbarLending = () => {
   const router = useRouter();
 
   return (
-    <nav className="w-full md:py-2">
+    <nav className="w-full md:py-2 ">
       <div className="padding-container flexBetween">
         <Image
           className={` left-28 md:left-96 lg:static md:top-6 w-44 h-auto ${
@@ -71,7 +71,7 @@ const NavbarLending = () => {
           )}
         </div>
         <div
-          className={` bg-slate-600 pb-8 md:pb-0 md:bg-transparent lg:gap-2  lg:flex ms:flex px-3 absolute lg:static w-full  left-0 top-14 md:w-auto translate-all ease-in-out duration-700
+          className={` bg-slate-600 pb-8 lg:pb-0 lg:bg-transparent lg:gap-2  lg:flex px-3 absolute lg:static w-full  left-0 top-14 lg:w-auto translate-all ease-in-out duration-700
              ${clicked ? " top-20 " : "left-[-100rem]"} ${
             router.pathname !== "/Singnin" ? "" : "mx-auto"
           }`}
@@ -89,8 +89,33 @@ const NavbarLending = () => {
               </NavLink>
             </li>
           ))}
+          <div className="lg:static mx-auto">
+            {router.pathname !== "/signin" && (
+              <div className={`lg:block ${token ? "hidden" : ""}`}>
+                {token ? (
+                  <Navdown
+                    hendelDropdown={hendelDropdown}
+                    isOpen={isOpen}
+                    handleLogout={handleLogout}
+                  />
+                ) : (
+                  <NavLink
+                    className={` btn_blue font-semibold rounded-full text-base border-0 ${
+                      router.pathname !== "/signin" &&
+                      router.pathname !== "/signup"
+                        ? "text-blue-10"
+                        : "hidden"
+                    } `}
+                    href={"/signin"}
+                  >
+                    Sign In
+                  </NavLink>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-        <div className="lg:static mx-5 md:mx-0">
+        {/* <div className="md:static mx-5 md:mx-0 hidden">
           {router.pathname !== "/signin" && (
             <div className={`lg:block ${token ? "hidden" : ""}`}>
               {token ? (
@@ -101,13 +126,12 @@ const NavbarLending = () => {
                 />
               ) : (
                 <NavLink
-                  className={` btn_blue font-semibold rounded-full text-base border-0 
-              ${
-                router.pathname !== "/signin" && router.pathname !== "/signup"
-                  ? "text-blue-10"
-                  : "hidden"
-              } 
-            `}
+                  className={` btn_blue font-semibold rounded-full text-base border-0 ${
+                    router.pathname !== "/signin" &&
+                    router.pathname !== "/signup"
+                      ? "text-blue-10"
+                      : "hidden"
+                  } `}
                   href={"/signin"}
                 >
                   Sign In
@@ -115,7 +139,7 @@ const NavbarLending = () => {
               )}
             </div>
           )}
-        </div>
+        </div> */}
         <div
           className="absolute top-0 md:top-1 right-0 m-5 p-1 rounded-xl border-2 border-gray-10 lg:hidden ms:hidden active:border-white-10 mr-7"
           onClick={handleClick}

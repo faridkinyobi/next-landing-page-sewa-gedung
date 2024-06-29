@@ -19,7 +19,7 @@ export default function Navdown({
   const firstName = Cookies.get("firstName");
 
   return (
-    <div className="navbar-nav  mx-5">
+    <div className="navbar-nav mx-5">
       <div className="nav-item dropdown flex flex-row items-center gap-3">
         <a className="text-xl text-orange-400 hidden md:block w-40 overflow-hidden whitespace-nowrap text-ellipsis">
           Hello,
@@ -44,7 +44,7 @@ export default function Navdown({
           )}
         </a>
         {isOpen && (
-          <ul className="dropdown-menu  transition-transform delay-700  absolute lg:left-[65rem] md:left-10 left-8 md:mt-[15rem] mt-[17rem] text-xl w-36   bg-white-10 rounded-md px-3 py-2">
+          <ul className="dropdown-menu  transition-transform delay-700  absolute lg:left-[55rem] md:left-20 left-8 md:mt-[13rem] mt-[17rem] text-xl w-36   bg-white-10 rounded-md px-3 py-2">
             <li className="my-1 py-1 pl-2 hover:bg-gray-10 hover:rounded-lg ">
               <NavLink href={"/dash/dashboard"} className="my-1">
                 Dashboard
