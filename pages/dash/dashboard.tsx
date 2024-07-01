@@ -1,17 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,Suspense } from "react";
 import { getData, putData } from "../../utils/fetchData";
 import { GetServerSidePropsContext } from "next";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import NavbarLending from "../../components/NavbarLending";
 import { toast } from "react-toastify";
-import Button from "@/components/Button";
 import { useReactToPrint } from "react-to-print";
 import { PrintComponent } from "../../components/PrintComponent";
-import CardBank from "../../components/CardBank";
 import { postDataHarga, postData } from "../../utils/fetchData";
-import BuktiPemayaran from "@/components/BuktiPembayaranComponen";
-import Pemayaran from "@/components/PembayaranComponent";
+import Cookies from "js-cookie";
+import Button from "@/components/Button";
+import NavbarLending from "../../components/NavbarLending";
+import CardBank from "../../components/CardBank";
+// import BuktiPemayaran from "";
+// import Pemayaran from "";
+const BuktiPemayaran = React.lazy(() => import("@/components/BuktiPembayaranComponen"));
+const Pemayaran = React.lazy(() => import("@/components/PembayaranComponent"));
 interface HistoryPaket {
   title: string;
   hari: string;
@@ -129,6 +131,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           setForm({ ...form, BuktiUangMuka: "", [e.target.name]: "" });
         } else {
           const res = await handleImage(e.target.files[0]);
+          console.log(res)
           if (e.target.name === "avatarLunas") {
             setForm({
               ...form,
@@ -225,7 +228,9 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           onClick={handlePrint}
         />
         <div ref={componentRef}>
-          <PrintComponent data={data} />
+          <Suspense fallback={<div className="text-white-10">Loading...</div>}>
+            <PrintComponent data={data} />
+          </Suspense>
         </div>
         {/*rekening*/}
         {data.map((item, index) => (

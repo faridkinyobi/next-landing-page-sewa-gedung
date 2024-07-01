@@ -62,7 +62,7 @@ const Header = () => {
         </p>
       </div>
       <Button
-        className="btn_green  px-14  md:py-3 py-3 text-xl shadow-md shadow-green-10/50 mt-16 "
+        className="btn_green  px-14  md:py-3 py-3 text-xl shadow-md shadow-green-10/50 mt-16 bg-green-10 hover:outline-green-10 hover:bg-green-10/75"
         type="button"
         title="Orders"
         onClick={() => router.push("#Package")}

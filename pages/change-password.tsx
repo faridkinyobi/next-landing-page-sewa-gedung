@@ -35,8 +35,8 @@ export default function ChangePassword() {
   return (
     <main className="bg-blue-30 w-screen-sm h-screen">
       <NavbarLending />
-      <div className="bg-white-20 rounded-2xl  mt-7 md:mt-[1rem] p-7 shadow-x md:mx-[27rem] mx-10">
-        <form>
+      <div className="bg-white-20 rounded-2xl  mt-7 my:my-auto shadow-x md:mx-auto max-w-fit mx-auto  my-20">
+        <form className="p-10">
           <Input
             name="email"
             type="text"
@@ -70,7 +70,7 @@ export default function ChangePassword() {
             value={form.confirmPassword}
           />
           <Button
-            className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90"
+            className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90 bg-green-10 hover:outline-green-10"
             type="button"
             title="change"
             onClick={handleSubmit}

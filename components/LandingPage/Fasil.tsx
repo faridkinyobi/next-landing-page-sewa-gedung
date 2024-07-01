@@ -3,9 +3,8 @@ import React, { useState } from "react";
 const Fasil = () => {
   // State untuk menentukan bagian mana yang ditampilkan
   const [selectedSection, setSelectedSection] = useState("section1");
-
   return (
-    <section className=" mx-2 md:px-24 md:my-10 my-5">
+    <section className=" mx-2 md:px-24 my-20">
       <div className="shadow-blue-40 shadow-inner py-3 md:mb-10 mb-5  rounded-full">
         <h1 className="text-center mx-10 py-2 bg-blue-20 text-white-10 rounded-full shadow-at">
           Detail Fasilitas Umum

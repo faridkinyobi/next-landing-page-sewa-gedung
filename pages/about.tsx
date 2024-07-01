@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import NavbarLending from "../components/NavbarLending";
 import Footer from "../components/Footer";
 import ImgComponent from "../components/ImgComponen";
@@ -12,32 +11,25 @@ import {
 } from "react-icons/bs";
 
 const About = () => {
-  const [clicked, setClicked] = useState(true);
   return (
     <div
-      className=" h-[794px]  bg-cover bg-center"
+      className=" h-[794px]  bg-cover bg-center "
       style={{ backgroundImage: "url('/Image/bg-about.svg')" }}
     >
       <NavbarLending />
-      <div
-        className={`text-white-10 font-semibold lg:text-[3rem] leading-none text-[45px]  text-center mt-20 ${
-          clicked
-            ? "transition_duration"
-            : "py-[8rem] mt-40 transition_duration lg:mt-auto"
-        }`}
-      >
-        Bagaimana
+      <h1 className="titel text-center text-white-10 font-semibold md:text-[3rem] leading-tight text-[2.5rem] md:my-10 my-auto mt-20 mx-5">
+        Bagaimana{" "}
         <span className="bg-gradient-to-br from-violet-500 to-teal-400 bg-clip-text text-transparent">
           Gedung ini
         </span>
         <br />
-        <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-conic-gradient bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-conic-gradient bg-clip-text text-transparent ">
           Dibangun dan
-        </span>
+        </span>{" "}
         Dipersewakan
-      </div>
-      <div className="paragraf text-justify mx-10  lg:mx-[6rem] md:mt-96 mt-48">
-        <h1 className="titel font-semibold text-2xl my-7 text-slate-500">
+      </h1>
+      <div className="paragraf text-justify mx-5  lg:mx-[6rem] md:mt-96 mt-48 my-auto bg-[#ffffff67] p-9">
+        <h1 className="titel font-extrabold text-2xl my-7">
           Gedung Pertenuan Desa Cangkol
         </h1>
         <p className="containt font-normal text-sm  md:text-xl">
@@ -84,7 +76,7 @@ const About = () => {
 
       {/* <Paket data={data}/> */}
 
-      <div className="About my-10 xl:my-20 mx-10 lg:mx-24 flexStart ">
+      <div className="About my-10 xl:my-20 mx-5 lg:mx-24 flexStart bg-[#ffffff67] p-9">
         <div className="kontak flex flex-wrap md:static gap-16">
           <ImgComponent
             src="/Image/abaut.svg"
@@ -110,7 +102,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className=" mx-10 md:mx-60  mb-10">
+      <div className=" mx-5 lg:mx-24  my-7 About bg-[#ffffff67] p-9">
         <h1 className="titel font-bold text-3xl  text-blue-40  my-7">Maps</h1>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15818.656562341292!2d110.8778483!3d-7.611477199999981!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a3df443986921%3A0xd962e1261bc15f22!2sGedung%20Cangkol!5e0!3m2!1sid!2sid!4v1704034189061!5m2!1sid!2sid"

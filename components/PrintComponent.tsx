@@ -172,7 +172,7 @@ export const PrintComponent = ({ data }: DashType) => {
             ))}
           </tbody>
         </table>
-        <h1 className="hidden print:block ">hallo</h1>
+        {/* <h1 className="hidden print:block ">hallo</h1> */}
       </div>
     </div>
   );

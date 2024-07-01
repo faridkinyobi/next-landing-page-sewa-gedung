@@ -10,7 +10,7 @@ const Alur = () => {
       <div className="flex-1">
         <h1 className="p-4 font-bold text-3xl mb-8 text-blue-40">Alur Sewa</h1>
         <div className="flex flex-wrap gap-0  lg:gap-[10rem] justify-center">
-          <div className="border-blue-30  border-l-8 sm:ml-6">
+          <div className="border-blue-30  border-l-8 ml-6">
             {alurData.Aluritem.map((item, index) => (
               <div key={index} className=" relative ml-6">
                 <AlurComponen
@@ -21,7 +21,7 @@ const Alur = () => {
               </div>
             ))}
           </div>
-          <div className="border-blue-30  border-l-8 sm:ml-6">
+          <div className="border-blue-30  border-l-8 ml-7">
             {alurData.Aluritem2.map((item, index) => (
               <div key={index} className=" relative ml-6">
                 <AlurComponen Number={item.Number} desc={item.desc} />

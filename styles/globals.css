@@ -45,6 +45,34 @@ body {
   background: inherit;
 }
 
+.paragraf{
+  position: relative;
+}
+/* global.css */
+.paragraf::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top left, #64748b23 0%, #64748b65 100% );
+  transform: translate3d(0px, 19rem, 0) scale(0.95);
+  filter: blur(10rem);
+  opacity: var(0.7);
+  transition: opacity 0.3s; /* Ensure it stays behind the content */
+}
+.paragraf::after{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+}
 @layer utilities {
 
   .btn_blue { 
@@ -52,7 +80,7 @@ body {
   }
 
   .btn_green { 
-    @apply rounded-full cursor-pointer  duration-300 transition-all ease-in-out outline outline-green-10/5 bg-green-10 hover:outline-green-10 hover:bg-green-10/75
+    @apply rounded-full cursor-pointer  duration-300 transition-all ease-in-out outline outline-green-10/5 
   }
   .btn_slate { 
     @apply   bg-slate-400 text-gray-40 hover:text-white-10 cursor-pointer  duration-300 transition-all ease-in-out outline-2 hover:outline hover:outline-slate-500 hover:bg-slate-400/70

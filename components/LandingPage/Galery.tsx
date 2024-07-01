@@ -1,8 +1,10 @@
-import ImgComponen from "../ImgComponen";
+import React from "react";
+//import ImgComponen from "../ImgComponen";
+const ImgComponen = React.lazy(() => import("../ImgComponen"));
 import itemsData from "../itemsData";
 export const Galery = () => {
   return (
-    <section id="galery" className="galery mx-5 lg:mx-[6rem] my-5 md:mt-20 ">
+    <section id="galery" className="galery mx-5 lg:mx-[6rem] my-20">
       <h1 className=" font-bold text-3xl ml-4 text-blue-40 ">Galery</h1>
       <p className="py-2 md:text-2xl text-xl  ml-4 text-blue-20">
         Documentasi Gedung
@@ -15,7 +17,7 @@ export const Galery = () => {
               alt="gambar"
               width={210}
               height={189}
-              className="md:w-[10rem] lg:w-[13rem]"
+              className="w-auto h-auto md:w-[20rem] lg:w-[35rem] xl:w-auto"
               loading="lazy"
             />
             <ImgComponen
@@ -23,7 +25,7 @@ export const Galery = () => {
               alt="gambar"
               width={210}
               height={189}
-              className="md:w-[10rem] lg:w-[13rem]"
+              className="w-auto h-auto  md:w-[20rem] lg:w-[35rem] xl:w-auto"
               loading="lazy"
             />
           </div>
@@ -32,7 +34,7 @@ export const Galery = () => {
             alt="gambar"
             width={604}
             height={194}
-            className="md:w-[27rem] lg:w-[38rem]"
+            className="w-auto  h-auto md:w-[25rem] lg:w-[30rem] xl:w-auto"
             loading="lazy"
           />
         </div>
@@ -42,7 +44,7 @@ export const Galery = () => {
             alt="gambar"
             width={604}
             height={194}
-            className="md:w-[27rem] lg:w-[38rem]"
+            className="w-auto  h-auto md:w-[25rem] lg:w-[30rem] xl:w-auto"
             loading="lazy"
           />
           <div className="grid grid-cols-2 gap-6">
@@ -51,16 +53,16 @@ export const Galery = () => {
               alt="gambar"
               width={210}
               height={189}
-              className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              className="w-auto  h-auto md:w-[30rem] lg:w-[35rem] xl:w-auto"
+              priority={true}
             />
             <ImgComponen
               src={itemsData.DaftarImag.gambar6}
               alt="gambar"
               width={210}
               height={189}
-              className="md:w-[10rem] lg:w-[13rem]"
-              loading="lazy"
+              className="w-auto h-auto md:w-[30rem] lg:w-[35rem] xl:w-auto"
+              priority={true}
             />
           </div>
         </div>

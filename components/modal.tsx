@@ -1,5 +1,5 @@
 // components/CustomModal.js
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import Modal from "react-modal";
 
 type ModalProps = {
@@ -15,9 +15,11 @@ const CustomModal = ({ isOpen, children, className }: ModalProps) => {
   }, []);
 
   return (
-    <Modal className={className} isOpen={isOpen}>
-      {children}
-    </Modal>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Modal className={className} isOpen={isOpen}>
+        {children}
+      </Modal>
+    </Suspense>
   );
 };
 

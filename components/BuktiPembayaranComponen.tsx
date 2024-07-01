@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Suspense} from "react";
 import ImgComponent from "./ImgComponen"; 
 
 interface BuktiPemayaranProps {
@@ -16,7 +16,7 @@ const BuktiPemayaran: React.FC<BuktiPemayaranProps> = ({ img }) => {
   const urlFoto = process.env.NEXT_PUBLIC_API;
 
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       {img.map((items, index) => (
         <div key={index} className="flex gap-5 mt-6">
           <div className="border-2 p-2 text-white-10">
@@ -51,7 +51,7 @@ const BuktiPemayaran: React.FC<BuktiPemayaranProps> = ({ img }) => {
           </div>
         </div>
       ))}
-    </div>
+    </Suspense>
   );
 };
 

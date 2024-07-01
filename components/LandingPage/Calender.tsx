@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-const Calendar = dynamic(() => import("react-calendar"), { ssr: false });
+
+const Calendar = dynamic(() => import("react-calendar"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 import { BsCaretLeftFill, BsCaretRightFill, BsX } from "react-icons/bs";
 import { add, sub, format } from "date-fns";
-import CustomModal from "../modal";
+//import CustomModal from "../modal";
+const CustomModal = React.lazy(() => import("../modal"));
 
 interface PaketType {
   event: {
@@ -21,7 +26,10 @@ const EventCalendar = ({ event }: PaketType) => {
   const [activeStartDate, setActiveStartDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
   const [showModal, setShowModal] = useState(false);
-  // console.log(selectedEvent);
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view === "month") {
       const event = getEventsForDate(date);
@@ -80,7 +88,7 @@ const EventCalendar = ({ event }: PaketType) => {
   return (
     <section
       id="Timetable"
-      className="justify-center items-center mx-10 lg:mx-[6rem] my-5 lg:my-20  "
+      className="justify-center items-center mx-5 lg:mx-[6rem] my-10  "
     >
       <h1 className=" font-bold text-3xl ml-4 text-blue-40 ">Jadwal</h1>
       <p className="py-2 md:text-2xl text-xl  ml-4 text-blue-20">
@@ -111,16 +119,21 @@ const EventCalendar = ({ event }: PaketType) => {
             </button>
           </div>
         </div>
-        <Calendar
-          activeStartDate={activeStartDate}
-          value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
-          onClickDay={() => {}}
-          tileContent={tileContent}
-          calendarType="gregory"
-          minDetail="year"
-          showNavigation={false}
-          className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
-        />
+        {isClient ? (
+          <Calendar
+            activeStartDate={activeStartDate}
+            value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
+            onClickDay={() => {}}
+            tileContent={tileContent}
+            calendarType="gregory"
+            minDetail="year"
+            showNavigation={false}
+            className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
+          />
+        ) : (
+          ""
+        )}
+
         <div className="py-5 px-5">
           <h5 className="text-sm md:text-xl text-amber-400 flex items-center">
             <span className="w-5 h-5 md:w-6 md:h-6 bg-red-500 mr-6"></span>Sudah
@@ -130,30 +143,30 @@ const EventCalendar = ({ event }: PaketType) => {
         {/* Checkbox and Modal */}
         <CustomModal
           isOpen={showModal}
-          className="md:py-[6rem] py-10 my-[15rem] md:my-[10rem] md:mx-[13rem] bg-slate-500"
+          className="md:py-[11rem] py-28 my-[13rem] md:my-[1rem] md:mx-[2rem] bg-slate-500"
         >
           {showModal && selectedEvent && (
-            <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 mx-4">
+            <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 md:mx-10 mx-3">
               <div className="modal-content">
-                <table className="table md:text-lg text-xs">
+                <table className="table md:text-lg text-base">
                   <thead>
                     <tr className="m-1 text-center text-white-10/90">
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-5 py-3">
+                      <th className="border border-white-20/70 px-[0.1rem] md:px-2 py-3">
                         kegiatan
                       </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-5">
+                      <th className="border border-white-20/70 px-[0.1rem] md:px-2">
                         lama sewa
                       </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-6">
+                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
                         tanggal mulai
                       </th>
-                      <th className="border border-white-20/70 px-[0.2rem] md:px-6">
+                      <th className="border border-white-20/70 px-[0.2rem] md:px-3">
                         tanggal akhir
                       </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-5">
+                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
                         waktu sewa
                       </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-5">
+                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
                         kegiatan
                       </th>
                     </tr>
@@ -201,7 +214,7 @@ const EventCalendar = ({ event }: PaketType) => {
                   </tbody>
                 </table>
                 <button
-                  className="close absolute right-6 top-[15rem] md:top-[10rem] md:right-[16rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
+                  className="close absolute right-2 top-[15rem] md:top-[4rem] md:right-[4rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
                   onClick={closeModal}
                 >
                   <BsX />

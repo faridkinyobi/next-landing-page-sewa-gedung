@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import NavbarLending from "../../components/NavbarLending";
 import FormOrder from "../../components/FormOrder";
-import DetailPaket from "@/components/DetailPaket";
+// import DetailPaket from "@/components/DetailPaket";
+const DetailPaket = React.lazy(() => import("@/components/DetailPaket"));
 import { getData } from "@/utils/fetchData";
-import Petunjuk from "../../components/itemsData"
+import Petunjuk from "../../components/itemsData";
 interface PaketType {
   detailPage: {
     _id: string | null;
@@ -15,7 +16,7 @@ interface PaketType {
       kegiatan: string;
       hari: string;
       warga: string;
-      hargadetail: number|string;
+      hargadetail: number | string;
     }>;
   };
   selectedHarga: string;
@@ -38,16 +39,16 @@ const Chekout = ({ detailPage }: PaketType) => {
         detailPage={detailPage}
         handleHargaSelection={handleHargaSelection}
         isCardChecked={isCardChecked}
-        setIsCardChecked={setIsCardChecked} style={""}      />
+        setIsCardChecked={setIsCardChecked}
+        style={""}
+      />
       <div className="container_form mx-[1rem] md:mx-[5.7rem] padding-container bg-blue-20 ">
         <div className=" bg-slate-300 px-9 shadow-xl">
           <h1 className="titel text-xl font-bold">Petunjuk Pemesanan</h1>
           <ol className="list-decimal text-sm md:text-xl">
-            {
-            Petunjuk.Petunjuk.map((item, index) => (
+            {Petunjuk.Petunjuk.map((item, index) => (
               <li key={index}>{item.dec}</li>
-            ))
-            }
+            ))}
           </ol>
         </div>
       </div>

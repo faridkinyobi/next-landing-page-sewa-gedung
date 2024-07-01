@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import Button from "../../app/Chekout";
 import { BsBuildingFillCheck, BsCheckLg } from "react-icons/bs";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -65,7 +64,7 @@ const Paket = ({ data }: PaketType) => {
   return (
     <section
       id="Package"
-      className={`  bg-blue-30 lg:mx-24  md:mx-10 ${
+      className={`bg-blue-30 lg:mx-24  md:mx-10 mx-5 ${
         selectedharga !== null
           ? "lg:mb-[35rem] transition-all delay-400"
           : "lg:mb-[18rem] transition-transform delay-400"
@@ -78,7 +77,7 @@ const Paket = ({ data }: PaketType) => {
         <p className="py-2 md:text-2xl text-xl  ml-4 text-gray-10 lg:text-left">
           Pilih paket Sewa Gedung
         </p>
-        <div className="mx-2 md:mx-20 lg:mx-44">
+        <div className="mx-1 md:mx-20 lg:mx-44">
           <Slider {...settings}>
             {data?.map((item, index) => (
               <div
@@ -107,7 +106,7 @@ const Paket = ({ data }: PaketType) => {
                   </p>
                   <div className="m-5">
                     <Link
-                      className="btn_green text-blue-30 px-10  font-semibold xl:py-3 py-3 rounded-full"
+                      className="btn_green text-blue-30 px-10  font-semibold xl:py-3 py-3 rounded-full bg-green-10 hover:outline-green-10 hover:bg-green-10/75"
                       href={`/sewa/${item._id}`}
                     >
                       Pilih Paket

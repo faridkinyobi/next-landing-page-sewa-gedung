@@ -21,6 +21,8 @@ export default function Document() {
         property="og:title"
         content="Sewa Gedung Cangkol | Tempat Sempurna untuk Acara Anda"
       />
+      <link rel="preload" href="/Image/backgroud3.svg" as="image" type="image/svg+xml" />
+      <link rel="preload" href="/Image/bg-about.svg" as="image" type="image/svg+xml" />
       <link rel="prefetch" href="/Image/abaut.svg" />
       <meta property="og:image" content="/Image/abaut.svg" />
       <meta property="og:image" content="/Image/gambar3.svg" />

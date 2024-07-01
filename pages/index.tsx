@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
+import ErrorBoundary from "../components/ErrorBoundary.jsx";
 import { getData } from "../utils/fetchData";
-import EventCalendar from "../components/LandingPage/Calender";
+// import EventCalendar from "../components/LandingPage/Calender";
 import Alur from "../components/LandingPage/Alur";
 import About from "../components/LandingPage/About";
 import Fasil from "../components/LandingPage/Fasil";
 import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
-import Galery from "../components/LandingPage/Galery";
+// import Galery from "../components/LandingPage/Galery";
 import Paket from "../components/LandingPage/Paket";
-
+const Galery = React.lazy(() => import('../components/LandingPage/Galery'));
+const EventCalendar = React.lazy(() => import('../components/LandingPage/Calender'));
 interface PaketType {
   data: {
     titel: string;
@@ -34,16 +36,20 @@ interface PaketType {
 
 export default function Home({ data, event }: PaketType) {
   return (
-    <main>
-      <Header />
-      <Alur />
-      <Fasil />
-      <Paket data={data} />
-      <About />
-      <EventCalendar event={event} />
-      <Galery />
-      <Footer />
-    </main>
+    <ErrorBoundary>
+      <Suspense fallback={<div>Loading...</div>}>
+        <main>
+          <Header />
+          <Alur />
+          <Fasil />
+          {data ? <Paket data={data} /> : <p>Loading Paket...</p>}
+          <About />
+          {event ? <EventCalendar event={event} /> : <p>Loading Events...</p>}
+          <Galery />
+          <Footer />
+        </main>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 
@@ -54,8 +60,8 @@ export async function getServerSideProps() {
       getData("/app/v1/PeketPelanggan"),
       getData("/app/v1/jadwalPelanggan"),
     ]);
-    const data = paketRespon?.data;
-    const event = eventRespon?.data;
+    const data = paketRespon?.data || [];
+    const event = eventRespon?.data || [];
     return {
       props: {
         data,

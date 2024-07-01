@@ -364,7 +364,7 @@ export default function FormOrder({
         </div>
       </div>
       <Button
-        className="btn_green rounded-full border-0 w-full my-5 py-2 lg:w-96 block duration-300 outline-2 active:outline focus:outline-gray-10"
+        className="btn_green rounded-full border-0 w-full my-5 py-2 lg:w-96 block duration-300 outline-2 active:outline focus:outline-gray-10 bg-green-10 hover:outline-green-10 hover:bg-green-10/75"
         type="button"
         title="Order"
         onClick={handleOpenModal}
