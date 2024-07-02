@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { GetServerSidePropsContext } from "next";
-import NavbarLending from "../../components/NavbarLending";
 import FormOrder from "../../components/FormOrder";
 // import DetailPaket from "@/components/DetailPaket";
 const DetailPaket = React.lazy(() => import("@/components/DetailPaket"));
+const NavbarLending = React.lazy(() => import("../../components/NavbarLending"));
 import { getData } from "@/utils/fetchData";
 import Petunjuk from "../../components/itemsData";
 interface PaketType {

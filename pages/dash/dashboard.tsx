@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect,Suspense } from "react";
+import dynamic from "next/dynamic";
 import { getData, putData } from "../../utils/fetchData";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
@@ -8,12 +9,11 @@ import { PrintComponent } from "../../components/PrintComponent";
 import { postDataHarga, postData } from "../../utils/fetchData";
 import Cookies from "js-cookie";
 import Button from "@/components/Button";
-import NavbarLending from "../../components/NavbarLending";
 import CardBank from "../../components/CardBank";
-// import BuktiPemayaran from "";
-// import Pemayaran from "";
-const BuktiPemayaran = React.lazy(() => import("@/components/BuktiPembayaranComponen"));
-const Pemayaran = React.lazy(() => import("@/components/PembayaranComponent"));
+const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
+const BuktiPemayaran = dynamic(() => import("@/components/BuktiPembayaranComponen"));
+const Pemayaran = dynamic(() => import("@/components/PembayaranComponent"));
+import Loading from "@/components/loading";
 interface HistoryPaket {
   title: string;
   hari: string;
@@ -228,7 +228,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           onClick={handlePrint}
         />
         <div ref={componentRef}>
-          <Suspense fallback={<div className="text-white-10">Loading...</div>}>
+          <Suspense fallback={<Loading/>}>
             <PrintComponent data={data} />
           </Suspense>
         </div>
@@ -261,79 +261,6 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                   handleChange={handleChange}
                   handPembayaran={handPembayaran}
                 />
-                <div className="Pembayaran  flex">
-                  {/* Input Uangmuka */}
-                  {
-                    // !form.getBuktiUangmuka && (
-                    //   <div className="flex flex-col">
-                    //     <label className=" mx-1 text-xl text-gray-10  ">
-                    //       Uang Muka
-                    //     </label>
-                    //     {form.avatar !== "" && (
-                    //       <div>
-                    //         <Image
-                    //           width={91}
-                    //           height={100}
-                    //           alt="91x100"
-                    //           src={`${urlFoto}/${form.avatar}`}
-                    //           priority={true}
-                    //         />
-                    //       </div>
-                    //     )}
-                    //     <input
-                    //       name="avatar"
-                    //       type="file"
-                    //       placeholder="img"
-                    //       onChange={handleChange}
-                    //       className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
-                    //     />
-                    //     <button
-                    //       className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
-                    //       onClick={handPembayaran}
-                    //     >
-                    //       submite
-                    //     </button>
-                    //   </div>
-                    // )
-                  }
-                  {/* End Input Nota Uangmuka */}
-
-                  {/* Input Nota pelunasan */}
-                  {
-                    // form.getBuktiUangmuka !== "" && !form.getBuktiLunas && (
-                    //   <div className="flex flex-col">
-                    //     <label className="mx-1 text-xl text-gray-10">
-                    //       Pelunasan
-                    //     </label>
-                    //     {form.avatarLunas !== "" && (
-                    //       <div>
-                    //         <Image
-                    //           width={91}
-                    //           height={100}
-                    //           alt="91x100"
-                    //           src={`${urlFoto}/${form.avatarLunas}`}
-                    //           priority={true}
-                    //         />
-                    //       </div>
-                    //     )}
-                    //     <input
-                    //       name="avatarLunas"
-                    //       type="file"
-                    //       placeholder="img"
-                    //       onChange={handleChange}
-                    //       className="max-w-[19rem] rounded-lg focus:border-blue-20 focus:outline-none box-border border-2 border-gray-10 px-4 py-3 md:w-96 my-2 md:mx-1"
-                    //     />
-                    //     <Button
-                    //       className="btn_green text-blue-30 px-14 md:px-10 font-semibold xl:py-3 py-3 rounded-full"
-                    //       type="button"
-                    //       title="upload"
-                    //       onClick={handelUpate}
-                    //     />
-                    //   </div>
-                    // )
-                  }
-                  {/* end  Nota pelunakan */}
-                </div>
               </div>
             )}
           </div>

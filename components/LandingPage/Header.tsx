@@ -1,35 +1,7 @@
 import React from "react";
-import NavbarLending from "../NavbarLending";
 import Button from "../Button";
-import {
-  BsPCircle,
-  BsFillPersonLinesFill,
-  BsFillLuggageFill,
-} from "react-icons/bs";
 import { useRouter } from "next/navigation";
-const Faslitem = [
-  {
-    titel: "Parkiran",
-    desc: "Parkiran luas bisa menampung banyak kendaraan mini bus,mobil, motor",
-    icon: (
-      <BsPCircle className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem] " />
-    ),
-  },
-  {
-    titel: "Kapasita",
-    desc: "Gedung dengan berkapasitas 2000 orang, cocok untuk berbagai event",
-    icon: (
-      <BsFillPersonLinesFill className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem]" />
-    ),
-  },
-  {
-    titel: "Ruang Rias",
-    desc: "Ruang khusus di mana pengantin dapat bersiap-siap sebelum acara utama",
-    icon: (
-      <BsFillLuggageFill className=" mx-auto text-white-10 text-6xl md:text-7xl bg-blue-30 p-2 rounded-full shadow-ml md:mt-[-4.30rem]" />
-    ),
-  },
-];
+const NavbarLending = React.lazy(() => import("../NavbarLending"));
 const Header = () => {
   const router = useRouter();
   return (

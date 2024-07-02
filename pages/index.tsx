@@ -2,15 +2,17 @@ import React, { Suspense } from "react";
 import ErrorBoundary from "../components/ErrorBoundary.jsx";
 import { getData } from "../utils/fetchData";
 // import EventCalendar from "../components/LandingPage/Calender";
-import Alur from "../components/LandingPage/Alur";
 import About from "../components/LandingPage/About";
-import Fasil from "../components/LandingPage/Fasil";
 import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
-// import Galery from "../components/LandingPage/Galery";
 import Paket from "../components/LandingPage/Paket";
-const Galery = React.lazy(() => import('../components/LandingPage/Galery'));
-const EventCalendar = React.lazy(() => import('../components/LandingPage/Calender'));
+import Loading from "../components/loading";
+const Alur = React.lazy(() => import("../components/LandingPage/Alur"));
+const Fasil = React.lazy(() => import("../components/LandingPage/Fasil"));
+const Galery = React.lazy(() => import("../components/LandingPage/Galery"));
+const EventCalendar = React.lazy(
+  () => import("../components/LandingPage/Calender")
+);
 interface PaketType {
   data: {
     titel: string;
@@ -37,14 +39,14 @@ interface PaketType {
 export default function Home({ data, event }: PaketType) {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <main>
           <Header />
           <Alur />
           <Fasil />
-          {data ? <Paket data={data} /> : <p>Loading Paket...</p>}
+          {data ? <Paket data={data} /> : <Loading />}
           <About />
-          {event ? <EventCalendar event={event} /> : <p>Loading Events...</p>}
+          {event ? <EventCalendar event={event} /> : <Loading />}
           <Galery />
           <Footer />
         </main>

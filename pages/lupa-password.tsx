@@ -1,4 +1,4 @@
-import NavbarLending from "../components/NavbarLending";
+const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
 import React, { useState } from "react";
 import Input from "../components/TextInput";
 import Button from "../components/Button";

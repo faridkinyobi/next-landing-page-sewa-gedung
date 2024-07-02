@@ -1,6 +1,8 @@
-import NavbarLending from "../components/NavbarLending";
+import React, { Suspense } from "react";
+const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
 import Footer from "../components/Footer";
-import ImgComponent from "../components/ImgComponen";
+import Desc from "../components/itemsData";
+const ImgComponent  = React.lazy(() => import("../components/ImgComponen"));
 import {
   BsEnvelope,
   // BsFacebook,
@@ -9,7 +11,6 @@ import {
   BsTelephone,
   // BsYoutube,
 } from "react-icons/bs";
-
 const About = () => {
   return (
     <div
@@ -32,46 +33,9 @@ const About = () => {
         <h1 className="titel font-extrabold text-2xl my-7">
           Gedung Pertenuan Desa Cangkol
         </h1>
-        <p className="containt font-normal text-sm  md:text-xl">
-          Pembangunan Gedung Pertemuan Desa Cangkol dimulai dari kebutuhan akan
-          tempat pertemuan yang luas dan representatif. Kepala Desa Cangkol
-          menyadari bahwa desanya tidak memiliki tempat yang cukup besar untuk
-          mengadakan acara seperti pesta pernikahan, rapat, dan berbagai
-          kegiatan masyarakat lainnya. Untuk itu, Kepala Desa berinisiatif untuk
-          membangun gedung pertemuan yang mampu menampung berbagai jenis acara,
-          sekaligus menyediakan area parkir yang memadai.
-        </p>
-        <p className="containt font-normal text-sm   md:text-xl mt-5">
-          Proses pembangunan gedung dimulai pada tahun 2017, dengan
-          pengalokasian lahan bengkok desa seluas 1 hektar dan tambahan 1.000
-          meter persegi untuk pasar desa. Namun, penggalian dan pengurukan lahan
-          memerlukan biaya yang cukup besar. Dengan anggaran dari pemerintah
-          yang terbatas, Kepala Desa berupaya mencari dana tambahan dari pihak
-          ketiga untuk melanjutkan proyek ini.
-        </p>
-        <p className="containt font-normal text-sm  md:text-xl mt-5">
-          Pandemi COVID-19 pada tahun 2020 menyebabkan proyek pembangunan
-          terhenti sementara, namun gedung pertemuan masih dapat digunakan untuk
-          kegiatan vaksinasi dan rapat terbatas. Setelah pandemi mereda,
-          pembangunan kembali dilanjutkan. Dukungan datang dari pemerintah dan
-          masyarakat, termasuk kunjungan Ketua DPR Puan Maharani, yang
-          menunjukkan apresiasi terhadap gedung yang mampu menampung hingga
-          2.000 orang dengan area parkir yang luas.
-        </p>
-        <p className="containt font-normal text-sm  md:text-xl mt-5">
-          Salah satu keunggulan gedung ini adalah biaya sewanya yang relatif
-          murah, dengan tarif yang terjangkau untuk masyarakat lokal. Gedung ini
-          juga dilengkapi dengan fasilitas kursi, listrik, dan kebersihan.
-          Pendapatan dari sewa gedung digunakan untuk mendukung pembangunan desa
-          dan ekonomi lokal.
-        </p>
-        <p className="containt font-normal text-sm   md:text-xl mt-5">
-          Selain gedung pertemuan, Kepala Desa Cangkol memiliki rencana untuk
-          membangun fasilitas lain seperti stadion, area kuliner, dan rumah
-          kontrakan, dengan tujuan untuk mendorong perkembangan ekonomi desa.
-          Proyek-proyek ini diharapkan dapat mendukung pertumbuhan desa dan
-          meningkatkan pendapatan masyarakat setempat.
-        </p>
+        {Desc.AboutDesc.map((item, index) => (
+          <p className="containt font-normal text-sm   md:text-xl mt-5" key={index}>{item.desc}</p>
+        ))}
       </div>
 
       {/* <Paket data={data}/> */}

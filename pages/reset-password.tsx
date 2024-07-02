@@ -1,4 +1,4 @@
-import NavbarLending from "../components/NavbarLending";
+const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
 import React, { useState, useEffect } from "react";
 import Input from "../components/TextInput";
 import Button from "../components/Button";
@@ -35,8 +35,8 @@ export default function ResetPassword() {
         progress: undefined,
       });
     } else {
-      const result = await putData(`/app/v1/resetpassword/${token}`, form);
-      console.log(result);
+      await putData(`/app/v1/resetpassword/${token}`, form);
+
       toast.success("successfully", {
         position: "top-right",
         autoClose: 5000,

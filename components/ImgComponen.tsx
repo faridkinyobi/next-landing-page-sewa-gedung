@@ -1,4 +1,4 @@
-import React,{Suspense} from "react";
+import React from "react";
 import Image, { ImageProps } from "next/image";
 type ImgProps = Omit<ImageProps, "src" | "priority" | "loading"> & {
   src: string;
@@ -20,18 +20,16 @@ const ImgComponent: React.FC<ImgProps> = ({
   ...rest
 }) => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Image
-        priority={priority}
-        loading={loading}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className={className}
-        {...rest}
-      />
-    </Suspense>
+    <Image
+      priority={priority}
+      loading={loading}
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      {...rest}
+    />
   );
 };
 

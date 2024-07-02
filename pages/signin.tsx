@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { GetServerSidePropsContext } from "next";
-import NavbarLending from "@/components/NavbarLending";
+const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
 const FormSignin = React.lazy(() => import("@/components/FormSignin"));
 export default function Signin() {
   return (
@@ -8,13 +8,9 @@ export default function Signin() {
       <NavbarLending />
       <div className="container flex items-center justify-center mx-auto ">
         <div className="bg-white-20 rounded-2xl my-10 ">
-          <div className="p-10">
+          <div className="p-10 transition-transform delay-200">
             <h1 className="text-center font-bold text-3xl my-2">Sing In</h1>
-            <Suspense
-              fallback={<div className="text-white-10">Loading...</div>}
-            >
-              <FormSignin />
-            </Suspense>
+            <FormSignin />
           </div>
         </div>
       </div>

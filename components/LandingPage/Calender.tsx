@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
-
+import Loading from "../loading";
+import { add, sub, format } from "date-fns";
+import { BsCaretLeftFill, BsCaretRightFill, BsX } from "react-icons/bs";
 const Calendar = dynamic(() => import("react-calendar"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
-import { BsCaretLeftFill, BsCaretRightFill, BsX } from "react-icons/bs";
-import { add, sub, format } from "date-fns";
-//import CustomModal from "../modal";
 const CustomModal = React.lazy(() => import("../modal"));
-
 interface PaketType {
   event: {
     id: number;
@@ -145,83 +143,84 @@ const EventCalendar = ({ event }: PaketType) => {
           isOpen={showModal}
           className="md:py-[11rem] py-28 my-[13rem] md:my-[1rem] md:mx-[2rem] bg-slate-500"
         >
-          {showModal && selectedEvent && (
-            <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 md:mx-10 mx-3">
-              <div className="modal-content">
-                <table className="table md:text-lg text-base">
-                  <thead>
-                    <tr className="m-1 text-center text-white-10/90">
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-2 py-3">
-                        kegiatan
-                      </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-2">
-                        lama sewa
-                      </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                        tanggal mulai
-                      </th>
-                      <th className="border border-white-20/70 px-[0.2rem] md:px-3">
-                        tanggal akhir
-                      </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                        waktu sewa
-                      </th>
-                      <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                        kegiatan
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="static text-center text-white-10/85">
-                      <td className="border border-white-20/70 px-2">
-                        {selectedEvent.kegiatan}
-                      </td>
-                      <td className="border border-white-20/70 px-2">
-                        {selectedEvent.lama_sewa}{" "}
-                        {selectedEvent.tgl_akhir ||
-                        /pernikahan/i.test(selectedEvent.kegiatan)
-                          ? "hari"
-                          : "jam"}
-                      </td>
-                      <td className="border border-white-20/70 px-2">
-                        {new Date(selectedEvent?.tgl_mulai).toLocaleDateString(
-                          "id-ID",
-                          {
+          <Suspense fallback={<Loading />}>
+            {showModal && selectedEvent && (
+              <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 md:mx-10 mx-3">
+                <div className="modal-content">
+                  <table className="table md:text-lg text-base">
+                    <thead>
+                      <tr className="m-1 text-center text-white-10/90">
+                        <th className="border border-white-20/70 px-[0.1rem] md:px-2 py-3">
+                          kegiatan
+                        </th>
+                        <th className="border border-white-20/70 px-[0.1rem] md:px-2">
+                          lama sewa
+                        </th>
+                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
+                          tanggal mulai
+                        </th>
+                        <th className="border border-white-20/70 px-[0.2rem] md:px-3">
+                          tanggal akhir
+                        </th>
+                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
+                          waktu sewa
+                        </th>
+                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
+                          kegiatan
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="static text-center text-white-10/85">
+                        <td className="border border-white-20/70 px-2">
+                          {selectedEvent.kegiatan}
+                        </td>
+                        <td className="border border-white-20/70 px-2">
+                          {selectedEvent.lama_sewa}{" "}
+                          {selectedEvent.tgl_akhir ||
+                          /pernikahan/i.test(selectedEvent.kegiatan)
+                            ? "hari"
+                            : "jam"}
+                        </td>
+                        <td className="border border-white-20/70 px-2">
+                          {new Date(
+                            selectedEvent?.tgl_mulai
+                          ).toLocaleDateString("id-ID", {
                             day: "2-digit",
                             month: "long",
                             year: "numeric",
-                          }
-                        )}
-                      </td>
-                      <td className="border border-white-20/70 px-2">
-                        {selectedEvent.tgl_akhir
-                          ? new Date(
-                              selectedEvent.tgl_akhir
-                            ).toLocaleDateString("id-ID", {
-                              day: "2-digit",
-                              month: "long",
-                              year: "numeric",
-                            })
-                          : "-"}
-                      </td>
-                      <td className="border border-white-20/70 px-2">
-                        {selectedEvent.waktu}
-                      </td>
-                      <td className="border border-white-20/70 px-2">
-                        {selectedEvent.status_kegiatan}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button
-                  className="close absolute right-2 top-[15rem] md:top-[4rem] md:right-[4rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
-                  onClick={closeModal}
-                >
-                  <BsX />
-                </button>
+                          })}
+                        </td>
+                        <td className="border border-white-20/70 px-2">
+                          {selectedEvent.tgl_akhir
+                            ? new Date(
+                                selectedEvent.tgl_akhir
+                              ).toLocaleDateString("id-ID", {
+                                day: "2-digit",
+                                month: "long",
+                                year: "numeric",
+                              })
+                            : "-"}
+                        </td>
+                        <td className="border border-white-20/70 px-2">
+                          {selectedEvent.waktu}
+                        </td>
+                        <td className="border border-white-20/70 px-2">
+                          {selectedEvent.status_kegiatan}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button
+                    className="close absolute right-2 top-[15rem] md:top-[4rem] md:right-[4rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
+                    onClick={closeModal}
+                  >
+                    <BsX />
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </Suspense>
         </CustomModal>
       </div>
     </section>

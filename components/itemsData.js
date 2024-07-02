@@ -94,6 +94,24 @@ const DaftarImag = {
   gambar6: "/Image/gambar6.svg",
   gambar8: "/Image/gambar8.svg",
 };
-const itemsData = { Aluritem, Aluritem2, NavbarItem, Petunjuk, DaftarImag };
+const AboutDesc = [
+
+  {
+    desc: "Pembangunan Gedung Pertemuan Desa Cangkol dimulai dari kebutuhan akan tempat pertemuan yang luas dan representatif. Kepala Desa Cangkol menyadari bahwa desanya tidak memiliki tempat yang cukup besar untuk mengadakan acara seperti pesta pernikahan, rapat, dan berbagai kegiatan masyarakat lainnya. Untuk itu, Kepala Desa berinisiatif untuk membangun gedung pertemuan yang mampu menampung berbagai jenis acara, sekaligus menyediakan area parkir yang memadai"
+  },
+  {
+    desc:"Proses pembangunan gedung dimulai pada tahun 2017, dengan pengalokasian lahan bengkok desa seluas 1 hektar dan tambahan 1.000 meter persegi untuk pasar desa. Namun, penggalian dan pengurukan lahan memerlukan biaya yang cukup besar. Dengan anggaran dari pemerintah yang terbatas, Kepala Desa berupaya mencari dana tambahan dari pihak ketiga untuk melanjutkan proyek ini."
+  },
+  {
+    desc:"Pandemi COVID-19 pada tahun 2020 menyebabkan proyek pembangunan terhenti sementara, namun gedung pertemuan masih dapat digunakan untuk kegiatan vaksinasi dan rapat terbatas. Setelah pandemi mereda, pembangunan kembali dilanjutkan. Dukungan datang dari pemerintah dan masyarakat, termasuk kunjungan Ketua DPR Puan Maharani, yang menunjukkan apresiasi terhadap gedung yang mampu menampung hingga 2.000 orang dengan area parkir yang luas."
+  },
+  {
+    desc:" Salah satu keunggulan gedung ini adalah biaya sewanya yang relatif murah, dengan tarif yang terjangkau untuk masyarakat lokal. Gedung ini juga dilengkapi dengan fasilitas kursi, listrik, dan kebersihan. Pendapatan dari sewa gedung digunakan untuk mendukung pembangunan desa dan ekonomi lokal."
+  },
+  {
+    desc:"Selain gedung pertemuan, Kepala Desa Cangkol memiliki rencana untuk membangun fasilitas lain seperti stadion, area kuliner, dan rumah kontrakan, dengan tujuan untuk mendorong perkembangan ekonomi desa. Proyek-proyek ini diharapkan dapat mendukung pertumbuhan desa dan meningkatkan pendapatan masyarakat setempat."
+  }
+]
+const itemsData = { Aluritem, Aluritem2, NavbarItem, Petunjuk, DaftarImag,AboutDesc };
 
 export default itemsData;
