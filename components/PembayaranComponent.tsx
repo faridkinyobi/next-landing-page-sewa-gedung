@@ -1,6 +1,5 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Img from "./ImgComponen";
-import Loading from "../components/loading";
 import Button from "./Button";
 interface PemayaranProps {
   form: {
@@ -30,14 +29,12 @@ const Pemayaran: React.FC<PemayaranProps> = ({
           <label className=" mx-1 text-xl text-gray-10  ">Uang Muka</label>
           {form.avatar !== "" && (
             <div>
-              <Suspense fallback={<Loading />}>
-                <Img
-                  width={91}
-                  height={100}
-                  alt="91x100"
-                  src={`${urlFoto}/${form.avatar}`}
-                />
-              </Suspense>
+              <Img
+                width={91}
+                height={100}
+                alt="91x100"
+                src={`${urlFoto}/${form.avatar}`}
+              />
             </div>
           )}
           <input
@@ -63,14 +60,12 @@ const Pemayaran: React.FC<PemayaranProps> = ({
           <label className="mx-1 text-xl text-gray-10">Pelunasan</label>
           {form.avatarLunas !== "" && (
             <div>
-              <Suspense fallback={<Loading />}>
-                <Img
-                  width={91}
-                  height={100}
-                  alt="91x100"
-                  src={`${urlFoto}/${form.avatarLunas}`}
-                />
-              </Suspense>
+              <Img
+                width={91}
+                height={100}
+                alt="91x100"
+                src={`${urlFoto}/${form.avatarLunas}`}
+              />
             </div>
           )}
           <input

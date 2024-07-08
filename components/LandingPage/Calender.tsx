@@ -1,13 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Loading from "../loading";
 import Calendar from "react-calendar";
-import CardModalCalender  from "../CardModalCalender"
-import NavCalender from "../NavCalender"
+import CardModalCalender from "../CardModalCalender";
+import NavCalender from "../NavCalender";
 
-const CustomModal = dynamic(() => import("../modal"), {
-  loading: () => <Loading />,
-});
+const CustomModal = dynamic(() => import("../modal"));
 interface PaketType {
   event: {
     id: number;
@@ -98,17 +95,17 @@ const EventCalendar = ({ event }: PaketType) => {
           activeStartDate={activeStartDate}
         />
         {isClient ? (
-        <Calendar
-          activeStartDate={activeStartDate}
-          value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
-          onClickDay={() => {}}
-          tileContent={tileContent}
-          calendarType="gregory"
-          minDetail="year"
-          showNavigation={false}
-          className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
-        />
-                ) : (
+          <Calendar
+            activeStartDate={activeStartDate}
+            value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
+            onClickDay={() => {}}
+            tileContent={tileContent}
+            calendarType="gregory"
+            minDetail="year"
+            showNavigation={false}
+            className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
+          />
+        ) : (
           ""
         )}
 
