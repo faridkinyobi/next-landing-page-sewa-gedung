@@ -9,9 +9,6 @@ import Fasil from "../components/LandingPage/Fasil";
 import Galery from "@/components/LandingPage/Galery";
 //import Paket from "../components/LandingPage/Paket";
 const Paket = dynamic(() => import("@/components/LandingPage/Paket"));
-const ErrorBoundary = dynamic(() => import("../components/ErrorBoundary.jsx"), {
-  loading: () => <Loading />,
-});
 const About = dynamic(() => import("../components/LandingPage/About"), {
   loading: () => <Loading />,
 });
@@ -44,18 +41,16 @@ interface PaketType {
 
 export default function Home({ data, event }: PaketType) {
   return (
-    <ErrorBoundary>
-      <main>
-        <Header />
-        <Alur />
-        <Fasil />
-        {data ? <Paket data={data} /> : <Loading />}
-        <About />
-        {event ? <EventCalendar event={event} /> : <Loading />}
-        <Galery />
-        <Footer />
-      </main>
-    </ErrorBoundary>
+    <main>
+      <Header />
+      <Alur />
+      <Fasil />
+      {data ? <Paket data={data} /> : <Loading />}
+      <About />
+      {event ? <EventCalendar event={event} /> : <Loading />}
+      <Galery />
+      <Footer />
+    </main>
   );
 }
 
