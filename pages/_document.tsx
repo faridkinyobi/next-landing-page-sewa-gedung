@@ -5,8 +5,8 @@ const { NEXT_APP_IMAGE_BASE_URL } = publicRuntimeConfig;
 
 export default function Document() {
   const imageUrl = NEXT_APP_IMAGE_BASE_URL
-  ? `${NEXT_APP_IMAGE_BASE_URL}backgroud3.webp`
-  : "/Image/backgroud3.webp";
+    ? `${NEXT_APP_IMAGE_BASE_URL}backgroud3.webp`
+    : "/Image/backgroud3.webp";
   const imageUrlAbut = NEXT_APP_IMAGE_BASE_URL
     ? `${NEXT_APP_IMAGE_BASE_URL}bg-about.webp`
     : "/Image/bg-about.webp";
@@ -34,13 +34,13 @@ export default function Document() {
       />
       <link
         rel="preload"
-        href={`${imageUrlAbut}`}
+        href={`/Image/backgroud3.svg`}
         as="image"
         type="image/svg+xml"
       />
       <link
         rel="preload"
-        href={`${imageUrl}`}
+        href={`/Image/bg-about.svg`}
         as="image"
         type="image/svg+xml"
       />

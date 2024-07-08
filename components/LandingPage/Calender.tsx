@@ -1,13 +1,10 @@
 import React, { useState,useEffect } from "react";
 import dynamic from "next/dynamic";
 import Loading from "../loading";
-const Calendar = dynamic(() => import("react-calendar"), {
-  loading: () => <Loading />,
-});
-const CardModalCalender = dynamic(() => import("../CardModalCalender"), {
-  loading: () => <Loading />,
-});
-const NavCalender = dynamic(() => import("../NavCalender"));
+import Calendar from "react-calendar";
+import CardModalCalender  from "../CardModalCalender"
+import NavCalender from "../NavCalender"
+
 const CustomModal = dynamic(() => import("../modal"), {
   loading: () => <Loading />,
 });
