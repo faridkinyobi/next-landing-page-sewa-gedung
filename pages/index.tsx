@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { getData } from "../utils/fetchData";
 import Loading from "../components/loading";
 import Footer from "@/components/Footer";

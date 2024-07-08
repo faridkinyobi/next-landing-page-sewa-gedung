@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));;
+import NavbarLending from "@/components/NavbarLending";
 import { BiUserCircle, BiWrench } from "react-icons/bi";
 export default function Settings() {
   return (

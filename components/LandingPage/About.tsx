@@ -1,10 +1,5 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
-import Loading from "../loading";
-
-const ImgComponent = dynamic(() => import("../ImgComponen"), {
-  loading: () => <Loading />,
-});
+import ImgComponent from "../ImgComponen";
 
 const About = () => {
   return (

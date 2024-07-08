@@ -3,13 +3,10 @@ import { GetServerSidePropsContext } from "next";
 import dynamic from "next/dynamic";
 const FormOrder = dynamic(() => import("@/components/FormOrder"));
 // import DetailPaket from "@/components/DetailPaket";
-const DetailPaket = dynamic(() => import("@/components/DetailPaket"), {
-  loading: () => <Loading />,
-});
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
+const DetailPaket = dynamic(() => import("@/components/DetailPaket"));
+import NavbarLending from "@/components/NavbarLending";
 import { getData } from "@/utils/fetchData";
 import Petunjuk from "@/components/itemsData";
-import Loading from "@/components/loading";
 interface PaketType {
   detailPage: {
     _id: string | null;

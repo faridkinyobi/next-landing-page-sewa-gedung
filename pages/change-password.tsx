@@ -1,4 +1,4 @@
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
+import NavbarLending from "@/components/NavbarLending";
 import React, { useState } from "react";
 import Input from "../components/TextInput";
 import Button from "../components/Button";
@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import router from "next/router";
 import { postData } from "@/utils/fetchData";
 import { GetServerSidePropsContext } from "next";
-import dynamic from "next/dynamic";
 
 export default function ChangePassword() {
   const [form, setForm] = useState({

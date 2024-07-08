@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect,Suspense } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { getData, putData } from "../../utils/fetchData";
 import { GetServerSidePropsContext } from "next";
@@ -10,10 +10,11 @@ import { postDataHarga, postData } from "../../utils/fetchData";
 import Cookies from "js-cookie";
 import Button from "@/components/Button";
 import CardBank from "../../components/CardBank";
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
-const BuktiPemayaran = dynamic(() => import("@/components/BuktiPembayaranComponen"));
+import NavbarLending from "@/components/NavbarLending";
+const BuktiPemayaran = dynamic(
+  () => import("@/components/BuktiPembayaranComponen")
+);
 const Pemayaran = dynamic(() => import("@/components/PembayaranComponent"));
-import Loading from "@/components/loading";
 interface HistoryPaket {
   title: string;
   hari: string;
@@ -131,7 +132,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           setForm({ ...form, BuktiUangMuka: "", [e.target.name]: "" });
         } else {
           const res = await handleImage(e.target.files[0]);
-          console.log(res)
+          console.log(res);
           if (e.target.name === "avatarLunas") {
             setForm({
               ...form,
@@ -228,9 +229,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
           onClick={handlePrint}
         />
         <div ref={componentRef}>
-          <Suspense fallback={<Loading/>}>
-            <PrintComponent data={data} />
-          </Suspense>
+          <PrintComponent data={data} />
         </div>
         {/*rekening*/}
         {data.map((item, index) => (
