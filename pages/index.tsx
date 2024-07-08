@@ -1,21 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { getData } from "../utils/fetchData";
-import dynamic from "next/dynamic";
 import Loading from "../components/loading";
 import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
 import Alur from "../components/LandingPage/Alur";
 import Fasil from "../components/LandingPage/Fasil";
 import Galery from "@/components/LandingPage/Galery";
-//import Paket from "../components/LandingPage/Paket";
-const Paket = dynamic(() => import("@/components/LandingPage/Paket"));
-const About = dynamic(() => import("../components/LandingPage/About"), {
-  loading: () => <Loading />,
-});
+import Paket from "../components/LandingPage/Paket";
+import EventCalendar from "@/components/LandingPage/Calender";
+import About from "@/components/LandingPage/About";
 
-const EventCalendar = dynamic(
-  () => import("@/components/LandingPage/Calender")
-);
 interface PaketType {
   data: {
     titel: string;
