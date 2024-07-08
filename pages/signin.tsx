@@ -1,9 +1,8 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { GetServerSidePropsContext } from "next";
-import Loading from "@/components/loading";
-import dynamic from "next/dynamic";
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
-const FormSignin = dynamic(() => import("@/components/FormSignin"));
+import NavbarLending from "@/components/NavbarLending";
+import FormSignin from "@/components/FormSignin";
+
 export default function Signin() {
   return (
     <div className="bg-blue-30  w-screen h-auto">
