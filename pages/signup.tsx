@@ -1,8 +1,6 @@
-import React, { Suspense } from "react";
-import Loading from "@/components/loading";
-import dynamic from "next/dynamic";
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
-const FormSignup = dynamic(() => import("@/components/FormSignup"),{loading:()=><Loading/>});
+import React from "react";
+import NavbarLending from "@/components/NavbarLending";
+import FormSignup  from "@/components/FormSignup";
 export default function Signup() {
   return (
     <main className="bg-blue-30 w-screen h-auto ">
