@@ -1,9 +1,6 @@
-import dynamic from "next/dynamic";
-const ImgComponen = dynamic(() => import("../ImgComponen"), {
-  loading: () => <Loading />,
-});
+
+import ImgComponent from "../ImgComponen";
 import itemsData from "../itemsData";
-import Loading from "../loading";
 export const Galery = () => {
   return (
     <section id="galery" className="galery mx-5 lg:mx-[6rem] my-20">
@@ -14,7 +11,7 @@ export const Galery = () => {
       <div className="static grid col-auto gap-4">
         <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-6">
           <div className="grid grid-cols-2 gap-1 md:gap-6 max-w-max h-auto">
-            <ImgComponen
+            <ImgComponent
               src={itemsData.DaftarImag.gambar1}
               alt="gambar"
               width={210}
@@ -22,7 +19,7 @@ export const Galery = () => {
               className="w-[100%]   h-auto"
               loading="lazy"
             />
-            <ImgComponen
+            <ImgComponent
               src={itemsData.DaftarImag.gambar3}
               alt="gambar"
               width={210}
@@ -31,7 +28,7 @@ export const Galery = () => {
               loading="lazy"
             />
           </div>
-          <ImgComponen
+          <ImgComponent
             src={itemsData.DaftarImag.gambar2}
             alt="gambar"
             width={604}
@@ -41,7 +38,7 @@ export const Galery = () => {
           />
         </div>
         <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-6 max-w-max h-auto">
-          <ImgComponen
+          <ImgComponent
             src={itemsData.DaftarImag.gambar8}
             alt="gambar"
             width={604}
@@ -50,7 +47,7 @@ export const Galery = () => {
             loading="lazy"
           />
           <div className="grid grid-cols-2  gap-1 md:gap-6 max-w-max h-auto">
-            <ImgComponen
+            <ImgComponent
               src={itemsData.DaftarImag.gambar5}
               alt="gambar"
               width={210}
@@ -58,7 +55,7 @@ export const Galery = () => {
               className="w-[100%] h-auto"
               loading="lazy"
             />
-            <ImgComponen
+            <ImgComponent
               src={itemsData.DaftarImag.gambar6}
               alt="gambar"
               width={210}
