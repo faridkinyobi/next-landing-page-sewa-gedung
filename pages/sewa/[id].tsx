@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { GetServerSidePropsContext } from "next";
-import FormOrder from "../../components/FormOrder";
+import dynamic from "next/dynamic";
+const FormOrder = dynamic(() => import("@/components/FormOrder"));
 // import DetailPaket from "@/components/DetailPaket";
-const DetailPaket = React.lazy(() => import("@/components/DetailPaket"));
-const NavbarLending = React.lazy(() => import("../../components/NavbarLending"));
+const DetailPaket = dynamic(() => import("@/components/DetailPaket"), {
+  loading: () => <Loading />,
+});
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
 import { getData } from "@/utils/fetchData";
-import Petunjuk from "../../components/itemsData";
+import Petunjuk from "@/components/itemsData";
+import Loading from "@/components/loading";
 interface PaketType {
   detailPage: {
     _id: string | null;

@@ -43,17 +43,17 @@ const NavbarLending = () => {
   const router = useRouter();
 
   return (
-    <nav className="w-full md:py-2 ">
+    <nav className="w-full md:py-2">
       <div className="padding-container flexBetween">
         <Image
-          className={` left-28 md:left-96 lg:static top-6 w-44 h-auto ${
+          className={` left-28 md:left-96 lg:static w-44 h-auto ${
             token ? "absolute" : "static "
           }`}
           src={logoNav}
           alt="Picture"
           width={250}
           height={150}
-          priority={true}
+          loading="lazy"
         />
         <div className="static lg:hidden">
           {router.pathname !== "/signin" && (
@@ -77,7 +77,7 @@ const NavbarLending = () => {
           }`}
         >
           {NavData.NavbarItem.map((item, index) => (
-            <li
+            <div
               className="  list-none lg:my-auto md:mr-4 lg:mx-0 my-5"
               key={index}
             >
@@ -87,7 +87,7 @@ const NavbarLending = () => {
               >
                 {item.titel}
               </NavLink>
-            </li>
+            </div>
           ))}
           <div className="lg:static mx-auto">
             {router.pathname !== "/signin" && (
@@ -102,7 +102,9 @@ const NavbarLending = () => {
                   <NavLink
                     className={` btn_blue font-semibold rounded-full text-base border-0 ${
                       router.pathname !== "/signin" &&
-                      router.pathname !== "/signup"
+                      router.pathname !== "/signup" &&
+                      router.pathname !== "/lupa-password" &&
+                      router.pathname !== "/reset-password"
                         ? "text-blue-10"
                         : "hidden"
                     } `}

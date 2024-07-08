@@ -90,7 +90,12 @@ body {
     @apply  duration-700;
 
   }
-
+  .Md-width-heigth-auto{
+    @apply w-[100%] md:w-[54%] md:h-auto
+  }
+  .styl-th-kalender{
+    @apply border border-white-20/70 px-[0.1rem] md:px-3
+  }
   .max-container {
     @apply mx-auto max-w-[1440px];
   }

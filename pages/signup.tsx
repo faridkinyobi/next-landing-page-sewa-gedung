@@ -1,14 +1,15 @@
-import React from "react";
-const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
-const FormSignup = React.lazy(() => import("@/components/FormSignup"));
+import React, { Suspense } from "react";
+import Loading from "@/components/loading";
+import dynamic from "next/dynamic";
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
+const FormSignup = dynamic(() => import("@/components/FormSignup"),{loading:()=><Loading/>});
 export default function Signup() {
   return (
-    <main className="bg-blue-30 h-screen w-screen md:h-fit md:w-auto">
+    <main className="bg-blue-30 w-screen h-auto ">
       <NavbarLending />
-      <div className="container flex items-center justify-center md:-mt-10">
-        <div className="bg-white-20 rounded-2xl my-10">
-          <div className="py-6 px-10">
-            <h1 className="text-center font-bold text-3xl">Sing up</h1>
+      <div className="container flex items-center justify-center mx-auto ">
+        <div className="bg-white-20 rounded-2xl mb-14 md:mb-10 ">
+          <div className="py-4 px-10">
             <FormSignup />
           </div>
         </div>

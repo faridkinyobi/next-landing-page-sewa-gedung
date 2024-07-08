@@ -10,7 +10,7 @@ import { postDataHarga, postData } from "../../utils/fetchData";
 import Cookies from "js-cookie";
 import Button from "@/components/Button";
 import CardBank from "../../components/CardBank";
-const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
 const BuktiPemayaran = dynamic(() => import("@/components/BuktiPembayaranComponen"));
 const Pemayaran = dynamic(() => import("@/components/PembayaranComponent"));
 import Loading from "@/components/loading";

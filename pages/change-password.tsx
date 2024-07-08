@@ -1,10 +1,12 @@
-const NavbarLending = React.lazy(() => import("@/components/NavbarLending"));
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"));
 import React, { useState } from "react";
 import Input from "../components/TextInput";
 import Button from "../components/Button";
 import { toast } from "react-toastify";
 import router from "next/router";
 import { postData } from "@/utils/fetchData";
+import { GetServerSidePropsContext } from "next";
+import dynamic from "next/dynamic";
 
 export default function ChangePassword() {
   const [form, setForm] = useState({
@@ -35,7 +37,7 @@ export default function ChangePassword() {
   return (
     <main className="bg-blue-30 w-screen-sm h-screen">
       <NavbarLending />
-      <div className="bg-white-20 rounded-2xl  mt-7 my:my-auto shadow-x md:mx-auto max-w-fit mx-auto  my-20">
+      <div className="bg-white-20 rounded-2xl  my:my-auto shadow-x md:mx-auto max-w-fit mx-auto">
         <form className="p-10">
           <Input
             name="email"
@@ -79,4 +81,19 @@ export default function ChangePassword() {
       </div>
     </main>
   );
+}
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { token } = context.req.cookies;
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {}, 
+  };
 }

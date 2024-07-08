@@ -1,27 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   BsFacebook,
   BsInstagram,
   BsYoutube,
   BsTelephone,
 } from "react-icons/bs";
-import ImgComponent from "./ImgComponen";
 import NavLink from "./NavLink";
 import NavData from "./itemsData";
+import Loading from "./loading";
+const ImgComponent = React.lazy(() => import("./ImgComponen"));
 
 const Footer = () => {
   return (
     <footer className="py-10 bg-blue-20">
       <div className=" flex flex-wrap justify-between mx-5 md:mx-5 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
-          <ImgComponent
-            className="w-44 h-auto"
-            src="/Image/logo5coklat.svg"
-            alt="Logo"
-            width={250}
-            height={950}
-            loading="lazy"
-          />
+          <Suspense fallback={<Loading />}>
+            <ImgComponent
+              className="w-44 h-auto"
+              src="/Image/logo5coklat.svg"
+              alt="Logo"
+              width={250}
+              height={950}
+              loading="lazy"
+            />
+          </Suspense>
           <p className="  lg:text-2xl w-40 md:w-60 ml-3 h-auto my-3">
             Website ini resmi milik gedung desa cangkol
           </p>

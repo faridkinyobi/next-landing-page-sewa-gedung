@@ -1,17 +1,23 @@
-import React, { Suspense } from "react";
-import ErrorBoundary from "../components/ErrorBoundary.jsx";
+import React from "react";
 import { getData } from "../utils/fetchData";
-// import EventCalendar from "../components/LandingPage/Calender";
-import About from "../components/LandingPage/About";
+import dynamic from "next/dynamic";
+import Loading from "../components/loading";
 import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
-import Paket from "../components/LandingPage/Paket";
-import Loading from "../components/loading";
-const Alur = React.lazy(() => import("../components/LandingPage/Alur"));
-const Fasil = React.lazy(() => import("../components/LandingPage/Fasil"));
-const Galery = React.lazy(() => import("../components/LandingPage/Galery"));
-const EventCalendar = React.lazy(
-  () => import("../components/LandingPage/Calender")
+import Alur from "../components/LandingPage/Alur";
+import Fasil from "../components/LandingPage/Fasil";
+import Galery from "@/components/LandingPage/Galery";
+//import Paket from "../components/LandingPage/Paket";
+const Paket = dynamic(() => import("@/components/LandingPage/Paket"));
+const ErrorBoundary = dynamic(() => import("../components/ErrorBoundary.jsx"), {
+  loading: () => <Loading />,
+});
+const About = dynamic(() => import("../components/LandingPage/About"), {
+  loading: () => <Loading />,
+});
+
+const EventCalendar = dynamic(
+  () => import("@/components/LandingPage/Calender")
 );
 interface PaketType {
   data: {
@@ -39,18 +45,16 @@ interface PaketType {
 export default function Home({ data, event }: PaketType) {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<Loading />}>
-        <main>
-          <Header />
-          <Alur />
-          <Fasil />
-          {data ? <Paket data={data} /> : <Loading />}
-          <About />
-          {event ? <EventCalendar event={event} /> : <Loading />}
-          <Galery />
-          <Footer />
-        </main>
-      </Suspense>
+      <main>
+        <Header />
+        <Alur />
+        <Fasil />
+        {data ? <Paket data={data} /> : <Loading />}
+        <About />
+        {event ? <EventCalendar event={event} /> : <Loading />}
+        <Galery />
+        <Footer />
+      </main>
     </ErrorBoundary>
   );
 }

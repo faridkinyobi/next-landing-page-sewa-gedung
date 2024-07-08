@@ -1,16 +1,17 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  // Konfigurasi lainnya di sini
   // output: "standalone",
   env: {
     API_URL: process.env.NEXT_PUBLIC_API,
   },
+  publicRuntimeConfig: {
+    NEXT_APP_IMAGE_BASE_URL: process.env.NEXT_APP_IMAGE_BASE_URL,
+  },
   distDir: ".next",
   images: {
-    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: "http",
@@ -20,20 +21,11 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "apigedung.pojokbambu.com",
+        hostname: process.env.NEXT_PUBLIC_API.replace(/^https?:\/\//, ''),
         port: "",
         pathname: "/upload/**",
       },
     ],
   },
-  // future: {
-  //   webpack5: true, // Atur ke true jika kamu menggunakan webpack 5
-  // },
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback.fs = false;
-  //   }
 
-  //   return config;
-  // },
 };

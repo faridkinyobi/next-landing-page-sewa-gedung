@@ -1,13 +1,16 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState,useEffect } from "react";
 import dynamic from "next/dynamic";
 import Loading from "../loading";
-import { add, sub, format } from "date-fns";
-import { BsCaretLeftFill, BsCaretRightFill, BsX } from "react-icons/bs";
 const Calendar = dynamic(() => import("react-calendar"), {
-  ssr: false,
   loading: () => <Loading />,
 });
-const CustomModal = React.lazy(() => import("../modal"));
+const CardModalCalender = dynamic(() => import("../CardModalCalender"), {
+  loading: () => <Loading />,
+});
+const NavCalender = dynamic(() => import("../NavCalender"));
+const CustomModal = dynamic(() => import("../modal"), {
+  loading: () => <Loading />,
+});
 interface PaketType {
   event: {
     id: number;
@@ -93,42 +96,22 @@ const EventCalendar = ({ event }: PaketType) => {
         Lihat jadwal pada calender dibawah
       </p>
       <div className="border-4 border-blue-30 rounded-xl">
-        <div className="nav-months p-2 bg-slate-400 flex justify-between rounded-t-lg">
-          <p className=" font-light">{format(activeStartDate, "MMMM yyyy")}</p>
-          <p className=" font-light text-base">
-            {format(new Date(), "d MMMM yyyy")}
-          </p>
-          <div className="flex">
-            <button
-              className=" bg-blue-40 text-white-10 px-3 lg:px-6 py-2 text-xl font-extrabold hover:bg-blue-30"
-              onClick={() =>
-                setActiveStartDate(sub(activeStartDate, { months: 1 }))
-              }
-            >
-              <BsCaretLeftFill />
-            </button>
-            <button
-              className=" bg-blue-40 text-white-10 px-3 lg:px-6 py-2 text-xl font-extrabold hover:bg-blue-30"
-              onClick={() =>
-                setActiveStartDate(add(activeStartDate, { months: 1 }))
-              }
-            >
-              <BsCaretRightFill />
-            </button>
-          </div>
-        </div>
+        <NavCalender
+          setActiveStartDate={setActiveStartDate}
+          activeStartDate={activeStartDate}
+        />
         {isClient ? (
-          <Calendar
-            activeStartDate={activeStartDate}
-            value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
-            onClickDay={() => {}}
-            tileContent={tileContent}
-            calendarType="gregory"
-            minDetail="year"
-            showNavigation={false}
-            className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
-          />
-        ) : (
+        <Calendar
+          activeStartDate={activeStartDate}
+          value={selectedEvent ? new Date(selectedEvent.tgl_mulai) : null}
+          onClickDay={() => {}}
+          tileContent={tileContent}
+          calendarType="gregory"
+          minDetail="year"
+          showNavigation={false}
+          className="text-[1rem] lg:text-2xl bg-blue-20  text-white-10/65 text-center lg:px-20 lg:py-10 px-2"
+        />
+                ) : (
           ""
         )}
 
@@ -143,84 +126,12 @@ const EventCalendar = ({ event }: PaketType) => {
           isOpen={showModal}
           className="md:py-[11rem] py-28 my-[13rem] md:my-[1rem] md:mx-[2rem] bg-slate-500"
         >
-          <Suspense fallback={<Loading />}>
-            {showModal && selectedEvent && (
-              <div className="modal-overlay duration-1000 flex justify-center bg-slate-500 md:mx-10 mx-3">
-                <div className="modal-content">
-                  <table className="table md:text-lg text-base">
-                    <thead>
-                      <tr className="m-1 text-center text-white-10/90">
-                        <th className="border border-white-20/70 px-[0.1rem] md:px-2 py-3">
-                          kegiatan
-                        </th>
-                        <th className="border border-white-20/70 px-[0.1rem] md:px-2">
-                          lama sewa
-                        </th>
-                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                          tanggal mulai
-                        </th>
-                        <th className="border border-white-20/70 px-[0.2rem] md:px-3">
-                          tanggal akhir
-                        </th>
-                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                          waktu sewa
-                        </th>
-                        <th className="border border-white-20/70 px-[0.1rem] md:px-3">
-                          kegiatan
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="static text-center text-white-10/85">
-                        <td className="border border-white-20/70 px-2">
-                          {selectedEvent.kegiatan}
-                        </td>
-                        <td className="border border-white-20/70 px-2">
-                          {selectedEvent.lama_sewa}{" "}
-                          {selectedEvent.tgl_akhir ||
-                          /pernikahan/i.test(selectedEvent.kegiatan)
-                            ? "hari"
-                            : "jam"}
-                        </td>
-                        <td className="border border-white-20/70 px-2">
-                          {new Date(
-                            selectedEvent?.tgl_mulai
-                          ).toLocaleDateString("id-ID", {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                          })}
-                        </td>
-                        <td className="border border-white-20/70 px-2">
-                          {selectedEvent.tgl_akhir
-                            ? new Date(
-                                selectedEvent.tgl_akhir
-                              ).toLocaleDateString("id-ID", {
-                                day: "2-digit",
-                                month: "long",
-                                year: "numeric",
-                              })
-                            : "-"}
-                        </td>
-                        <td className="border border-white-20/70 px-2">
-                          {selectedEvent.waktu}
-                        </td>
-                        <td className="border border-white-20/70 px-2">
-                          {selectedEvent.status_kegiatan}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button
-                    className="close absolute right-2 top-[15rem] md:top-[4rem] md:right-[4rem] md:m-5 font-medium text-3xl m-1 hover:bg-black-10/15 bg-slate-400 rounded-full"
-                    onClick={closeModal}
-                  >
-                    <BsX />
-                  </button>
-                </div>
-              </div>
-            )}
-          </Suspense>
+          {showModal && selectedEvent && (
+            <CardModalCalender
+              selectedEvent={selectedEvent}
+              closeModal={closeModal}
+            />
+          )}
         </CustomModal>
       </div>
     </section>

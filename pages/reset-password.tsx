@@ -5,15 +5,17 @@ import Button from "../components/Button";
 import { toast } from "react-toastify";
 import { putData } from "@/utils/fetchData";
 import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next";
 export default function ResetPassword() {
   const router = useRouter();
   const { token, email } = router.query;
+
   const [form, setForm] = useState({
     email: "",
     newPassword: "",
     confirmPassword: "",
   });
-
+ 
   useEffect(() => {
     if (email) {
       setForm((prevForm) => ({ ...prevForm, email: email as string }));
@@ -52,7 +54,7 @@ export default function ResetPassword() {
   return (
     <main className="bg-blue-30 h-screen w-screen">
       <NavbarLending />
-      <div className="bg-white-20 rounded-2xl  mt-7 my:my-auto shadow-x md:mx-auto max-w-fit mx-auto  my-20">
+      <div className="bg-white-20 rounded-2xl my:my-auto shadow-x max-w-fit mx-auto  my-20">
         <form className="p-10">
           <Input
             name="newPassword"
@@ -80,4 +82,19 @@ export default function ResetPassword() {
       </div>
     </main>
   );
+}
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context;
+  const { token, email } = query;
+  if (!token && !email) {
+    return {
+      redirect: {
+        destination: "/lupa-password",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {}, 
+  };
 }

@@ -18,21 +18,23 @@ const FormSignin = () => {
   };
 
   const handleSubmit = async () => {
-    const res = await postData("/app/v1/auth/signin", form);
-
-    toast.success("berhasil signin", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+    await postData("/app/v1/auth/signin", form).then((res) => {
+      if (res.data) {
+        toast.success("berhasil signin", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        Cookies.set("token", res.data.token);
+        Cookies.set("lastName", res.data.lastName);
+        Cookies.set("firstName", res.data.firstName);
+        router.push("/");
+      }
     });
-    Cookies.set("token", res.data.token);
-    Cookies.set("lastName", res.data.lastName);
-    Cookies.set("firstName", res.data.firstName);
-    router.push("/");
   };
 
   return (
@@ -53,7 +55,10 @@ const FormSignin = () => {
         onChange={handleChange}
         value={form.password}
       />
-      <Link href="/lupa-password" className="block my-3 mx-4 hover:text-blue-10">
+      <Link
+        href="/lupa-password"
+        className="block my-3 mx-4 hover:text-blue-10"
+      >
         Forgot passowod?
       </Link>
       <Button

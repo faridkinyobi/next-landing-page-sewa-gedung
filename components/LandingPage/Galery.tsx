@@ -1,7 +1,9 @@
-import React from "react";
-//import ImgComponen from "../ImgComponen";
-const ImgComponen = React.lazy(() => import("../ImgComponen"));
+import dynamic from "next/dynamic";
+const ImgComponen = dynamic(() => import("../ImgComponen"), {
+  loading: () => <Loading />,
+});
 import itemsData from "../itemsData";
+import Loading from "../loading";
 export const Galery = () => {
   return (
     <section id="galery" className="galery mx-5 lg:mx-[6rem] my-20">
@@ -11,13 +13,13 @@ export const Galery = () => {
       </p>
       <div className="static grid col-auto gap-4">
         <div className=" md:flex grid justify-items-start md:items-center md:justify-center gap-6">
-          <div className="grid grid-cols-2 gap-6 max-w-max h-auto">
+          <div className="grid grid-cols-2 gap-1 md:gap-6 max-w-max h-auto">
             <ImgComponen
               src={itemsData.DaftarImag.gambar1}
               alt="gambar"
               width={210}
               height={189}
-              className="w-auto h-auto md:w-[20rem] lg:w-[35rem] xl:w-auto"
+              className="w-[100%]   h-auto"
               loading="lazy"
             />
             <ImgComponen
@@ -25,7 +27,7 @@ export const Galery = () => {
               alt="gambar"
               width={210}
               height={189}
-              className="w-auto h-auto  md:w-[20rem] lg:w-[35rem] xl:w-auto"
+              className="w-[100%] h-auto"
               loading="lazy"
             />
           </div>
@@ -34,7 +36,7 @@ export const Galery = () => {
             alt="gambar"
             width={604}
             height={194}
-            className="w-auto  h-auto md:w-[25rem] lg:w-[30rem] xl:w-auto"
+            className="Md-width-heigth-auto"
             loading="lazy"
           />
         </div>
@@ -44,25 +46,25 @@ export const Galery = () => {
             alt="gambar"
             width={604}
             height={194}
-            className="w-auto  h-auto md:w-[25rem] lg:w-[30rem] xl:w-auto"
+            className="Md-width-heigth-auto"
             loading="lazy"
           />
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2  gap-1 md:gap-6 max-w-max h-auto">
             <ImgComponen
               src={itemsData.DaftarImag.gambar5}
               alt="gambar"
               width={210}
               height={189}
-              className="w-auto  h-auto md:w-[30rem] lg:w-[35rem] xl:w-auto"
-              priority={true}
+              className="w-[100%] h-auto"
+              loading="lazy"
             />
             <ImgComponen
               src={itemsData.DaftarImag.gambar6}
               alt="gambar"
               width={210}
               height={189}
-              className="w-auto h-auto md:w-[30rem] lg:w-[35rem] xl:w-auto"
-              priority={true}
+              className="w-[100%] h-auto"
+              loading="lazy"
             />
           </div>
         </div>
