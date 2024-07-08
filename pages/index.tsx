@@ -1,6 +1,5 @@
 import React from "react";
 import { getData } from "../utils/fetchData";
-import Loading from "../components/loading";
 import Footer from "@/components/Footer";
 import Header from "../components/LandingPage/Header";
 import Alur from "../components/LandingPage/Alur";
@@ -39,9 +38,9 @@ export default function Home({ data, event }: PaketType) {
       <Header />
       <Alur />
       <Fasil />
-      {data ? <Paket data={data} /> : <Loading />}
+      <Paket data={data} />
       <About />
-      {event ? <EventCalendar event={event} /> : <Loading />}
+      <EventCalendar event={event} />
       <Galery />
       <Footer />
     </main>
