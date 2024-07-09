@@ -42,15 +42,15 @@ const FormSignin = () => {
       <Input
         name="email"
         type="text"
-        placeholder="email"
-        label="email"
+        placeholder="Email"
+        label="Email"
         onChange={handleChange}
         value={form.email}
       />
       <Input
         name="password"
         type="password"
-        placeholder="password"
+        placeholder="Password"
         label="Password"
         onChange={handleChange}
         value={form.password}
