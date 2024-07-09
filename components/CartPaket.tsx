@@ -70,7 +70,7 @@ const CartPaket: React.FC<PaketType> = ({
 
         <div className="my-2">
           <div
-            className={`my-2 mx-2 grid grid-cols-1 gap-2 ${
+            className={`my-2 mx-1 grid grid-cols-1  gap-1 ${
               selectedharga !== index
                 ? "hidden"
                 : "origin-bottom transition-transform delay-1000"
@@ -78,7 +78,7 @@ const CartPaket: React.FC<PaketType> = ({
           >
             {item.harga &&
               item.harga.map((hargaItem, hargaIndex) => (
-                <div className="border-spacing-9 border px-3 py-1" key={hargaIndex}>
+                <div className="border-spacing-9 border px-2 lg:px-auto py-1" key={hargaIndex}>
                   <h3 className="text-[1rem] font-normal text-left text-white-10">
                     {hargaItem.kegiatan}
                   </h3>
@@ -86,7 +86,7 @@ const CartPaket: React.FC<PaketType> = ({
                     Hari: {hargaItem.hari}
                   </p>
                   <p className="text-[1rem] font-normal text-left text-white-10">
-                    {hargaItem.warga}
+                   warga {hargaItem.warga}
                   </p>
                   <p className="text-[1rem] font-normal text-left text-white-10">
                     {hargaItem.hargadetail.toLocaleString("id-ID", {

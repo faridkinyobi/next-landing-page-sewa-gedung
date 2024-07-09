@@ -3,7 +3,7 @@ import Desc from "./itemsData";
 
 export default function DescAboutComponent() {
   return (
-    <div>
+    <>
       <h1 className="title font-bold text-4xl md:text-4xl mb-5">
         Gedung Pertenuan Desa Cangkol
       </h1>
@@ -15,6 +15,6 @@ export default function DescAboutComponent() {
           {item.desc}
         </p>
       ))}
-    </div>
+    </>
   );
 }
