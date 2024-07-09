@@ -1,15 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import getConfig from "next/config";
-const { publicRuntimeConfig } = getConfig();
-const { NEXT_APP_IMAGE_BASE_URL } = publicRuntimeConfig;
 
 export default function Document() {
-  const imageUrl = NEXT_APP_IMAGE_BASE_URL
-    ? `${NEXT_APP_IMAGE_BASE_URL}backgroud3.webp`
-    : "/Image/backgroud3.webp";
-  const imageUrlAbut = NEXT_APP_IMAGE_BASE_URL
-    ? `${NEXT_APP_IMAGE_BASE_URL}bg-about.webp`
-    : "/Image/bg-about.webp";
 
   return (
     <Html lang="en">
@@ -17,7 +8,7 @@ export default function Document() {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
         name="keywords"
-        content="sewa gedung, gedung cangkol, tempat acara, pernikahan, seminar, desa cangkol, sewa gedung cangkol,cangkol"
+        content="sewa gedung, gedung cangkol, tempat acara, pernikahan, seminar, desa cangkol, sewa gedung cangkol,cangkol, mojolaban,sukoharjo"
       />
       <meta name="author" content="Gedung Cangkol" />
       <meta

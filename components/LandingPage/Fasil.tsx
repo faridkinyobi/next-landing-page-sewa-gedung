@@ -14,24 +14,24 @@ const Fasil = () => {
       <div className="sticky rounded-s-3xl  ">
         <ul className=" mx-5 lg:mx-60 items-center justify-center cursor-pointer flex gap-2  py-3  lg:px-10 rounded-t-2xl shadow-inner shadow-blue-40 text-blue-40">
           <li
-            className={`py-1 px-1 md:px-3 rounded-2xl font-medium transitionAll75 hover:bg-slate-200 ${
+            className={`py-1 px-1 md:px-3 rounded-2xl font-medium transitionAll75 hover:bg-blue-20/75 text-white-10 ${
               selectedSection === "section1"
-                ? "  shadow-blue-40 shadow-at bg-white-10"
-                : " bg-slate-100"
+                ? "  shadow-blue-40 shadow-at bg-blue-30"
+                : " bg-blue-20"
             } `}
             onClick={() => setSelectedSection("section1")}
           >
             Spesifikasi
           </li>
           <li
-            className={`py-1 px-3 rounded-2xl font-medium  transitionAll75 hover:bg-slate-200 ${
+            className={`py-1 px-3 rounded-2xl font-medium  transitionAll75 hover:bg-blue-20/75 text-white-10 ${
               selectedSection === "section2"
-                ? " shadow-blue-40 shadow-at bg-white-10"
-                : " bg-slate-100"
+                ? " shadow-blue-40 shadow-at bg-blue-30"
+                : " bg-blue-20"
             } `}
             onClick={() => setSelectedSection("section2")}
           >
-            jejak aktivitas
+            Jejak aktivitas
           </li>
         </ul>
       </div>
@@ -70,7 +70,7 @@ const Fasil = () => {
                   <p>Ruang Ganti/Rias</p>
                   <p>Dapur catring</p>
                   <p>Toilet</p>
-                  <p>mushola</p>
+                  <p>Mushola</p>
                 </div>
               </div>
               <div>
@@ -93,7 +93,7 @@ const Fasil = () => {
               <p>Lomba Pencak Silat</p>
               <p>Halal bi halal</p>
               <p>Wisuda</p>
-              <p>anniversary club motor</p>
+              <p>Ulang tahun club motor</p>
             </div>
           </div>
         )}

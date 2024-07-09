@@ -9,7 +9,7 @@ interface PaketType {
   event: {
     id: number;
     kegiatan: string;
-    tgl_mulai: Date;
+    tgl_mulai: Date;  
     tgl_akhir: Date;
     lama_sewa: number;
     status_kegiatan: string;
