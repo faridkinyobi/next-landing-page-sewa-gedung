@@ -12,14 +12,14 @@ import ImgComponent from "./ImgComponen";
 const Footer = () => {
   return (
     <footer className="py-10 bg-blue-20">
-      <div className=" flex flex-wrap justify-between mx-5 md:mx-5 lg:mx-28 text-white-10 items-center">
+      <div className=" flex flex-wrap justify-between mx-3 md:mx-10 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
           <ImgComponent
             className="w-44 h-auto"
             src="/Image/logo5coklat.svg"
             alt="Logo"
             width={250}
-            height={950}
+            height={250}
             loading="lazy"
           />
           <p className="  lg:text-2xl w-40 md:w-60 ml-3 h-auto my-3">
@@ -39,12 +39,12 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="metsos md:mr-10">
-          <BsInstagram className="bg-blue-10 p-2 w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md " />
+        <div className="metsos mr-2 md:mr-10 ">
+          <BsInstagram className="bg-blue-10 p-2 w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md  mx-auto" />
 
-          <BsFacebook className="bg-blue-10 p-2 w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md mr-9 my-3" />
+          <BsFacebook className="bg-blue-10 p-2 w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md  my-3 mx-auto " />
 
-          <BsYoutube className="bg-blue-10 p-2  w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md " />
+          <BsYoutube className="bg-blue-10 p-2  w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md mx-auto" />
         </div>
       </div>
       <p className="Copyright text-center text-white-10 text-sm py-7">

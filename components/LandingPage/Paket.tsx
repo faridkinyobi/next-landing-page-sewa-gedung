@@ -71,7 +71,7 @@ const Paket = ({ data }: PaketType) => {
         <p className="py-2 md:text-2xl text-xl  ml-4 text-gray-10 lg:text-left">
           Pilih paket Sewa Gedung
         </p>
-        <div className="mx-1 md:mx-20 lg:mx-44">
+        <div className="mx-1 md:mx-10 lg:mx-20">
           <Slider {...settings}>
             {data?.map((item, index) => (
               <div key={index}>

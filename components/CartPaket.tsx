@@ -32,7 +32,7 @@ const CartPaket: React.FC<PaketType> = ({
   };
 
   return (
-    <div className="my-4 px-3 rounded-b-xl text-blue-40 max-w-max max-h-max cursor-pointer hover:bg-slate-100 hover:rounded-t-xl delay-200 transition-all ease-in-out">
+    <div className="my-4 mx-0 md:mx-3 lg:mx-1 p-1 text-blue-40 cursor-pointer hover:bg-slate-100 hover:rounded-t-xl delay-200 transition-all ease-in-out">
       <div className="text-center items-center bg-white-10 py-2 rounded-t-xl">
         <h1 className="text-2xl lg:text-3xl font-semibold my-2">
           {item.titel}
@@ -43,13 +43,13 @@ const CartPaket: React.FC<PaketType> = ({
         {item.fasilitas &&
           item.fasilitas.map((fasilitasItem, fasilitasIndex) => (
             <div key={fasilitasIndex}>
-              <p className="text-white-10 text-left flex items-center text-base pt-1 mx-2">
+              <p className="text-white-10 text-left flex items-center text-base pt-1 mx-1 md:mx-2">
                 <BsCheckLg className="text-blue-30 mx-2 bg-yellow-300 text-xl rounded-xl" />
                 {fasilitasItem.detail}
               </p>
             </div>
           ))}
-        <p className="my-3 mx-10 font-extralight text-left text-base text-gray-10">
+        <p className="my-3 mx-5 font-extralight text-left text-base text-gray-10">
           Kelengkapan lain diserahkan kepada{" "}
           <span className="font-bold text-white-20">Penyewa</span>
         </p>
