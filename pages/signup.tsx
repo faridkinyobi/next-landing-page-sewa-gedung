@@ -3,10 +3,10 @@ import NavbarLending from "@/components/NavbarLending";
 import FormSignup  from "@/components/FormSignup";
 export default function Signup() {
   return (
-    <main className="bg-blue-30 w-screen h-screen ">
+    <main className="bg-blue-30 w-screen md:h-screen h-[550px]">
       <NavbarLending />
       <div className="container flex items-center justify-center mx-auto ">
-        <div className="bg-white-20 rounded-2xl mb-14 md:mb-10 ">
+        <div className="bg-white-20 rounded-2xl">
           <div className="py-4 px-10">
             <FormSignup />
           </div>

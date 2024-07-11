@@ -30,7 +30,7 @@ const TextInput = ({
     <div className="flex flex-col  col-span-1 my-1">
       <label className="text-blue-30">{label}</label>
       <input
-      className={`rounded-lg focus:border-blue-20  focus:outline-slate-500  border border-neutral-300  px-4 py-3 lg:w-96 my-2 md:mx-1 ${className ? className : undefined} `}
+      className={`rounded-lg focus:border-blue-20  focus:outline-slate-500  border border-neutral-300  px-4 py-2 md:py-3 lg:w-96 my-2 md:mx-1 ${className ? className : undefined} `}
         type={type}
         placeholder={placeholder}
         name={name}

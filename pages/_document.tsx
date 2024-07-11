@@ -8,7 +8,7 @@ export default function Document() {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
         name="keywords"
-        content="sewa gedung, gedung cangkol, tempat acara, pernikahan, seminar, desa cangkol, sewa gedung cangkol,cangkol, mojolaban,sukoharjo"
+        content="sewa gedung, gedung cangkol, tempat acara, pernikahan, seminar, desa cangkol, sewa gedung cangkol,cangkol, mojolaban,sukoharjo, Harsa sewa gedung cangkol"
       />
       <meta name="author" content="Gedung Cangkol" />
       <meta

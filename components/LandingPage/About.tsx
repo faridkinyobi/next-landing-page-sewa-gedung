@@ -1,7 +1,15 @@
+import React, { useState } from "react";
 import Link from "next/link";
 import ImgComponent from "../ImgComponen";
 
 const About = () => {
+  const [loading, setLoading] = useState(false);
+  const handleNavigation = async () => {
+    setLoading(true);
+    //  penundaan menampilkan 
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoading(false);
+  };
   return (
     <section
       id="about"
@@ -26,11 +34,21 @@ const About = () => {
             persewaan yang dapatmembantu warga untuk mensukses kan semuah acara.
           </p>
           <Link
-            className="btn_green text-blue-30 px-12  font-semibold  py-4 rounded-full bg-green-10 hover:outline-green-10 hover:bg-green-600"
+            className={`btn_green text-blue-30 px-12  font-semibold  py-4 rounded-full bg-green-10 hover:outline-green-10 hover:bg-green-600`}
             href={`/about`}
+            onClick={handleNavigation}
+            tabIndex={loading? -1 : undefined}
           >
             Baca
           </Link>
+          {loading ? (
+            <span className="relative flex w-5 h-auto left-28 bottom-10">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-5 w-5 bg-sky-500"></span>
+            </span>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </section>
