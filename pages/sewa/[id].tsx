@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import dynamic from "next/dynamic";
-const FormOrder = dynamic(() => import("@/components/FormOrder"));
-// import DetailPaket from "@/components/DetailPaket";
-const DetailPaket = dynamic(() => import("@/components/DetailPaket"));
-import NavbarLending from "@/components/NavbarLending";
 import { getData } from "@/utils/fetchData";
+
+const FormOrder = dynamic(() => import("@/components/FormOrder"), { ssr: false });
+const DetailPaket = dynamic(() => import("@/components/DetailPaket"), { ssr: false });
+import NavbarLending from "@/components/NavbarLending";
 import Petunjuk from "@/components/itemsData";
 interface PaketType {
   detailPage: {

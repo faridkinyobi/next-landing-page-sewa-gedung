@@ -27,7 +27,7 @@ const Header = () => {
           </span>{" "}
           Kami
         </h1>
-        <p className="inline-block mx-10 lg:mx-80 text-white-10 text-[1.2rem] md:text-2xl font-light text-center">
+        <p className="inline-block mx-10 lg:mx-80 text-white-10 text-base md:text-2xl font-light text-center">
           Kami menyediakan tempat yang terbaik dan fasilitas yang bisa digunakan
           untuk memberikan kenyamanan dalam menyewa gedung
         </p>

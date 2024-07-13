@@ -12,9 +12,12 @@ import Button from "@/components/Button";
 import CardBank from "../../components/CardBank";
 import NavbarLending from "@/components/NavbarLending";
 const BuktiPemayaran = dynamic(
-  () => import("@/components/BuktiPembayaranComponen")
+  () => import("@/components/BuktiPembayaranComponen"),
+  { ssr: false }
 );
-const Pemayaran = dynamic(() => import("@/components/PembayaranComponent"));
+const Pemayaran = dynamic(() => import("@/components/PembayaranComponent"), {
+  ssr: false,
+});
 interface HistoryPaket {
   title: string;
   hari: string;

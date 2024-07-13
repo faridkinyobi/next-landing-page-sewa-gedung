@@ -1,10 +1,12 @@
 import React from "react";
-import NavbarLending from "@/components/NavbarLending";
-import Footer from "../components/Footer";
-import ImgComponent from "../components/ImgComponen";
-
 import { BsEnvelope, BsGeoAlt, BsTelephone } from "react-icons/bs";
-import DescAboutComponent from "@/components/DescAboutComponent";
+import dynamic from 'next/dynamic';
+
+const ImgComponent = dynamic(() => import("@/components/ImgComponen"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
+const DescAboutComponent = dynamic(() => import("@/components/DescAboutComponent"), { ssr: false });
+
 const About = () => {
   return (
     <div
