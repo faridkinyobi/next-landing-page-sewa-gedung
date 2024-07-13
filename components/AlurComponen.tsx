@@ -5,7 +5,7 @@ type TextAlurProps = {
   };
 
 
-export const AlurComponen = ({ Number, desc }: TextAlurProps) => {
+ const AlurComponen = ({ Number, desc }: TextAlurProps) => {
   return (
     <div
     className="flex bg-green-10 py-4 text-center rounded-xl  my-5 shadow-md shadow-slate-800"
@@ -20,3 +20,4 @@ export const AlurComponen = ({ Number, desc }: TextAlurProps) => {
   </div>
   )
 }
+export default AlurComponen

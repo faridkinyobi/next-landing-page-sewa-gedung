@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import ImgComponent from "../ImgComponen";
+import dynamic from 'next/dynamic';
 
+const ImgComponent = dynamic(() => import("@/components/ImgComponen"), { ssr: false });
 const About = () => {
   const [loading, setLoading] = useState(false);
   const handleNavigation = async () => {

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import CardModalCalender from "../CardModalCalender";
-import NavCalender from "../NavCalender";
 import CustomModal from "../modal";
+import dynamic from 'next/dynamic';
 
+const  NavCalender  = dynamic(() => import("@/components/NavCalender"), { ssr: false });
+const CardModalCalender = dynamic(() => import("@/components/CardModalCalender"), { ssr: false });
 interface PaketType {
   event: {
     id: number;

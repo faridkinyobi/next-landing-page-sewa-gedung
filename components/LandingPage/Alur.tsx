@@ -1,5 +1,6 @@
+import dynamic from 'next/dynamic';
 
-import { AlurComponen } from "../AlurComponen";
+const  AlurComponen  = dynamic(() => import("@/components/AlurComponen"), { ssr: false });
 import alurData from "../itemsData";
 
 const Alur = () => {

@@ -1,5 +1,7 @@
 
-import ImgComponent from "../ImgComponen";
+import dynamic from 'next/dynamic';
+
+const ImgComponent = dynamic(() => import("@/components/ImgComponen"), { ssr: false });
 import itemsData from "../itemsData";
 export const Galery = () => {
   return (

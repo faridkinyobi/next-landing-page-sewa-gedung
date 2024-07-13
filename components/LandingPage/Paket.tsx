@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import CartPaket from "../CartPaket";
+import dynamic from 'next/dynamic';
+
+const CartPaket = dynamic(() => import("@/components/CartPaket"), { ssr: false });
 interface PaketType {
   data: {
     titel: string;
