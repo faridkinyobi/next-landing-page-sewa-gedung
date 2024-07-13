@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSidePropsContext } from "next";
 import dynamic from 'next/dynamic';
 
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
+import NavbarLending from "@/components/NavbarLending";
 const FormSignin = dynamic(() => import("@/components/FormSignin"), { ssr: false });
 export default function Signin() {
   return (

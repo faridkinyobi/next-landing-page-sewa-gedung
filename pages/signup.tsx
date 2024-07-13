@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from 'next/dynamic';
+import NavbarLending from "@/components/NavbarLending";
 
-const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
 const FormSignup = dynamic(() => import("@/components/FormSignup"), { ssr: false });
 export default function Signup() {
   return (
