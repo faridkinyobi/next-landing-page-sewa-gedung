@@ -5,7 +5,6 @@ import router from "next/router";
 import Cookies from "js-cookie";
 import { postData } from "@/utils/fetchData";
 import { toast } from "react-toastify";
-import NavLink from "./NavLink";
 import Link from "next/link";
 const FormSignin = () => {
   const [form, setForm] = useState({
@@ -69,9 +68,9 @@ const FormSignin = () => {
       />
       <div className="my-3 mx-4 text-xl">
         New here
-        <NavLink className=" text-blue-10 mx-2" href="/signup">
+        <Link className=" text-blue-10 mx-2" href="/signup">
           sing up
-        </NavLink>
+        </Link>
       </div>
     </form>
   );

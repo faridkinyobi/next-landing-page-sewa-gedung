@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-
   return (
     <Html lang="en">
       <Head />
@@ -25,19 +24,27 @@ export default function Document() {
       />
       <link
         rel="preload"
-        href={`/Image/backgroud3.svg`}
+        href="https://gedungcangkol.com/Image/backgroud3.svg"
         as="image"
-        type="image/svg+xml"
-      />
+      ></link>
       <link
         rel="preload"
-        href={`/Image/bg-about.svg`}
+        href="https://gedungcangkol.com/Image/bg-about.svg"
         as="image"
-        type="image/svg+xml"
-      />
+      ></link>
       <link rel="prefetch" href="/Image/abaut.svg" />
-      <meta property="og:image" content="/Image/abaut.svg" />
-      <meta property="og:image" content="/Image/gambar3.svg" />
+      <meta
+        property="og:image"
+        content="https://gedungcangkol.com/Image/backgroud3.svg"
+      />
+      <meta
+        property="og:image"
+        content="https://gedungcangkol.com/Image/abaut.svg"
+      />
+      <meta
+        property="og:image"
+        content="https://gedungcangkol.com/Image/gambar3.svg"
+      />
       <meta property="og:url" content="https://gedungcangkol.com" />
       <meta property="og:type" content="website" />
       <link rel="icon" href="/Image/icon.svg" />

@@ -1,6 +1,8 @@
 import React from "react";
-import NavbarLending from "@/components/NavbarLending";
-import FormSignup  from "@/components/FormSignup";
+import dynamic from 'next/dynamic';
+
+const NavbarLending = dynamic(() => import("@/components/NavbarLending"), { ssr: false });
+const FormSignup = dynamic(() => import("@/components/FormSignup"), { ssr: false });
 export default function Signup() {
   return (
     <main className="bg-blue-30 w-screen md:h-screen h-[560px]">
