@@ -125,7 +125,7 @@ const FormSingnup = () => {
         </div>
       )}
       <Button
-        className="btn_green py-2 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90 bg-green-10 hover:outline-green-10 "
+        className="btn_green py-3 border-0 w-full lg:w-full block   duration-300 outline-2 active:outline focus:outline-gray-10 hover:bg-green-10/90 bg-green-10 hover:outline-green-10 "
         type="button"
         title={keyword === "otp" ? "Verfikasi" : "Sign Up"}
         onClick={handleSubmit}

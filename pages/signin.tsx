@@ -6,7 +6,7 @@ import NavbarLending from "@/components/NavbarLending";
 const FormSignin = dynamic(() => import("@/components/FormSignin"), { ssr: false });
 export default function Signin() {
   return (
-    <div className="bg-blue-30  w-screen h-auto">
+    <div className="bg-blue-30  w-screen h-screen">
       <NavbarLending />
       <div className="container flex items-center justify-center mx-auto ">
         <div className="bg-white-20 rounded-2xl mb-14 md:mb-10">
