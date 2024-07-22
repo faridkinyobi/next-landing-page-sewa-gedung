@@ -8,7 +8,7 @@ const About = () => {
   const handleNavigation = async () => {
     setLoading(true);
     //  penundaan menampilkan 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     setLoading(false);
   };
   return (
