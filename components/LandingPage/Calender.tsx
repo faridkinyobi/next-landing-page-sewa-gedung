@@ -4,7 +4,9 @@ import CustomModal from "../modal";
 import dynamic from 'next/dynamic';
 
 const  NavCalender  = dynamic(() => import("@/components/NavCalender"), { ssr: false });
-const CardModalCalender = dynamic(() => import("@/components/CardModalCalender"), { ssr: false });
+const CardModalCalender = dynamic(() => import("@/components/CardModalCalender"), { 
+  ssr: false, 
+  loading: () => <p className="text-gray-400">Loading...</p> });
 interface PaketType {
   event: {
     id: number;
