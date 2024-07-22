@@ -1,7 +1,10 @@
 
 import dynamic from 'next/dynamic';
 
-const ImgComponent = dynamic(() => import("@/components/ImgComponen"), { ssr: false });
+const ImgComponent = dynamic(() => import("@/components/ImgComponen"), { 
+  ssr: false,
+  loading: () => <p className="text-gray-400">Loading...</p>
+});
 import itemsData from "../itemsData";
 export const Galery = () => {
   return (
