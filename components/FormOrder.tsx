@@ -240,7 +240,7 @@ export default function FormOrder({
     setForm({ ...form, MetPembayaran: method });
   };
   return (
-    <form className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-1 md:mb-1">
+    <form className="grid grid-cols-1 md:grid-cols-2 gap-1 md:mb-1">
       <Input
         name="Name"
         type="text"
@@ -296,8 +296,8 @@ export default function FormOrder({
         onChange={handleOChange}
         value={form.kegiatan}
       />
-      <div className="flex flex-grow text-center items-center mx-2 gap-2">
-        <label className="label font-bold text-xl" htmlFor="lebih dari 1 hari">
+      <div className="flex flex-grow text-center items-center my-2 md:mx-2 gap-2">
+        <label className="label font-semibold md:font-bold text-xl" htmlFor="lebih dari 1 hari">
           lebih dari 1 hari
         </label>
         <input
@@ -336,18 +336,18 @@ export default function FormOrder({
       </div>
       <div className="paymen flex flex-row gap-2">
         <div
-          className={`flex justify-between flex-wrap items-center  border-2 rounded-lg p-2 w-56 h-16 ${
+          className={`flex justify-between items-center  border-2 rounded-lg p-2 w-56 h-16 ${
             form.MetPembayaran === "Cash On Delivery"
               ? "border-green-500"
               : "border-gray-10"
           }`}
           onClick={() => handleSelectMethod("Cash On Delivery")}
         >
-          <MdHandshake className="font-bold text-4xl ml-3" />
+          <MdHandshake className="font-bold text-4xl mx-3" />
           {/* <img src={image} alt={method} className="w-10 h-10 mb-2" /> */}
           <div>
-            <p className="text-lg font-semibold mr-3">COD</p>
-            <p className=" font-light text-sm">cash on delivery</p>
+            <p className="text-base md:text-lg font-semibold">COD</p>
+            <p className="font-light text-sm">cash on delivery</p>
           </div>
         </div>
         <div
@@ -358,20 +358,20 @@ export default function FormOrder({
           }`}
           onClick={() => handleSelectMethod("transfer")}
         >
-          <MdOutlineCurrencyExchange className="font-bold text-4xl ml-3" />
+          <MdOutlineCurrencyExchange className="font-bold text-4xl mx-3" />
           {/* <img src={image} alt={method} className="w-10 h-10 mb-2" /> */}
-          <p className="text-lg font-semibold mr-3">Transfer</p>
+          <p className="text-base md:text-lg font-semibold">Transfer</p>
         </div>
       </div>
       <Button
-        className="btn_green rounded-full border-0 w-full my-5 py-2 lg:w-96 block duration-300 outline-2 active:outline focus:outline-gray-10 bg-green-10 hover:outline-green-10 hover:bg-green-10/75"
+        className="btn_green rounded-full border-0 w-full my-5 py-2 md:py-3 lg:w-96 block duration-300 outline-2 active:outline focus:outline-gray-10 bg-green-10 hover:outline-green-10 hover:bg-green-10/75"
         type="button"
         title="Order"
         onClick={handleOpenModal}
       />
       <Modal
         isOpen={showModal}
-        className="  my-[1rem]  mx-3 md:mx-[17rem] bg-white-10 shadow-sm border-2"
+        className="my-5 mx-3 md:mx-[10rem] lg:mx-[17rem] bg-white-10 shadow-sm border-2"
       >
         <DetailOrder
           form={form}

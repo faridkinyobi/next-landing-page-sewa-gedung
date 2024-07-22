@@ -43,17 +43,17 @@ const Chekout = ({ detailPage }: PaketType) => {
         setIsCardChecked={setIsCardChecked}
         style={""}
       />
-      <div className="container_form mx-[1rem] md:mx-[5.7rem] padding-container bg-blue-20 ">
-        <div className=" bg-slate-300 px-9 shadow-xl">
+      <div className="container_form mx-6 lg:mx-20 padding-container bg-blue-20 ">
+        <div className=" bg-slate-300 px-9 md:mx-0 shadow-xl">
           <h1 className="titel text-xl font-bold">Petunjuk Pemesanan</h1>
-          <ol className="list-decimal text-sm md:text-xl">
+          <ol className="list-decimal text-sm md:text-lg lg:text-xl">
             {Petunjuk.Petunjuk.map((item, index) => (
               <li key={index}>{item.dec}</li>
             ))}
           </ol>
         </div>
       </div>
-      <div className="bg-white-10 mx-[2rem] padding-container ">
+      <div className="bg-white-10 mx-6 lg:mx-20 padding-container ">
         <h3 className="Titel font-extrabold text-2xl">Formulir Pemesanan</h3>
         <FormOrder
           selectedHarga={selectedHarga}

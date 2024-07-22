@@ -54,14 +54,14 @@ function DetailOrder({
 
   return (
     <div className="container max-h-screen">
-      <h1 className="text-blue-30 p-4 bg-orange-400 mb-5 flex items-center text-xl font-bold">
-        <BsBagPlus className="mr-2 text-xl w-11 h-11 p-2 rounded-xl bg-blue-30 text-gray-10 " />
+      <h1 className="text-blue-30 p-4 bg-orange-400 mb-4 flex items-center text-xl font-bold">
+        <BsBagPlus className="mr-2 text-base md:text-xl w-10 h-10 p-2 rounded-xl bg-blue-30 text-gray-10 " />
         Sewa Gedung Desa Cangkol
       </h1>
       <div className="mx-2">
-        <div className=" flex mx-auto">
-          <BsBuildingFillCheck className=" py-1 px-3 text-7xl lg:text-8xl text-blue-30 bg-blue-10 mr-5" />
-          <div className="my-auto">
+        <div className="flex mx-auto">
+          <BsBuildingFillCheck className=" py-1 px-2 text-7xl md:text-7xl text-blue-30 bg-blue-10 mr-5" />
+          <div className="my-auto text-sm md:text-base">
             <h1>{detailPage.titel}</h1>
             <h3>
               {objekDataModal.dataModal?.hari},
@@ -77,38 +77,38 @@ function DetailOrder({
           </div>
         </div>
         <h1 className="desc text-xl ml-2 font-medium">Order Details :</h1>
-        <table className="ml-6 text-left gap-1">
+        <table className="ml-6 text-left gap-1 text-sm md:text-base">
           <tr className="">
             <th className="">Nama</th>
-            <td className="pl-10">{form.Name}</td>
+            <td className="pl-4 md:pl-10">: {form.Name}</td>
           </tr>
           <tr>
             <th>No Telfon</th>
-            <td className="pl-10">{form.no_tlp}</td>
+            <td className="pl-4 md:pl-10">: {form.no_tlp}</td>
           </tr>
           <tr>
             <th>Email</th>
-            <td className="pl-10">{form.email}</td>
+            <td className="pl-4 md:pl-10">: {form.email}</td>
           </tr>
           <tr>
             <th>Alamat</th>
-            <td className="pl-10">{form.alamat}</td>
+            <td className="pl-4 md:pl-10">: {form.alamat}</td>
           </tr>
           <tr>
-            <th>Tanggal Mulai Kegiatan</th>
-            <td className="pl-10">
-              {new Date(form.tgl_mulai).toLocaleString("id-ID", {
+            <th>Tanggal Mulai</th>
+            <td className="pl-4 md:pl-10">
+               : {new Date(form.tgl_mulai).toLocaleString("id-ID", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </td>
           </tr>
-          {selectedOption === "1" && form.tgl_akhir &&(
+          {selectedOption === "4" && form.tgl_akhir &&(
             <tr>
               <th>Tanggal Akhir</th>
-              <td className="pl-10">
-                {new Date(form.tgl_akhir).toLocaleString("id-ID", {
+              <td className="pl-4 md:pl-10">
+                : {new Date(form.tgl_akhir).toLocaleString("id-ID", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -118,23 +118,23 @@ function DetailOrder({
           )}
           <tr>
             <th>Waktu</th>
-            <td className="pl-10">{form.waktu}</td>
+            <td className="pl-4 md:pl-10">: {form.waktu}</td>
           </tr>
           <tr>
             <th>Kegiatan</th>
-            <td className="pl-10">{form.kegiatan}</td>
+            <td className="pl-4 md:pl-10">: {form.kegiatan}</td>
           </tr>
-          <tr>
+          <tr className="gap-10">
             <th>Pembayaran</th>
-            <td className="pl-10">{form.MetPembayaran}</td>
+            <td className="pl-4 md:pl-10">: {form.MetPembayaran}</td>
           </tr>
         </table>
         <h1 className="rician text-xl ml-2 font-medium">Rincian Penbayaran</h1>
-        <div className="flex justify-between">
-          <div className="ml-6 font-bold">
-            <h1>Harga</h1>
-            <h1>Lama sewa</h1>
-            <h1>Total </h1>
+        <div className="flex justify-between text-sm md:text-base">
+          <div className="ml-6 font-bold text-sm md:text-base">
+            <h3>Harga</h3>
+            <h3>Lama sewa</h3>
+            <h3>Total </h3>
           </div>
           <div className=" mr-16">
             <h1>
@@ -158,7 +158,7 @@ function DetailOrder({
           </div>
         </div>
       </div>
-      <div className="tombol flex justify-end m-6">
+      <div className="tombol flex justify-end mx-6 my-3">
         <p
           className="closs cursor-pointer mx-5 bg-red-600 px-8 py-2 text-white-20 hover:bg-red-700 border-2 hover:border-red-800 delay-200 transition-all"
           onClick={handleCloseModal}
