@@ -46,7 +46,7 @@ const NavbarLending = () => {
     <nav className="w-full md:py-2">
       <div className="padding-container flexBetween">
         <Image
-          className={` left-28 md:left-96 lg:static w-44 h-auto ${
+          className={` left-[6.8rem] md:left-96 lg:static w-44 h-auto ${
             token ? "absolute" : "static "
           }`}
           src={logoNav}
