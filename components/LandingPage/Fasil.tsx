@@ -56,7 +56,7 @@ const Fasil = () => {
                 <div className="text-neutral-200 font-light">
                   <p>100 x 150 m</p>
                   <p>
-                    tanah{" "}
+                    Tanah{" "}
                     <span>
                       6.515.98 m <sup>2</sup>
                     </span>
@@ -75,7 +75,7 @@ const Fasil = () => {
               </div>
               <div>
                 <h2 className="font-bold my-1">Kapasitas</h2>
-                <p className="text-neutral-200 font-light">max 2.000 orang</p>
+                <p className="text-neutral-200 font-light">Max 2.000 orang</p>
               </div>
             </div>
           </div>
