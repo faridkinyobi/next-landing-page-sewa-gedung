@@ -31,8 +31,8 @@ const About = () => {
             Gedung Pertemaan Dasa <br /> Cangkol Kecamatan Mojolaban{" "}
           </h2>
           <p className="font-normal md:text-xl text-lg mb-12">
-            Baca kisah bagaimana gedung desa Cangkol berhasil dibangun dan di
-            persewaan yang dapatmembantu warga untuk mensukses kan semuah acara.
+            Baca kisah bagaimana gedung desa Cangkol berhasil dibangun dan dipersewaan 
+            yang dapat membantu warga untuk mensukseskan semuah acara.
           </p>
           <Link
             className={`btn_green text-blue-30 px-12  font-semibold  py-4 rounded-full bg-green-10 hover:outline-green-10 hover:bg-green-600`}
