@@ -32,7 +32,7 @@ const About = () => {
           </h2>
           <p className="font-normal md:text-xl text-lg mb-12">
             Baca kisah bagaimana gedung desa Cangkol berhasil dibangun dan dipersewaan 
-            yang dapat membantu warga untuk mensukseskan semuah acara.
+            yang dapat membantu warga untuk mensukseskan semua acara.
           </p>
           <Link
             className={`btn_green text-blue-30 px-12  font-semibold  py-4 rounded-full bg-green-10 hover:outline-green-10 hover:bg-green-600`}
