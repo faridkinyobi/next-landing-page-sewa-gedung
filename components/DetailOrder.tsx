@@ -104,7 +104,7 @@ function DetailOrder({
               })}
             </td>
           </tr>
-          {selectedOption === "4" && form.tgl_akhir &&(
+          {selectedOption === "1" && form.tgl_akhir &&(
             <tr>
               <th>Tanggal Akhir</th>
               <td className="pl-4 md:pl-10">
