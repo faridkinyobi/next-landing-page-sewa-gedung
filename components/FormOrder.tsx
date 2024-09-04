@@ -313,7 +313,7 @@ export default function FormOrder({
           name="tgl_mulai"
           type="date"
           placeholder="Select start date"
-          label="Tanggal Mulai Pemakean"
+          label="Tanggal Mulai Penggunaan"
           onChange={handleOChange}
           min={MinCreatDateMUlai()}
           value={form.tgl_mulai}
@@ -324,7 +324,7 @@ export default function FormOrder({
             name="tgl_akhir"
             type="date"
             placeholder="Select end date"
-            label="Tanggal akhir Pemakean"
+            label="Tanggal akhir Penggunaan"
             onChange={handleOChange}
             min={MinCreatDateAkhir()}
             value={

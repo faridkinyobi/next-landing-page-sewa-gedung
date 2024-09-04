@@ -11,7 +11,7 @@ import ImgComponent from "./ImgComponen";
 
 const Footer = () => {
   return (
-    <footer className="py-10 bg-blue-20">
+    <footer className="pt-10 bg-blue-20">
       <div className=" flex flex-wrap justify-between mx-3 md:mx-10 lg:mx-28 text-white-10 items-center">
         <div className=" font-light text-sm ">
           <ImgComponent
@@ -47,9 +47,25 @@ const Footer = () => {
           <BsYoutube className="bg-blue-10 p-2  w-9 md:w-11 h-auto text-5xl text-white-10 rounded-md mx-auto" />
         </div>
       </div>
-      <p className="Copyright text-center text-white-10 text-sm py-7">
-        &copy; Copyright 2024 by @Faridkin7
-      </p>
+      <div className=" flex flex-wrap justify-between items-center text-white-20  text-center border-t border-white-10 py-5 mx-3 md:mx-10 lg:mx-28">
+        <div className=" flex items-center font-light text-sm mx-auto">
+          <ImgComponent
+            className="w-16 h-auto"
+            src="/Image/Universitas Sahid Surakarta.png"
+            alt="Logo"
+            width={250}
+            height={250}
+            loading="lazy"
+          />
+          <div className="ml-3 text-left">
+            <p>Universitas Sahid Surakarta</p>
+            <p>Prodi Informatika</p>
+          </div>
+        </div>
+        <p className="Copyright text-white-10 text-sm mx-auto py-3">
+          &copy; Copyright 2024 by @Faridkin7
+        </p>
+      </div>
     </footer>
   );
 };

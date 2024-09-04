@@ -31,7 +31,7 @@ const Fasil = () => {
             } `}
             onClick={() => setSelectedSection("section2")}
           >
-            Jejak aktivitas
+            Jejak Aktivitas
           </li>
         </ul>
       </div>
@@ -61,21 +61,21 @@ const Fasil = () => {
                       6.515.98 m <sup>2</sup>
                     </span>
                   </p>
-                  <p>Termasuk listrik</p>
+                  <p>Termasuk Listrik</p>
                 </div>
               </div>
               <div>
                 <h2 className="font-bold my-1">Ruangan</h2>
                 <div className="text-neutral-200 font-light">
                   <p>Ruang Ganti/Rias</p>
-                  <p>Dapur catring</p>
+                  <p>Dapur Katring</p>
                   <p>Toilet</p>
                   <p>Mushola</p>
                 </div>
               </div>
               <div>
                 <h2 className="font-bold my-1">Kapasitas</h2>
-                <p className="text-neutral-200 font-light">Max 2.000 orang</p>
+                <p className="text-neutral-200 font-light">Max 2.000 Orang</p>
               </div>
             </div>
           </div>
@@ -91,9 +91,9 @@ const Fasil = () => {
             <div className="grid md:grid-cols-4 grid-cols-1 gir md:gap-4 gap-1 text-neutral-200 font-light">
               <p>Resepsi Pernikahan</p>
               <p>Lomba Pencak Silat</p>
-              <p>Halal bi halal</p>
+              <p>Halal Bi Halal</p>
               <p>Wisuda</p>
-              <p>Ulang tahun club motor</p>
+              <p>Ulang Tahun Club Motor</p>
             </div>
           </div>
         )}

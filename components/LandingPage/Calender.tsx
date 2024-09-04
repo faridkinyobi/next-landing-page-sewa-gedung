@@ -35,7 +35,7 @@ const EventCalendar = ({ event }: PaketType) => {
           <div
             key={index}
             onClick={() => handleEventClick(item)}
-            className="bg-red-500 mx-1   rounded-md p-1 hover:bg-red-900/100 delay-100  border border-red-900 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer"
+            className="bg-red-500 mx-3   rounded-md  hover:bg-red-900/100 delay-100  border border-red-900 overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer"
           >
             <p className="text text-[0.7rem] md:text-base text-white-10 hover:text-slate-300/85 md:text-ellipsis ">
               {item.kegiatan}
@@ -89,7 +89,7 @@ const EventCalendar = ({ event }: PaketType) => {
     >
       <h1 className=" font-bold text-3xl ml-4 text-blue-40 ">Jadwal</h1>
       <p className="py-2 md:text-2xl text-xl  ml-4 text-blue-20">
-        Lihat jadwal pada calender dibawah
+        Lihat jadwal pada kalender dibawah
       </p>
       <div className="border-4 border-blue-30 rounded-xl">
         <NavCalender

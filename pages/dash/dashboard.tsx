@@ -237,7 +237,7 @@ export default function Dashboard({ data, img, RePay }: DashType) {
         {/*rekening*/}
         {data.map((item, index) => (
           <div key={index}>
-            {item.MetPembayaran === "transfer" && (
+            {item.status === "proses" && (
               <>
                 <BuktiPemayaran img={img} />
               </>
@@ -255,14 +255,17 @@ export default function Dashboard({ data, img, RePay }: DashType) {
                     </div>
                   ))}
 
-                  {/*Pembayaran*/}
+                  {/*P{embayaran*/}
                 </div>
-                <Pemayaran
-                  form={form}
-                  handelUpate={handelUpate}
-                  handleChange={handleChange}
-                  handPembayaran={handPembayaran}
-                />
+                {item.status === "proses" && (
+                  <Pemayaran
+                    form={form}
+                    handelUpate={handelUpate}
+                    handleChange={handleChange}
+                    handPembayaran={handPembayaran}
+                  />
+                )
+                }
               </div>
             )}
           </div>
@@ -286,6 +289,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const result = await getData("/app/v1/dashboardPelanggan", {}, token);
   const data = result.data;
+
   const res = await getData("/app/v1/dashboardPembayaran", {}, token);
   const img = res.data;
   const pay = await getData("/app/v1/NoReken", {}, token);

@@ -1,36 +1,36 @@
 const Aluritem = [
   {
-    desc: "Chek tanggal serta bulan",
+    desc: "Cek Tanggal Serta Bulan",
     Number: "1",
   },
   {
-    desc: "Mendaftar/registrasi",
+    desc: "Mendaftar/Registrasi",
     Number: "2",
   },
   {
-    desc: "Melakukan login",
+    desc: "Melakukan Login",
     Number: "3",
   },
   {
-    desc: "Isi formulir order",
+    desc: "Isi Formulir Pesanan",
     Number: "4",
   },
 ];
 const Aluritem2 = [
   {
-    desc: "Pilih metode pembayaran",
+    desc: "Pilih Metode Pembayaran",
     Number: "5",
   },
   {
-    desc: "Upload bukti pembayaran",
+    desc: " Verifikasi Oleh Admin",
     Number: "6",
   },
   {
-    desc: "Verifikasi oleh admin",
+    desc: "Upload Bukti Pembayaran",
     Number: "7",
   },
   {
-    desc: "Gedung berhasil disewa",
+    desc: "Gedung Berhasil Disewa",
     Number: "8",
   },
 ];
@@ -74,10 +74,10 @@ const Petunjuk = [
     dec: "Isi form kegiatan dengan keywords awalan event / pernikahan",
   },
   {
-    dec: "Setelah berhasil melakukan pemesanan  dengan metode pembayaran COD (Cash On Delivery) / Bayar di tempat. Lakukan pemberitahuan dan melakukan pembayaran uang muka, dengan cara datang langsung pada jam kerja ke Kantor desa Cangkol dengan membawa bukti cetak nota transaksi online dan KTP `Jika dalam waktu 7 hari Anda belum melakukan pemberitahuan data pemesanan Anda akan dihapus` ",
+    dec: "Setelah berhasil melakukan pemesanan dengan metode pembayaran COD (Cash On Delivery) atau bayar di tempat, silakan lakukan pemberitahuan dan pembayaran uang muka dengan datang langsung pada jam kerja (senin-jum'at) ke Kantor Desa Cangkol. Bawa bukti cetak nota transaksi online dan KTP Anda. Jika dalam waktu 7 hari Anda belum melakukan pemberitahuan, data pemesanan Anda akan dihapus. Upload nota pembayaran yang telah diberikan oleh petugas pada form input yang telah disediakan",
   },
   {
-    dec: "Jika Setelah berhasil melakukan pemesanan dengan metode pembayaran transfer. Lakukan upload bukti bembayaran pada form input yang telah disediakan dan confirmasi kepetugas",
+    dec: "Jika Setelah berhasil melakukan pemesanan dengan metode pembayaran transfer. Tugu diproses oleh petugas, kemudian Lakukan upload bukti bembayaran pada form input yang telah disediakan dan confirmasi kepetugas",
   },
   {
     dec: "Admin akan verifikasi pemesanan anda sudah sesui atau belum",

@@ -10,8 +10,7 @@ type NavProp = {
 const NavCalender = ({ setActiveStartDate, activeStartDate }: NavProp) => {
   return (
     <div className="nav-months p-2 bg-slate-400 flex justify-between rounded-t-lg">
-      <p className=" font-light">{format(activeStartDate, "MMMM yyyy")}</p>
-      <p className=" font-light text-base">
+      <p className=" font-light md:text-xl text-base ml-7">
         {format(new Date(), "d MMMM yyyy")}
       </p>
       <div className="flex">

@@ -122,23 +122,25 @@ export const PrintComponent = ({ data }: DashType) => {
             {data.map((item, index) => (
               <tr key={index}>
                 <td className="py-3">
-                  {new Date(item.date).toLocaleString(
-                    "id-ID",
-                    {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    }
-                  )}
+                  {new Date(item.date).toLocaleString("id-ID", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </td>
                 <td className="px-3">{item.NumberOrder}</td>
                 <td>
                   <p
-                    className={` mx-1 py-1 rounded-xl text-gray-900 border ${
-                      item.status === "pendding"
-                        ? " bg-lime-300 border-lime-600"
-                        : "bg-yellow-300 border-yellow-600"
-                    } `}
+                    className={`py-1 px-1 mx-2 border  rounded-2xl ${
+                      item.status === "pending"
+                        ? "bg-yellow-300/45 border-yellow-300"
+                        : item.status === "uang muka" ||
+                          item.status === "proses"
+                        ? "bg-blue-300/45 border-blue-300"
+                        : item.status === "sukses"
+                        ? "bg-lime-600/45 border-lime-600"
+                        : "bg-red-500/45 border-red-500"
+                    }`}
                   >
                     {item.status}
                   </p>

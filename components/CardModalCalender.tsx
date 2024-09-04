@@ -20,12 +20,12 @@ export default function CardModalCalender({selectedEvent,closeModal}:ModalProps)
       <table className="table md:text-lg text-base">
         <thead>
           <tr className="m-1 text-center text-white-10/90">
-            <th className="styl-th-kalender py-3">kegiatan</th>
-            <th className="styl-th-kalender">lama sewa</th>
-            <th className="styl-th-kalender">tanggal mulai</th>
-            <th className="styl-th-kalender">tanggal akhir</th>
-            <th className="styl-th-kalender">waktu sewa</th>
-            <th className="styl-th-kalender">kegiatan</th>
+            <th className="styl-th-kalender py-3">Kegiatan</th>
+            <th className="styl-th-kalender">Lama sewa</th>
+            <th className="styl-th-kalender">Tanggal mulai</th>
+            <th className="styl-th-kalender">Tanggal akhir</th>
+            <th className="styl-th-kalender">Waktu sewa</th>
+            <th className="styl-th-kalender">Status</th>
           </tr>
         </thead>
         <tbody>
